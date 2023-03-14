@@ -3,7 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Build a Full Featured Tinder Like Carousel in Vanilla JavaScript</title>
+    <title>Future of fundraising demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:wght@100&display=swap" rel="stylesheet">
+    
     <style>
         html,
         body {
@@ -11,6 +15,8 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         #board {
@@ -22,8 +28,8 @@
         }
 
         .card {
-            width: 320px;
-            height: 320px;
+            width: 600px;
+            height: 600px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -31,6 +37,14 @@
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
             background-color: white;
             transform: translateX(-50%) translateY(-50%) scale(0.95);
+        }
+        .question {
+            color: rgb(4, 90, 240); 
+            background-color: rgba(240, 248, 255, 0.8);
+            font-size: 1em;
+            margin: 1em;
+            padding: 1.5em;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -177,24 +191,26 @@
 
                     let successful = false
 
+                    window.console.log(propX)
+
                     // set back transition properties
                     this.topCard.style.transition = 'transform 200ms ease-out'
                     if (this.nextCard) this.nextCard.style.transition = 'transform 100ms linear'
 
                     // check threshold and movement direction
-                    if (propX > 0.25 && e.direction == Hammer.DIRECTION_RIGHT) {
+                    if (propX > 0.05 && e.direction == Hammer.DIRECTION_RIGHT) {
 
                         successful = true
                         // get right border position
                         posX = this.board.clientWidth
 
-                    } else if (propX < -0.25 && e.direction == Hammer.DIRECTION_LEFT) {
+                    } else if (propX < -0.05 && e.direction == Hammer.DIRECTION_LEFT) {
 
                         successful = true
                         // get left border position
                         posX = -(this.board.clientWidth + this.topCard.clientWidth)
 
-                    } else if (propY < -0.25 && e.direction == Hammer.DIRECTION_UP) {
+                    } else if (propY < -0.05 && e.direction == Hammer.DIRECTION_UP) {
 
                         successful = true
                         // get top border position
@@ -237,9 +253,17 @@
                 let card = document.createElement('div')
 
                 card.classList.add('card')
-
+                card.insertAdjacentHTML('afterbegin', '<p class="question">Voici la question : </p>')
+/*
+                var photo = document.createElement('div')
+                photo.classList.add('card-photo')
+                var question = document.createElement('div') 
+                question.classList.add('card-question')
+                
+                card = card.insertBefore(photo)
+*/
                 card.style.backgroundImage =
-                    "url('https://picsum.photos/320/320/?random=" + Math.round(Math.random() * 1000000) + "')"
+                    "url('https://picsum.photos/600/600/?random=" + Math.round(Math.random() * 1000000) + "')"
 
                 this.board.insertBefore(card, this.board.firstChild)
 
