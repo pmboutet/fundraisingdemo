@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Future of fundraising demo</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:wght@100&display=swap" rel="stylesheet">
@@ -28,8 +29,8 @@
         }
 
         .card {
-            width: 600px;
-            height: 600px;
+            width: 800px;
+            height: 800px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -46,6 +47,28 @@
             padding: 1.5em;
             font-weight: 600;
         }
+        .finish {
+            color : red; 
+        }
+        .alternatives {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .row {
+            display: table-cell;
+            height: 400px;
+            vertical-align: middle;
+            width: 600px;
+        }
+        .row > div {
+            display: inline-block;
+            width: calc(50% - 40px);
+            background: rgba(203, 204, 221, 0.608);
+            line-height: 100px;
+            text-align: center;
+            margin: 20px;
+            font-size:4vw; 
+        }
     </style>
 </head>
 
@@ -60,9 +83,13 @@
             constructor(element) {
 
                 this.board = element
+                this.sys = {}
+                this.sys.counter = 0
+                this.sys.max = 2
 
                 // add first two cards programmatically
                 this.push()
+                this.sys.counter = this.sys.counter + 1
                 this.push()
 
                 // handle gestures
@@ -191,7 +218,9 @@
 
                     let successful = false
 
-                    window.console.log(propX)
+                    var direction = false
+
+                    //window.console.log(propX)
 
                     // set back transition properties
                     this.topCard.style.transition = 'transform 200ms ease-out'
@@ -201,24 +230,39 @@
                     if (propX > 0.05 && e.direction == Hammer.DIRECTION_RIGHT) {
 
                         successful = true
+                        direction = "right"
                         // get right border position
                         posX = this.board.clientWidth
 
                     } else if (propX < -0.05 && e.direction == Hammer.DIRECTION_LEFT) {
 
                         successful = true
+                        direction = "left"
                         // get left border position
                         posX = -(this.board.clientWidth + this.topCard.clientWidth)
 
                     } else if (propY < -0.05 && e.direction == Hammer.DIRECTION_UP) {
 
                         successful = true
+                        direction = "up"
                         // get top border position
                         posY = -(this.board.clientHeight + this.topCard.clientHeight)
 
                     }
 
                     if (successful) {
+                        var x = this.sys.counter - 1
+                        window.console.log("afficher les infos de "+x)
+                        if (direction == 'left') {
+                            window.console.log(questions[this.sys.counter - 1 ].left)
+                        } else if(direction == 'right') {
+                            window.console.log(questions[this.sys.counter - 1].right)
+                        } else if(direction == 'up') {
+                            window.console.log(questions[this.sys.counter - 1].up)
+                        }
+                        
+                        this.sys.counter =  this.sys.counter + 1
+                        
 
                         // throw card in the chosen direction
                         this.topCard.style.transform =
@@ -229,7 +273,8 @@
                             // remove swiped card
                             this.board.removeChild(this.topCard)
                             // add new card
-                            this.push()
+                            if(this.sys.counter <= this.sys.max) this.push()
+                            else this.finish()
                             // handle gestures on new top card
                             this.handle()
                         }, 200)
@@ -253,23 +298,64 @@
                 let card = document.createElement('div')
 
                 card.classList.add('card')
-                card.insertAdjacentHTML('afterbegin', '<p class="question">Voici la question : </p>')
-/*
-                var photo = document.createElement('div')
-                photo.classList.add('card-photo')
-                var question = document.createElement('div') 
-                question.classList.add('card-question')
+                window.console.log('hello'+this.sys.counter)
+                if(typeof(questions[this.sys.counter].optionLeft) != "undefined") {
+                    var optionsHtml = '<div class="alternative"><div class="row"><div class="left">'+questions[this.sys.counter].optionLeft+'</div><div class="right">'+questions[this.sys.counter].optionRight+'</div></div></div>'
+                } else 
+                {
+                    var optionsHtml = ''
+                }
                 
-                card = card.insertBefore(photo)
-*/
+                card.insertAdjacentHTML('afterbegin', '<p class="question">'+questions[this.sys.counter].question+'</p>'+optionsHtml)
+
                 card.style.backgroundImage =
-                    "url('https://picsum.photos/600/600/?random=" + Math.round(Math.random() * 1000000) + "')"
+                    "url('https://picsum.photos/800/800/?random=" + Math.round(Math.random() * 1000000) + "')"
 
                 this.board.insertBefore(card, this.board.firstChild)
 
             }
 
+            finish() {
+                let card = document.createElement('div')
+
+                card.classList.add('finish')
+                card.insertAdjacentHTML('afterbegin', '<p class="question">Merci !!!</p>')
+
+                this.board.insertBefore(card, this.board.firstChild)
+            }
+
         }
+
+        const questions = {
+            0 : {
+                'question' : 'Vous préférez', 
+                'image': '',
+                'optionLeft': 'Les chiens',
+                'optionRight':'Les chats', 
+                'left'   : [{'chiens': 1}],
+                'right'   : [{'animaux': 1}],
+                'up' : []
+            },
+            1 : {
+                'question' : 'Vous êtes plustôt', 
+                'image': '',
+                'optionLeft': 'Vous',
+                'optionRight':'Tu', 
+                'left'   : [{'vous': 1}],
+                'right'   : [{'tu': 1}], 
+                'up' : []
+            }, 
+            2 : {
+                'question' : 'Si vous pouviez donner 100, vous donneriez à ', 
+                'image': '',
+                'optionLeft': 'Nature',
+                'optionRight':'L enfance',                 
+                'left'   : [{'nature': 1}],
+                'right'   : [{'ong': 1}], 
+                'up' : []
+            },
+        }
+
 
         let board = document.querySelector('#board')
 
