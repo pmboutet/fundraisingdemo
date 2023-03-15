@@ -8,8 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:wght@100&display=swap" rel="stylesheet">
-    
-    <style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<style>
         html,
         body {
             width: 100%;
@@ -42,13 +49,22 @@
         .question {
             color: rgb(4, 90, 240); 
             background-color: rgba(240, 248, 255, 0.8);
-            font-size: 1em;
+            font-size: 2em;
             margin: 1em;
             padding: 1.5em;
             font-weight: 600;
         }
         .finish {
-            color : red; 
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 1%;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            transform: translateX(-50%) translateY(-50%) scale(0.95);
+            display: none;
         }
         .alternatives {
             display: table-cell;
@@ -58,7 +74,7 @@
             display: table-cell;
             height: 400px;
             vertical-align: middle;
-            width: 600px;
+            width: 800px;
         }
         .row > div {
             display: inline-block;
@@ -69,11 +85,49 @@
             margin: 20px;
             font-size:4vw; 
         }
-    </style>
+        .visible {
+            display: block;
+        }
+</style>
 </head>
 
 <body>
     <div id="board"></div>
+    <div id="finish" class="finish container ">
+        <div class="rendered-form">
+            <div class="">
+                <h1 access="false" id="control-5158136">Vos coordonnées</h1></div>
+            <div class="formbuilder-radio-group form-group field-salutation">
+                <label for="salutation" class="formbuilder-radio-group-label">Civilité<span class="formbuilder-required">*</span></label>
+                <div class="radio-group">
+                    <div class="formbuilder-radio-inline">
+                        <input name="salutation" access="false" id="salutation-0" required="required" aria-required="true" value="mme" type="radio">
+                        <label for="salutation-0">Madame</label>
+                    </div>
+                    <div class="formbuilder-radio-inline">
+                        <input name="salutation" access="false" id="salutation-1" required="required" aria-required="true" value="mr" type="radio">
+                        <label for="salutation-1">Monsieur</label>
+                    </div>
+                </div>
+            </div>
+            <div class="formbuilder-text form-group field-text-1678864204896">
+                <label for="text-1678864204896" class="formbuilder-text-label">Prénom<span class="formbuilder-required">*</span><span class="tooltip-element" tooltip="Entrez votre prénom">?</span></label>
+                <input type="text" placeholder="Pierre" class="form-control" name="text-1678864204896" access="false" id="text-1678864204896" title="Entrez votre prénom" required="required" aria-required="true">
+            </div>
+            <div class="formbuilder-text form-group field-last-name">
+                <label for="last-name" class="formbuilder-text-label">Nom<span class="formbuilder-required">*</span><span class="tooltip-element" tooltip="Entrez votre nom de famille">?</span></label>
+                <input type="text" placeholder="Dupont" class="form-control" name="last-name" access="false" id="last-name" title="Entrez votre nom de famille" required="required" aria-required="true">
+            </div>
+            <div class="formbuilder-text form-group field-email">
+                <label for="email" class="formbuilder-text-label">Email<span class="formbuilder-required">*</span></label>
+                <input type="email" class="form-control" name="email" access="false" id="email" required="required" aria-required="true">
+            </div>
+            <div class="formbuilder-button form-group field-submit">
+                <button type="submit" class="btn-primary btn" name="submit" access="false" id="submit">Envoyer</button>
+            </div>
+
+        </div>   
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script>
         /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
@@ -316,14 +370,14 @@
             }
 
             finish() {
-                let card = document.createElement('div')
-
-                card.classList.add('finish')
-                card.insertAdjacentHTML('afterbegin', '<p class="question">Merci !!!</p>')
-
-                this.board.insertBefore(card, this.board.firstChild)
+                window.console.log('fin')
+                if((this.sys.counter - 2 ) === this.sys.max) {
+                    var finish = document.getElementById('finish')
+                    finish.classList.add('visible')
+                } 
+                
             }
-
+''
         }
 
         const questions = {
@@ -362,5 +416,4 @@
         let carousel = new Carousel(board)
     </script>
 </body>
-
 </html>
