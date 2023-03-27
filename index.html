@@ -8,8 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Anton&family=Poppins:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
         html,
         body {
@@ -18,7 +19,7 @@
             margin: 0;
             padding: 0;
     
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Anton', sans-serif;
         }
 
         #board {
@@ -50,6 +51,18 @@
             font-family: 'Poppins';
             z-index: 100;
         }
+        div#titre {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 3em;
+            max-width: 800px;
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hidden {
+            display: none;
+        }
         .finish {
             width: 800px;
             height: 800px;
@@ -67,6 +80,10 @@
             display: table-cell;
             vertical-align: middle;
         }
+        .alternative {
+            z-index: 1000;
+            color: white; 
+        }
         .imgAlternative {
             display: inline-flex;
             position: absolute;
@@ -74,12 +91,12 @@
         .imgLeft {
             height: 800px;
             width: 400px;
-            background-size: 800px; 
+            background-size: auto 800px; 
         }
         .imgRight {
             height: 800px;
             width: 400px;
-            background-size: 800px; 
+            background-size: auto 800px; 
         }
         .rendered-form {
             position: relative;
@@ -87,18 +104,19 @@
         }
         .row {
             display: table-cell;
-            height: 400px;
-            vertical-align: middle;
+            height: 800px;
+            vertical-align: bottom;
             width: 800px;
         }
         .row > div {
             display: inline-block;
             width: calc(50% - 40px);
-            background: rgba(203, 204, 221, 0.608);
+            background: rgb(0 0 0 / 61%);
             line-height: 100px;
             text-align: center;
             margin: 20px;
             font-size:4vw; 
+            color: #ee9717;
         }
         .visible {
             display: block;
@@ -131,7 +149,7 @@
 </head>
 
 <body>
-    <div id="board"></div>
+    <div id="board"><div id="titre">Titre</div></div>
     <div id="finish" class="finish container ">
         <div class="rendered-form">
             <div class="">
@@ -184,6 +202,7 @@
                 this.sys.responses= {}
                 this.sys.responses.questions = {}
                 this.sys.responses.contact = {}
+                this.sys.width = 800
 
                 // add first two cards programmatically
                 this.push()
@@ -202,6 +221,9 @@
 
                 // get top card
                 this.topCard = this.cards[this.cards.length - 1]
+
+                // set question
+                this.question()
 
                 // get next card
                 this.nextCard = this.cards[this.cards.length - 2]
@@ -306,21 +328,27 @@
                 this.topCard.style.transform =
                     'translateX(' + posX + 'px) translateY(' + posY + 'px) rotate(' + deg + 'deg) rotateY(0deg) scale(1)'
 
-                window.console.log("paf")
-                window.console.log(this.topCard.getElementsByClassName('left'))
-                
 
                 // get left & right and update size 
                 let leftImg = this.topCard.getElementsByClassName('imgLeft')
                 let rightImg = this.topCard.getElementsByClassName('imgRight')
+                let leftText = this.topCard.getElementsByClassName('left')
+                let rightText = this.topCard.getElementsByClassName('right')
                 
                 //resize left and right img (assuming parent .alternatives is 600px)
-                let leftImgWidth = 400 + e.deltaX
-                let rightImgWidth = 800 -  leftImgWidth
-                window.console.log('calc( '+ e.deltaX +' - 40px) !important')
+                let rightImgWidth = this.sys.width / 2 + e.deltaX
+                let leftImgWidth = this.sys.width -  rightImgWidth
+
                 leftImg[0].style.width = leftImgWidth+'px'
                 rightImg[0].style.width = rightImgWidth+'px'
-               // leftImg.style.color = "red"
+                if(dirX == 1){
+                    leftText[0].style.visibility = 'hidden'
+                    rightText[0].style.visibility = 'initial'
+                }else{
+                    rightText[0].style.visibility = 'hidden'
+                    leftText[0].style.visibility = 'initial'
+                }
+                
 
                 // scale up next card
                 if (this.nextCard) this.nextCard.style.transform =
@@ -400,6 +428,12 @@
                             'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(1)'
                         if (this.nextCard) this.nextCard.style.transform =
                             'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(0.95)'
+                        
+                        //reset
+                        leftImg[0].style.width = this.sys.width / 2 +'px'
+                        rightImg[0].style.width = rightImgWidth+'px' 
+                        rightText[0].style.visibility = 'initial'
+                        leftText[0].style.visibility = 'initial'
 
                     }
 
@@ -412,7 +446,7 @@
                 let card = document.createElement('div')
 
                 card.classList.add('card')
-                window.console.log('hello'+this.sys.counter)
+              
                 if(typeof(questions[this.sys.counter].optionLeft) != "undefined") {
                     var optionsHtml = '<div class="alternative"><div class="row"><div class="left" style="">'+questions[this.sys.counter].optionLeft+'</div><div class="right" style="">'+questions[this.sys.counter].optionRight+'</div></div></div>'
                 } else 
@@ -420,7 +454,7 @@
                     var optionsHtml = ''
                 }
                 
-                card.insertAdjacentHTML('afterbegin', '<p class="question">'+questions[this.sys.counter].question+'</p>'+optionsHtml)
+                card.insertAdjacentHTML('afterbegin', '<p class="question hidden">'+questions[this.sys.counter].question+'</p>'+optionsHtml)
                 card.insertAdjacentHTML('afterbegin', '<div class="imgAlternative"><span class="imgLeft" style="background-image:url(\'medias/'+questions[this.sys.counter].imgLeft+'\')"></span><span class="imgRight" style="background-image:url(\'medias/'+questions[this.sys.counter].imgRight+'\')"></span></div>')
                 
                 if (typeof(questions[this.sys.counter].img) != 'undefined') {
@@ -433,6 +467,13 @@
 
                 this.board.insertBefore(card, this.board.firstChild)
 
+            }
+
+            question() {
+                let getQuestion = this.topCard.getElementsByClassName('question')
+                let questionText = getQuestion[0].textContent 
+                let titre = document.getElementById('titre')
+                titre.textContent = questionText
             }
 
             finish() {
@@ -448,10 +489,10 @@
 
         const questions = {
             0 : {
-                'question' : 'L\'image qui vous mobilise le plus : ', 
+                'question' : 'Celà vous mobilise le plus : ', 
                 'image': '',
-                'optionLeft': 'gauche',
-                'optionRight':'droite', 
+                'optionLeft': 'Militantisme',
+                'optionRight':'Enfance', 
                 'left'   : [{'pathos': 1}],
                 'right'   : [{'ethos': 1}],
                 'imgLeft': 'image01.jpg',
@@ -459,10 +500,10 @@
                 'up' : []
             },
             1 : {
-                'question' : 'Quelle image vous donne le plus envi de donner: ', 
+                'question' : 'Celà vous rend encore plus généreux: ', 
                 'image': '',
-                'optionLeft': '',   
-                'optionRight':'', 
+                'optionLeft': 'Carbonne',   
+                'optionRight':'Carême', 
                 'left'   : [{'famine': 1}],
                 'right'   : [{'guerre': 1}],
                 'imgLeft': 'image03.jpg',
@@ -470,12 +511,14 @@
                 'up' : []
             },
             2 : {
-                'question' : 'L\'image qui vous donne le sourire : ', 
+                'question' : 'Celà vous donne envi de vous battre : ', 
                 'image': '',
-                'optionLeft': '',
-                'optionRight':'', 
+                'optionLeft': 'Justice énonomique',
+                'optionRight':'Migrations', 
                 'left'   : [{'famine': 1}],
                 'right'   : [{'guerre': 1}],
+                'imgLeft': 'justice.jpg',
+                'imgRight': 'migrants.jpg',
                 'up' : []
             },
             3 : {
