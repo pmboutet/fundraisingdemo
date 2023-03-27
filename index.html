@@ -7,15 +7,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Poppins:wght@100&display=swap" rel="stylesheet">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
         html,
         body {
@@ -23,7 +17,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', sans-serif;
+    
             font-family: 'Poppins', sans-serif;
         }
 
@@ -47,12 +41,14 @@
             transform: translateX(-50%) translateY(-50%) scale(0.95);
         }
         .question {
-            color: rgb(4, 90, 240); 
-            background-color: rgba(240, 248, 255, 0.8);
+            color: rgb(38 46 61);
+            background-color: rgb(255 255 255 / 80%);
             font-size: 2em;
             margin: 1em;
             padding: 1.5em;
-            font-weight: 600;
+            font-weight: bolder;
+            font-family: 'Poppins';
+            z-index: 100;
         }
         .finish {
             width: 800px;
@@ -62,13 +58,34 @@
             left: 50%;
             border-radius: 1%;
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-            background-color: white;
+            background-color: #3c4754;
+            color: white;
             transform: translateX(-50%) translateY(-50%) scale(0.95);
             display: none;
         }
         .alternatives {
             display: table-cell;
             vertical-align: middle;
+        }
+        .imgAlternative {
+            display: inline-flex;
+            position: absolute;
+        }
+        .imgLeft {
+            height: 800px;
+            width: 400px;
+            background-color: darkmagenta;
+            background-size: 800px; 
+        }
+        .imgRight {
+            height: 800px;
+            width: 400px;
+            background-color: rgb(160, 23, 23);
+            background-size: 800px; 
+        }
+        .rendered-form {
+            position: relative;
+            top: 100px;
         }
         .row {
             display: table-cell;
@@ -87,6 +104,30 @@
         }
         .visible {
             display: block;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+        }
+        /* Tooltip text */
+        .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        
+        /* Position the tooltip text - see examples below! */
+
+        z-index: 1;
+        }
+
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .tooltip:hover .tooltiptext {
+        visibility: visible;
         }
 </style>
 </head>
@@ -139,7 +180,12 @@
                 this.board = element
                 this.sys = {}
                 this.sys.counter = 0
-                this.sys.max = 2
+                //max num of cards
+                this.sys.max = 6
+                //store answer 
+                this.sys.responses= {}
+                this.sys.responses.questions = {}
+                this.sys.responses.contact = {}
 
                 // add first two cards programmatically
                 this.push()
@@ -262,6 +308,22 @@
                 this.topCard.style.transform =
                     'translateX(' + posX + 'px) translateY(' + posY + 'px) rotate(' + deg + 'deg) rotateY(0deg) scale(1)'
 
+                window.console.log("paf")
+                window.console.log(this.topCard.getElementsByClassName('left'))
+                
+
+                // get left & right and update size 
+                let leftImg = this.topCard.getElementsByClassName('imgLeft')
+                let rightImg = this.topCard.getElementsByClassName('imgRight')
+                
+                //resize left and right img (assuming parent .alternatives is 600px)
+                let leftImgWidth = 400 + e.deltaX
+                let rightImgWidth = 800 -  leftImgWidth
+                window.console.log('calc( '+ e.deltaX +' - 40px) !important')
+                leftImg[0].style.width = leftImgWidth+'px'
+                rightImg[0].style.width = rightImgWidth+'px'
+               // leftImg.style.color = "red"
+
                 // scale up next card
                 if (this.nextCard) this.nextCard.style.transform =
                     'translateX(-50%) translateY(-50%) rotate(0deg) rotateY(0deg) scale(' + scale + ')'
@@ -274,28 +336,28 @@
 
                     var direction = false
 
-                    //window.console.log(propX)
+                    this.sys.currentCounter = this.sys.counter - 1
 
                     // set back transition properties
                     this.topCard.style.transition = 'transform 200ms ease-out'
                     if (this.nextCard) this.nextCard.style.transition = 'transform 100ms linear'
 
                     // check threshold and movement direction
-                    if (propX > 0.05 && e.direction == Hammer.DIRECTION_RIGHT) {
+                    if (propX > 0.01 && e.direction == Hammer.DIRECTION_RIGHT) {
 
                         successful = true
                         direction = "right"
                         // get right border position
                         posX = this.board.clientWidth
 
-                    } else if (propX < -0.05 && e.direction == Hammer.DIRECTION_LEFT) {
+                    } else if (propX < -0.01 && e.direction == Hammer.DIRECTION_LEFT) {
 
                         successful = true
                         direction = "left"
                         // get left border position
                         posX = -(this.board.clientWidth + this.topCard.clientWidth)
 
-                    } else if (propY < -0.05 && e.direction == Hammer.DIRECTION_UP) {
+                    } else if (propY < -0.01 && e.direction == Hammer.DIRECTION_UP) {
 
                         successful = true
                         direction = "up"
@@ -305,14 +367,14 @@
                     }
 
                     if (successful) {
-                        var x = this.sys.counter - 1
-                        window.console.log("afficher les infos de "+x)
+                        
+                        window.console.log("afficher les infos de "+this.sys.currentCounter)
                         if (direction == 'left') {
-                            window.console.log(questions[this.sys.counter - 1 ].left)
+                            window.console.log(questions[this.sys.currentCounter].left)
                         } else if(direction == 'right') {
-                            window.console.log(questions[this.sys.counter - 1].right)
+                            window.console.log(questions[this.sys.currentCounter].right)
                         } else if(direction == 'up') {
-                            window.console.log(questions[this.sys.counter - 1].up)
+                            window.console.log(questions[this.sys.currentCounter].up)
                         }
                         
                         this.sys.counter =  this.sys.counter + 1
@@ -354,16 +416,22 @@
                 card.classList.add('card')
                 window.console.log('hello'+this.sys.counter)
                 if(typeof(questions[this.sys.counter].optionLeft) != "undefined") {
-                    var optionsHtml = '<div class="alternative"><div class="row"><div class="left">'+questions[this.sys.counter].optionLeft+'</div><div class="right">'+questions[this.sys.counter].optionRight+'</div></div></div>'
+                    var optionsHtml = '<div class="alternative"><div class="row"><div class="left" style="">'+questions[this.sys.counter].optionLeft+'</div><div class="right" style="">'+questions[this.sys.counter].optionRight+'</div></div></div>'
                 } else 
                 {
                     var optionsHtml = ''
                 }
                 
                 card.insertAdjacentHTML('afterbegin', '<p class="question">'+questions[this.sys.counter].question+'</p>'+optionsHtml)
-
-                card.style.backgroundImage =
+                card.insertAdjacentHTML('afterbegin', '<div class="imgAlternative"><span class="imgLeft" style="background-image:url(\'medias/'+questions[this.sys.counter].imgLeft+'\')"></span><span class="imgRight" style="background-image:url(\'medias/'+questions[this.sys.counter].imgRight+'\')"></span></div>')
+                
+                if (typeof(questions[this.sys.counter].img) != 'undefined') {
+                    card.style.backgroundImage = 
+                    "url('medias/" + questions[this.sys.counter].img + "')"
+                }else{
+                    card.style.backgroundImage =
                     "url('https://picsum.photos/800/800/?random=" + Math.round(Math.random() * 1000000) + "')"
+                }
 
                 this.board.insertBefore(card, this.board.firstChild)
 
@@ -382,15 +450,53 @@
 
         const questions = {
             0 : {
-                'question' : 'Vous préférez', 
+                'question' : 'L\'image qui vous mobilise le plus : ', 
                 'image': '',
-                'optionLeft': 'Les chiens',
-                'optionRight':'Les chats', 
-                'left'   : [{'chiens': 1}],
-                'right'   : [{'animaux': 1}],
+                'optionLeft': 'gauche',
+                'optionRight':'droite', 
+                'left'   : [{'pathos': 1}],
+                'right'   : [{'ethos': 1}],
+                'imgLeft': 'image01.jpg',
+                'imgRight': 'image02.jpeg',
                 'up' : []
             },
             1 : {
+                'question' : 'L\'image qui vous révolte le plus : ', 
+                'image': '',
+                'optionLeft': '',   
+                'optionRight':'', 
+                'left'   : [{'famine': 1}],
+                'right'   : [{'guerre': 1}],
+                'up' : []
+            },
+            2 : {
+                'question' : 'L\'image qui vous donne le sourire : ', 
+                'image': '',
+                'optionLeft': '',
+                'optionRight':'', 
+                'left'   : [{'famine': 1}],
+                'right'   : [{'guerre': 1}],
+                'up' : []
+            },
+            3 : {
+                'question' : 'Vous vous diriez plus ...', 
+                'image': '',
+                'optionLeft': 'Donateur',
+                'optionRight':'Acheter (responsable)', 
+                'left'   : [{'donateur': 1}],
+                'right'   : [{'petionnaire': 1}],
+                'up' : []
+            },
+            4 : {
+                'question' : 'Vous vous diriez plus ...', 
+                'image': '',
+                'optionLeft': 'Acheteur (engagé)',
+                'optionRight':'Pétitionnaire', 
+                'left'   : [{'acheteur': 1}],
+                'right'   : [{'petitionaire': 1}],
+                'up' : []
+            },
+            5 : {
                 'question' : 'Vous êtes plustôt', 
                 'image': '',
                 'optionLeft': 'Vous',
@@ -399,7 +505,7 @@
                 'right'   : [{'tu': 1}], 
                 'up' : []
             }, 
-            2 : {
+            6 : {
                 'question' : 'Si vous pouviez donner 100, vous donneriez à ', 
                 'image': '',
                 'optionLeft': 'Nature',
@@ -414,6 +520,7 @@
         let board = document.querySelector('#board')
 
         let carousel = new Carousel(board)
+
     </script>
 </body>
 </html>
