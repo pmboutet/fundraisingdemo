@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Future of fundraising demo</title>
-
+    <!-- utf-8 ééù-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -455,7 +455,7 @@
                 }
                 
                 card.insertAdjacentHTML('afterbegin', '<p class="question hidden">'+questions[this.sys.counter].question+'</p>'+optionsHtml)
-                card.insertAdjacentHTML('afterbegin', '<div class="imgAlternative"><span class="imgLeft" style="background-image:url(\'medias/'+questions[this.sys.counter].imgLeft+'\')"></span><span class="imgRight" style="background-image:url(\'medias/'+questions[this.sys.counter].imgRight+'\')"></span></div>')
+                card.insertAdjacentHTML('afterbegin', '<div class="imgAlternative"><span class="imgLeft" style="background-image:url(\''+questions[this.sys.counter].imgLeft+'\')"></span><span class="imgRight" style="background-image:url(\''+questions[this.sys.counter].imgRight+'\')"></span></div>')
                 
                 if (typeof(questions[this.sys.counter].img) != 'undefined') {
                     card.style.backgroundImage = 
@@ -493,21 +493,21 @@
                 'image': '',
                 'optionLeft': 'Militantisme',
                 'optionRight':'Enfance', 
-                'left'   : [{'pathos': 1}],
-                'right'   : [{'ethos': 1}],
-                'imgLeft': 'image01.jpg',
-                'imgRight': 'image02.jpeg',
+                'left'   : [{'militant': 1}, {'volontaire':0.5}],
+                'right'   : [{'enfance': 1}],
+                'imgLeft': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/1e1ba002-7718-4fc8-9291-866cb050f3f0.jpg',
+                'imgRight': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/2d37f298-d3ff-413a-9813-7e37137b5046.jpeg',
                 'up' : []
             },
             1 : {
                 'question' : 'Celà vous rend encore plus généreux: ', 
                 'image': '',
-                'optionLeft': 'Carbonne',   
+                'optionLeft': 'Carbone',   
                 'optionRight':'Carême', 
                 'left'   : [{'famine': 1}],
                 'right'   : [{'guerre': 1}],
-                'imgLeft': 'image03.jpg',
-                'imgRight': 'image04.png',
+                'imgLeft': 'medias/image03.jpg',
+                'imgRight': 'medias/image04.png',
                 'up' : []
             },
             2 : {
@@ -517,8 +517,8 @@
                 'optionRight':'Migrations', 
                 'left'   : [{'famine': 1}],
                 'right'   : [{'guerre': 1}],
-                'imgLeft': 'justice.jpg',
-                'imgRight': 'migrants.jpg',
+                'imgLeft': 'medias/justice.jpg',
+                'imgRight': 'medias/migrants.jpg',
                 'up' : []
             },
             3 : {
