@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Future of fundraising demo</title>
+    <!-- utf-8 ééù-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Anton&family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+    
+            font-family: 'Anton', sans-serif;
+        }
+
+        #board {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            background-color: rgb(245, 247, 250);
+        }
+
+        .card {
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 1%;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            transform: translateX(-50%) translateY(-50%) scale(0.95);
+        }
+        .question {
+            color: rgb(38 46 61);
+            background-color: rgb(255 255 255 / 80%);
+            font-size: 2em;
+            margin: 1em;
+            padding: 1.5em;
+            font-weight: bolder;
+            font-family: 'Poppins';
+            z-index: 100;
+        }
+        div#titre {
+            
+            text-align: center;
+            font-size: 3em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hidden {
+            display: none;
+        }
+        .finish {
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 1%;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+            background-color: #3c4754;
+            color: white;
+            transform: translateX(-50%) translateY(-50%) scale(0.95);
+            display: none;
+        }
+        .alternatives {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .alternative {
+            z-index: 1000;
+            color: white; 
+        }
+        .imgAlternative {
+            display: inline-flex;
+            position: absolute;
+        }
+        .imgLeft {
+            height: 800px;
+            width: 400px;
+            background-size: auto 800px; 
+        }
+        .imgRight {
+            height: 800px;
+            width: 400px;
+            background-size: auto 800px; 
+        }
+        .rendered-form {
+            position: relative;
+            top: 100px;
+        }
+        .row {
+            display: table-cell;
+            height: 800px;
+            vertical-align: bottom;
+            width: 800px;
+        }
+        .row > div {
+            display: inline-block;
+            width: calc(50% - 40px);
+            background: rgb(0 0 0 / 61%);
+            line-height: 100px;
+            text-align: center;
+            margin: 20px;
+            font-size:4vw; 
+            color: #ee9717;
+        }
+        .visible {
+            display: block;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+        }
+        /* Tooltip text */
+        .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        
+        /* Position the tooltip text - see examples below! */
+
+        z-index: 1;
+        }
+
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .tooltip:hover .tooltiptext {
+        visibility: visible;
+        }
+        .containerMain {
+            display: block;
+            text-align: center;
+            position: absolute;
+            top: calc( 50vh - 72px);
+            margin-left: 10%;
+            margin-right: 10%;
+            width: 800px;
+        }
+        .containerMain input {
+            width: 100%;
+            height: 4em;    
+            margin-top:10px      
+        }
+        input#go {
+            background-color: #fc6117;
+            color: white;
+            border: none;
+            box-shadow: 1px 1px 2px #a84315;
+        }
+
+        h1 { 
+        font-family: helvetica;
+        text-align:center;
+        }
+
+        .pin-code{ 
+        padding: 0; 
+        margin: 0 auto; 
+        display: flex;
+        justify-content:center;
+        
+        } 
+        
+        .pin-code input { 
+            border: none;
+            text-align: center;
+            width: 48px;
+            height: 48px;
+            font-size: 36px;
+            background-color: #b3d7ff7d;
+            margin-right: 5px;
+            border-bottom: solid 5px orange;
+        } 
+
+
+
+        .pin-code input:focus { 
+        border: 1px solid #573D8B;
+        outline:none;
+        } 
+
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+</style>
+</head>
+
+<body>
+    <div id="board">
+        <div class="containerMain">
+            <div id="titre">Saisissez votre code:</div>
+            <div class="pin-code">
+                  <input type="number" maxlength="1" autofocus>
+                <input type="number" maxlength="1">
+                  <input type="number" maxlength="1">
+                <input type="number" maxlength="1">
+             </div>
+        </div>
+    <script>
+
+       // var pinContainer = document.getElementsByClassName("pin-code")[0];
+        var pinContainer = document.querySelector(".pin-code");
+       // console.log('There is ' + pinContainer.length + ' Pin Container on the page.');
+
+        pinContainer.addEventListener('keyup', function (event) {
+            var target = event.srcElement;
+            window.console.log(event)
+            var maxLength = parseInt(target.attributes["maxlength"].value, 10);
+            var myLength = target.value.length;
+            if (event.key == 'Shift') {
+                return;
+            }
+            if (myLength >= maxLength) {
+                var next = target;
+                while (next = next.nextElementSibling) {
+                    if (next == null) break;
+                    if (next.tagName.toLowerCase() == "input") {
+                        next.focus();
+                        break;
+                    }
+                }
+            }
+
+            if (myLength === 0) {
+                var next = target;
+                while (next = next.previousElementSibling) {
+                    if (next == null) break;
+                    if (next.tagName.toLowerCase() == "input") {
+                        next.focus();
+                        break;
+                    }
+                }
+            }
+        }, false);
+
+        pinContainer.addEventListener('keydown', function (event) {
+            if (event.key == 'Shift') {
+                return;
+            }
+            var target = event.srcElement;
+            target.value = "";
+        }, false);
+    </script>
+</body>
+</html>
