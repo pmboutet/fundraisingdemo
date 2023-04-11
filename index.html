@@ -494,24 +494,25 @@
                 if((this.sys.counter - 2 ) === this.sys.max) {
                     var finish = document.getElementById('finish')
                     finish.classList.add('visible')
-                    alert(JSON.stringify(this.sys.responses))
-                    this.post('https://mc0bq2fh12vvr0lz6k14m-hh53d1.pub.sfmc-content.com/5t2xn4vrhyx', this.sys.responses)
+                    alert(JSON.stringify(this.sys.responses.questions))
+                    this.post('https://mc0bq2fh12vvr0lz6k14m-hh53d1.pub.sfmc-content.com/5t2xn4vrhyx', this.sys.responses.questions)
                 } 
     
                 
             }
 
             saveResponse( response ){
-        
+                
                 for (const [i, rep] of Object.entries(response)) 
                 {
-                    if ( typeof(this.sys.responses[i]) !== 'undefined' ) {
-                       var a = this.sys.responses[i]
+                    if ( typeof(this.sys.responses.questions[i]) !== 'undefined' ) {
+                       var a = this.sys.responses.questions[i]
                     } else {
                        var a = 0
                     }
-                    this.sys.responses[i] = rep + a
+                    this.sys.responses.questions[i] = rep + a
                 }
+                window.console.log(JSON.stringify(this.sys.responses.questions))
             }
 
             post(path, params, method='post') {
@@ -584,8 +585,8 @@
                 'image': '',
                 'optionLeft': 'Militant',
                 'optionRight':'Donateur / philantrope', 
-                'left'   : [{'militant': 1}],
-                'right'   : [{'donateur': 1}],
+                'left'   : {'militant': 1},
+                'right'   : {'donateur': 1},
                 'up' : []
             },
             5 : {
@@ -607,12 +608,30 @@
                 'up' : []
             },
             7 : {
+                'question' : 'Pour mieux vous connaitre, on vous dira plutôt :', 
+                'image': '',
+                'optionLeft': 'Madame',
+                'optionRight':'Monsieur',                 
+                'left'   : {'Madame': 1},
+                'right'   : {'Monsieur': 1}, 
+                'up' : []
+            },
+            8 : {
                 'question' : 'Vous pouvez nous consacrer :', 
                 'image': '',
                 'optionLeft': '1 minute',
                 'optionRight':'15 minutes',                 
                 'left'   : {'1mn': 1},
                 'right'   : {'15mn': 1}, 
+                'up' : []
+            },
+            9 : {
+                'question' : 'fin', 
+                'image': '',
+                'optionLeft': '',
+                'optionRight':'',                 
+                'left'   : {'fin': 1},
+                'right'   : {'fin': 1}, 
                 'up' : []
             },
         }
