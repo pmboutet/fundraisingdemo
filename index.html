@@ -162,6 +162,7 @@
     <img id="navImg" src="https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/b64de37c-1b81-447d-8cd9-03eab89973f6.png" alt="">
     </div>
     <div id="finish" class="finish container ">
+        <!--
         <div class="rendered-form">
             <div class="">
                 <h1 access="false" id="control-5158136">Vos coordonnées</h1></div>
@@ -195,6 +196,7 @@
             </div>
 
         </div>   
+        -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script>
@@ -405,13 +407,13 @@
 
                     if (successful) {
                         
-                        window.console.log("afficher les infos de "+this.sys.currentCounter)
+                        
                         if (direction == 'left') {
-                            window.console.log(questions[this.sys.currentCounter].left)
+                            this.saveResponse(questions[this.sys.currentCounter].left)
                         } else if(direction == 'right') {
-                            window.console.log(questions[this.sys.currentCounter].right)
+                            this.saveResponse(questions[this.sys.currentCounter].right)
                         } else if(direction == 'up') {
-                            window.console.log(questions[this.sys.currentCounter].up)
+                            this.saveResponse(questions[this.sys.currentCounter].up)
                         }
                         
                         this.sys.counter =  this.sys.counter + 1
@@ -481,6 +483,7 @@
             }
 
             question() {
+                if (typeof(this.topCard) !== 'object') return
                 let getQuestion = this.topCard.getElementsByClassName('question')
                 let questionText = getQuestion[0].textContent 
                 let titre = document.getElementById('titre')
@@ -488,15 +491,52 @@
             }
 
             finish() {
-                window.console.log('fin')
                 if((this.sys.counter - 2 ) === this.sys.max) {
                     var finish = document.getElementById('finish')
                     finish.classList.add('visible')
+                    alert(JSON.stringify(this.sys.responses))
+                    this.post('marketingcloudposturl.html', this.sys.responses)
                 } 
+    
                 
             }
-''
+
+            saveResponse( response ){
+        
+                for (const [i, rep] of Object.entries(response)) 
+                {
+                    if ( typeof(this.sys.responses[i]) !== 'undefined' ) {
+                       var a = this.sys.responses[i]
+                    } else {
+                       var a = 0
+                    }
+                    this.sys.responses[i] = rep + a
+                }
+            }
+
+            post(path, params, method='post') {
+
+                const form = document.createElement('form');
+                form.method = method;
+                form.action = path;
+
+                for (const key in params) {
+                if (params.hasOwnProperty(key)) {
+                    const hiddenField = document.createElement('input');
+                    hiddenField.type = 'hidden';
+                    hiddenField.name = key;
+                    hiddenField.value = params[key];
+
+                    form.appendChild(hiddenField);
+                }
+                }
+
+                document.body.appendChild(form);
+                form.submit();
+            }
         }
+
+
 
         const questions = {
             0 : {
@@ -504,8 +544,8 @@
                 'image': '',
                 'optionLeft': 'Lutte évasion fiscale ',
                 'optionRight':'Accueil réfugiés ukrainiens', 
-                'left'   : [{'volontaire':0.5}, {'justic_eco': 1}],
-                'right'   : [{'paix_ensemble': 1}, {'migrations_int':1}],
+                'left'   : {'volontaire':0.5 , 'justic_eco': 1},
+                'right'   : {'paix_ensemble': 1, 'migrations_int':1}, 
                 'imgLeft': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/1e1ba002-7718-4fc8-9291-866cb050f3f0.jpg',
                 'imgRight': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/2d37f298-d3ff-413a-9813-7e37137b5046.jpeg',
                 'up' : []
@@ -515,10 +555,8 @@
                 'image': '',
                 'optionLeft': 'Stop Colonies israélienne',   
                 'optionRight':'Stop déforestation au brésil', 
-                'left'   : [{'paix_ensemble': 1}, {'justice_eco':0.25}],
-                'right'   : [{'alimentaire': 1}],
-                'imgLeft': 'medias/image03.jpg',
-                'imgRight': 'medias/image04.png',
+                'left'   : {'paix_ensemble': 1, 'justice_eco':0.25},
+                'right'   : {'alimentaire': 1},
                 'up' : []
             },
             2 : {
@@ -526,8 +564,8 @@
                 'image': '',
                 'optionLeft': 'Le conflit oublié du Yemen',
                 'optionRight':'Panama papers - captation des richesse par les 1%', 
-                'left'   : [{'paix_ensemble': 1}],
-                'right'   : [{'justice_eco': 1}],
+                'left'   : {'paix_ensemble': 1},
+                'right'   : {'justice_eco': 1},
                 'imgLeft': 'medias/justice.jpg',
                 'imgRight': 'medias/migrants.jpg',
                 'up' : []
@@ -537,8 +575,8 @@
                 'image': '',
                 'optionLeft': 'L\'accès au vaccin des pays émmergents',
                 'optionRight':'Les drames de la méditérannée', 
-                'left'   : [{'justice_eco': 1}],
-                'right'   : [{'migrations_int': 1}],
+                'left'   : {'justice_eco': 1},
+                'right'   : {'migrations_int': 1},
                 'up' : []
             },
             4 : {
@@ -555,8 +593,8 @@
                 'image': '',
                 'optionLeft': 'Carême',
                 'optionRight':'Peu importe', 
-                'left'   : [{'calendrier_religieux': 1}],
-                'right'   : [{'non-def': 1}], 
+                'left'   : {'calendrier_religieux': 1},
+                'right'   : {'non-def': 1}, 
                 'up' : []
             }, 
             6 : {
@@ -564,8 +602,8 @@
                 'image': '',
                 'optionLeft': 'Tu',
                 'optionRight':'Vous',                 
-                'left'   : [{'Tu': 1}],
-                'right'   : [{'Vous': 1}], 
+                'left'   : {'Tu': 1},
+                'right'   : {'Vous': 1}, 
                 'up' : []
             },
             7 : {
@@ -573,8 +611,8 @@
                 'image': '',
                 'optionLeft': '1 minute',
                 'optionRight':'15 minutes',                 
-                'left'   : [{'1mn': 1}],
-                'right'   : [{'15mn': 1}], 
+                'left'   : {'1mn': 1},
+                'right'   : {'15mn': 1}, 
                 'up' : []
             },
         }
