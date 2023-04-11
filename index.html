@@ -41,6 +41,7 @@
             box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
             background-color: white;
             transform: translateX(-50%) translateY(-50%) scale(0.95);
+            background-size: cover;
         }
         .question {
             color: rgb(38 46 61);
@@ -88,16 +89,19 @@
         .imgAlternative {
             display: inline-flex;
             position: absolute;
+            
         }
         .imgLeft {
             height: 800px;
             width: 400px;
             background-size: auto 800px; 
+            background-position: center;
         }
         .imgRight {
             height: 800px;
             width: 400px;
             background-size: auto 800px; 
+            background-position: center;
         }
         .rendered-form {
             position: relative;
@@ -210,7 +214,7 @@
                 this.sys = {}
                 this.sys.counter = 0
                 //max num of cards
-                this.sys.max = 6
+                this.sys.max = 8
                 //store answer 
                 this.sys.responses= {}
                 this.sys.responses.questions = {}
@@ -470,9 +474,9 @@
                 card.insertAdjacentHTML('afterbegin', '<p class="question hidden">'+questions[this.sys.counter].question+'</p>'+optionsHtml)
                 card.insertAdjacentHTML('afterbegin', '<div class="imgAlternative"><span class="imgLeft" style="background-image:url(\''+questions[this.sys.counter].imgLeft+'\')"></span><span class="imgRight" style="background-image:url(\''+questions[this.sys.counter].imgRight+'\')"></span></div>')
                 
-                if (typeof(questions[this.sys.counter].img) != 'undefined') {
+                if (typeof(questions[this.sys.counter].image) != 'undefined') {
                     card.style.backgroundImage = 
-                    "url('medias/" + questions[this.sys.counter].img + "')"
+                    "url('" + questions[this.sys.counter].image + "')"
                 }else{
                     card.style.backgroundImage =
                     "url('https://picsum.photos/800/800/?random=" + Math.round(Math.random() * 1000000) + "')"
@@ -547,8 +551,8 @@
                 'optionRight':'Accueil réfugiés ukrainiens', 
                 'left'   : {'volontaire':0.5 , 'justic_eco': 1},
                 'right'   : {'paix_ensemble': 1, 'migrations_int':1}, 
-                'imgLeft': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/1e1ba002-7718-4fc8-9291-866cb050f3f0.jpg',
-                'imgRight': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/2d37f298-d3ff-413a-9813-7e37137b5046.jpeg',
+                'imgLeft': 'https://ccfd-terresolidaire.org/wp-content/uploads/2022/05/money-g8a83e1858_1920-768x512.jpg',
+                'imgRight': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/c6986b01-7a76-4e28-8b31-c2bbf52c5a43.jpg',
                 'up' : []
             },
             1 : {
@@ -558,17 +562,19 @@
                 'optionRight':'Stop déforestation au brésil', 
                 'left'   : {'paix_ensemble': 1, 'justice_eco':0.25},
                 'right'   : {'alimentaire': 1},
+                'imgLeft': 'https://ccfd-terresolidaire.org/wp-content/uploads/2022/03/Voyage-dimmersion-du-RT-Israel-Palestine-2014-025-1536x863.jpg',
+                'imgRight' : 'https://ccfd-terresolidaire.org/wp-content/uploads/2021/12/arton7115.png',
                 'up' : []
             },
             2 : {
                 'question' : 'La cause qui vous mobilise le plus: ', 
                 'image': '',
-                'optionLeft': 'Le conflit oublié du Yemen',
+                'optionLeft': 'Le conflit oublié du Nord-Kivu',
                 'optionRight':'Panama papers - captation des richesse par les 1%', 
                 'left'   : {'paix_ensemble': 1},
                 'right'   : {'justice_eco': 1},
-                'imgLeft': 'medias/justice.jpg',
-                'imgRight': 'medias/migrants.jpg',
+                'imgLeft': 'https://ccfd-terresolidaire.org/wp-content/uploads/2023/03/ccfd-terresolidaire.org-rdc-au-nord-kivu-les-conflits-affament-spanjeudiphotospan-reportage-de-william-dupuy-dans-la-region-de-goma-27-scaled.jpg',
+                'imgRight' : 'https://ccfd-terresolidaire.org/wp-content/uploads/2022/01/Sans-titre-1-768x432.png',
                 'up' : []
             },
             3 : {
@@ -578,6 +584,8 @@
                 'optionRight':'Les drames de la méditérannée', 
                 'left'   : {'justice_eco': 1},
                 'right'   : {'migrations_int': 1},
+                'imgLeft': 'https://ccfd-terresolidaire.org/wp-content/uploads/2022/06/covid-vaacin.jpg',
+                'imgRight' : 'https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg',
                 'up' : []
             },
             4 : {
@@ -587,11 +595,13 @@
                 'optionRight':'Donateur / philantrope', 
                 'left'   : {'militant': 1},
                 'right'   : {'donateur': 1},
+                'imgLeft' : 'https://ccfd-terresolidaire.org/wp-content/uploads/2022/10/ccfd-terresolidaire.org-un-die-in-pour-dire-non-aux-speculateurs-de-la-faim-jeudiphoto-ccfd1eroctobre2022-a-02894-pascalmontary.jpeg',
+                'imgRight' : 'https://ccfd-terresolidaire.org/wp-content/uploads/2021/12/Reportage-_LA-VIE_CCFD-Terre-Solidaire_-2018-106-scaled.jpg',
                 'up' : []
             },
             5 : {
                 'question' : 'A quelle occasion préférez vous donner : ', 
-                'image': '',
+                'image': 'https://ccfd-terresolidaire.org/wp-content/uploads/2022/12/ccfd-terresolidaire.org-careme-reportage-sur-la-communaute-guarani-2019-001-scaled.jpg',
                 'optionLeft': 'Carême',
                 'optionRight':'Peu importe', 
                 'left'   : {'calendrier_religieux': 1},
@@ -600,7 +610,7 @@
             }, 
             6 : {
                 'question' : 'Pour mieux vous connaitre, on vous dira plutôt :', 
-                'image': '',
+                'image': 'https://ccfd-terresolidaire.org/wp-content/uploads/2022/03/careme-2022-chronique-rcf-cover-scaled.jpg',
                 'optionLeft': 'Tu',
                 'optionRight':'Vous',                 
                 'left'   : {'Tu': 1},
@@ -609,7 +619,7 @@
             },
             7 : {
                 'question' : 'Pour mieux vous connaitre, on vous dira plutôt :', 
-                'image': '',
+                'image': 'https://ccfd-terresolidaire.org/wp-content/uploads/2020/05/03_crisealimentaire_covid.jpg',
                 'optionLeft': 'Madame',
                 'optionRight':'Monsieur',                 
                 'left'   : {'Madame': 1},
@@ -618,7 +628,7 @@
             },
             8 : {
                 'question' : 'Vous pouvez nous consacrer :', 
-                'image': '',
+                'image': 'https://ccfd-terresolidaire.org/wp-content/uploads/2023/03/ccfd-terresolidaire.org-au-bresil-bnp-paribas-assigne-en-justice-par-notre-partenaire-cpt-58120-reportage-jean-claude-gerez-2009-001-jean-claude-gerez-ccfd-terre-solidaire.jpg',
                 'optionLeft': '1 minute',
                 'optionRight':'15 minutes',                 
                 'left'   : {'1mn': 1},
