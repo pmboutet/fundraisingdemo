@@ -217,7 +217,22 @@
                 this.sys.max = 8
                 //store answer 
                 this.sys.responses= {}
-                this.sys.responses.questions = {}
+                this.sys.responses.questions = {
+                    justic_eco : 0, 
+                    paix_ensemble : 0, 
+                    migrations_int : 0,
+                    alimentaire : 0, 
+                    militant : 0,
+                    donateur : 0, 
+                    calendrier_religieux : 0, 
+                    calendrier_non_def : 0, 
+                    tu : 0, 
+                    vous : 0, 
+                    madame : 0, 
+                    monsieur : 0, 
+                    une_mn : 0, 
+                    quinze_mn : 0
+                }
                 this.sys.responses.contact = {}
                 this.sys.width = 800
 
@@ -545,21 +560,21 @@
 
         const questions = {
             0 : {
-                'question' : 'La cause qui vous mobilise le plus: ', 
+                'question' : 'La cause qui vous mobilise le plus? ', 
                 'image': '',
-                'optionLeft': 'Lutte évasion fiscale ',
-                'optionRight':'Accueil réfugiés ukrainiens', 
-                'left'   : {'volontaire':0.5 , 'justic_eco': 1},
+                'optionLeft': 'Lutter contre l\'évasion fiscale ',
+                'optionRight':'Accueillir des réfugiés ukrainiens', 
+                'left'   : {'militant':0.5 , 'justic_eco': 1},
                 'right'   : {'paix_ensemble': 1, 'migrations_int':1}, 
                 'imgLeft': 'https://ccfd-terresolidaire.org/wp-content/uploads/2022/05/money-g8a83e1858_1920-768x512.jpg',
                 'imgRight': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/c6986b01-7a76-4e28-8b31-c2bbf52c5a43.jpg',
                 'up' : []
             },
             1 : {
-                'question' : 'La cause qui vous mobilise le plus: ', 
+                'question' : 'La cause qui vous mobilise le plus? ', 
                 'image': '',
-                'optionLeft': 'Stop Colonies israélienne',   
-                'optionRight':'Stop déforestation au brésil', 
+                'optionLeft': 'Stop aux colonies israéliennes',   
+                'optionRight':'Stop à la déforestation au Brésil', 
                 'left'   : {'paix_ensemble': 1, 'justice_eco':0.25},
                 'right'   : {'alimentaire': 1},
                 'imgLeft': 'https://ccfd-terresolidaire.org/wp-content/uploads/2022/03/Voyage-dimmersion-du-RT-Israel-Palestine-2014-025-1536x863.jpg',
@@ -567,10 +582,10 @@
                 'up' : []
             },
             2 : {
-                'question' : 'La cause qui vous mobilise le plus: ', 
+                'question' : 'La cause qui vous mobilise le plus? ', 
                 'image': '',
                 'optionLeft': 'Le conflit oublié du Nord-Kivu',
-                'optionRight':'Panama papers - captation des richesse par les 1%', 
+                'optionRight':'Panama papers - la captation des richesses par les 1%', 
                 'left'   : {'paix_ensemble': 1},
                 'right'   : {'justice_eco': 1},
                 'imgLeft': 'https://ccfd-terresolidaire.org/wp-content/uploads/2023/03/ccfd-terresolidaire.org-rdc-au-nord-kivu-les-conflits-affament-spanjeudiphotospan-reportage-de-william-dupuy-dans-la-region-de-goma-27-scaled.jpg',
@@ -578,10 +593,10 @@
                 'up' : []
             },
             3 : {
-                'question' : 'La cause qui vous mobilise le plus: ', 
+                'question' : 'La cause qui vous mobilise le plus? ', 
                 'image': '',
                 'optionLeft': 'L\'accès au vaccin des pays émmergents',
-                'optionRight':'Les drames de la méditérannée', 
+                'optionRight':'Les drames humains en Méditerranée', 
                 'left'   : {'justice_eco': 1},
                 'right'   : {'migrations_int': 1},
                 'imgLeft': 'https://ccfd-terresolidaire.org/wp-content/uploads/2022/06/covid-vaacin.jpg',
@@ -589,7 +604,7 @@
                 'up' : []
             },
             4 : {
-                'question' : 'Vous vous diriez plus ...', 
+                'question' : 'Vous vous définissez d\'avantage comme ...', 
                 'image': '',
                 'optionLeft': 'Militant',
                 'optionRight':'Donateur / philantrope', 
@@ -602,48 +617,39 @@
             5 : {
                 'question' : 'A quelle occasion préférez vous donner : ', 
                 'image': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/9f6417ec-6900-4648-976b-26436569ebb4.png',
-                'optionLeft': 'Carême',
+                'optionLeft': 'pour le Carême',
                 'optionRight':'Peu importe', 
                 'left'   : {'calendrier_religieux': 1},
-                'right'   : {'non-def': 1}, 
+                'right'   : {'calendrier_non_def': 1}, 
                 'up' : []
             }, 
             6 : {
-                'question' : 'Pour mieux vous connaitre :', 
+                'question' : 'Dans votre lien à l\'association, préférez-vous être:', 
                 'image': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/b3b6169d-054d-4914-b16c-1d58a83561b7.png',
-                'optionLeft': 'Tu',
-                'optionRight':'Vous',                 
-                'left'   : {'Tu': 1},
-                'right'   : {'Vous': 1}, 
+                'optionLeft': 'Tutoyé',
+                'optionRight':'Vouvoyé',                 
+                'left'   : {'tu': 1},
+                'right'   : {'vous': 1}, 
                 'up' : []
             },
             7 : {
-                'question' : 'Pour mieux vous connaitre :', 
+                'question' : 'Votre civilité:', 
                 'image': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/225fbec2-2d3b-4cb0-ac34-ce3f2e3c6cef.png',
                 'optionLeft': 'Madame',
                 'optionRight':'Monsieur',                 
-                'left'   : {'Madame': 1},
-                'right'   : {'Monsieur': 1}, 
+                'left'   : {'madame': 1},
+                'right'   : {'monsieur': 1}, 
                 'up' : []
             },
             8 : {
-                'question' : 'Vous pouvez nous consacrer :', 
+                'question' : 'Combien de temps pouvez-vous nous consacrer :', 
                 'image': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/fe137033-0f6e-4076-a675-91930d1ffc17.png',
                 'optionLeft': '1 minute',
                 'optionRight':'15 minutes',                 
-                'left'   : {'1mn': 1},
-                'right'   : {'15mn': 1}, 
+                'left'   : {'une_mn': 1},
+                'right'   : {'quinze_mn': 1}, 
                 'up' : []
-            },
-            9 : {
-                'question' : 'fin', 
-                'image': '',
-                'optionLeft': '',
-                'optionRight':'',                 
-                'left'   : {'fin': 1},
-                'right'   : {'fin': 1}, 
-                'up' : []
-            },
+            }
         }
 
 
