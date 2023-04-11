@@ -28,6 +28,7 @@
             position: relative;
             overflow: hidden;
             background-color: rgb(245, 247, 250);
+            
         }
 
         .card {
@@ -105,7 +106,7 @@
         .row {
             display: table-cell;
             height: 800px;
-            vertical-align: bottom;
+            vertical-align: top;
             width: 800px;
         }
         .row > div {
@@ -145,11 +146,21 @@
         .tooltip:hover .tooltiptext {
         visibility: visible;
         }
+
+        img#navImg {
+            position: fixed;
+            bottom: 0px;
+            margin-left: calc( 50vw - 400px);
+            width: 800px;
+            z-index:0;
+        }
 </style>
 </head>
 
 <body>
-    <div id="board"><div id="titre">Titre</div></div>
+    <div id="board"><div id="titre">Titre</div>
+    <img id="navImg" src="https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/b64de37c-1b81-447d-8cd9-03eab89973f6.png" alt="">
+    </div>
     <div id="finish" class="finish container ">
         <div class="rendered-form">
             <div class="">
@@ -489,72 +500,81 @@
 
         const questions = {
             0 : {
-                'question' : 'Celà vous mobilise le plus : ', 
+                'question' : 'La cause qui vous mobilise le plus: ', 
                 'image': '',
-                'optionLeft': 'Militantisme',
-                'optionRight':'Enfance', 
-                'left'   : [{'militant': 1}, {'volontaire':0.5}],
-                'right'   : [{'enfance': 1}],
+                'optionLeft': 'Lutte évasion fiscale ',
+                'optionRight':'Accueil réfugiés ukrainiens', 
+                'left'   : [{'volontaire':0.5}, {'justic_eco': 1}],
+                'right'   : [{'paix_ensemble': 1}, {'migrations_int':1}],
                 'imgLeft': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/1e1ba002-7718-4fc8-9291-866cb050f3f0.jpg',
                 'imgRight': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/2d37f298-d3ff-413a-9813-7e37137b5046.jpeg',
                 'up' : []
             },
             1 : {
-                'question' : 'Celà vous rend encore plus généreux: ', 
+                'question' : 'La cause qui vous mobilise le plus: ', 
                 'image': '',
-                'optionLeft': 'Carbone',   
-                'optionRight':'Carême', 
-                'left'   : [{'famine': 1}],
-                'right'   : [{'guerre': 1}],
+                'optionLeft': 'Stop Colonies israélienne',   
+                'optionRight':'Stop déforestation au brésil', 
+                'left'   : [{'paix_ensemble': 1}, {'justice_eco':0.25}],
+                'right'   : [{'alimentaire': 1}],
                 'imgLeft': 'medias/image03.jpg',
                 'imgRight': 'medias/image04.png',
                 'up' : []
             },
             2 : {
-                'question' : 'Celà vous donne envi de vous battre : ', 
+                'question' : 'La cause qui vous mobilise le plus: ', 
                 'image': '',
-                'optionLeft': 'Justice énonomique',
-                'optionRight':'Migrations', 
-                'left'   : [{'famine': 1}],
-                'right'   : [{'guerre': 1}],
+                'optionLeft': 'Le conflit oublié du Yemen',
+                'optionRight':'Panama papers - captation des richesse par les 1%', 
+                'left'   : [{'paix_ensemble': 1}],
+                'right'   : [{'justice_eco': 1}],
                 'imgLeft': 'medias/justice.jpg',
                 'imgRight': 'medias/migrants.jpg',
                 'up' : []
             },
             3 : {
-                'question' : 'Vous vous diriez plus ...', 
+                'question' : 'La cause qui vous mobilise le plus: ', 
                 'image': '',
-                'optionLeft': 'Donateur',
-                'optionRight':'Acheter (responsable)', 
-                'left'   : [{'donateur': 1}],
-                'right'   : [{'petionnaire': 1}],
+                'optionLeft': 'L\'accès au vaccin des pays émmergents',
+                'optionRight':'Les drames de la méditérannée', 
+                'left'   : [{'justice_eco': 1}],
+                'right'   : [{'migrations_int': 1}],
                 'up' : []
             },
             4 : {
                 'question' : 'Vous vous diriez plus ...', 
                 'image': '',
-                'optionLeft': 'Acheteur (engagé)',
-                'optionRight':'Pétitionnaire', 
-                'left'   : [{'acheteur': 1}],
-                'right'   : [{'petitionaire': 1}],
+                'optionLeft': 'Militant',
+                'optionRight':'Donateur / philantrope', 
+                'left'   : [{'militant': 1}],
+                'right'   : [{'donateur': 1}],
                 'up' : []
             },
             5 : {
-                'question' : 'Vous êtes plustôt', 
+                'question' : 'A quelle occasion préférez vous donner : ', 
                 'image': '',
-                'optionLeft': 'Vous',
-                'optionRight':'Tu', 
-                'left'   : [{'vous': 1}],
-                'right'   : [{'tu': 1}], 
+                'optionLeft': 'Carême',
+                'optionRight':'Peu importe', 
+                'left'   : [{'calendrier_religieux': 1}],
+                'right'   : [{'non-def': 1}], 
                 'up' : []
             }, 
             6 : {
-                'question' : 'Si vous pouviez donner 100, vous donneriez à ', 
+                'question' : 'Pour mieux vous connaitre, on vous dira plutôt :', 
                 'image': '',
-                'optionLeft': 'Nature',
-                'optionRight':'L enfance',                 
-                'left'   : [{'nature': 1}],
-                'right'   : [{'ong': 1}], 
+                'optionLeft': 'Tu',
+                'optionRight':'Vous',                 
+                'left'   : [{'Tu': 1}],
+                'right'   : [{'Vous': 1}], 
+                'up' : []
+            },
+            7 : {
+                'question' : 'Vous pouvez nous consacrer :', 
+                'image': '',
+                'optionLeft': '1 minute',
+                'optionRight':'15 minutes',                 
+                'left'   : [{'1mn': 1}],
+                'right'   : [{'15mn': 1}], 
                 'up' : []
             },
         }
