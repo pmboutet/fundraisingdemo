@@ -1,179 +1,1327 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Future of fundraising demo</title>
-    <!-- utf-8 ééù-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Anton&family=Poppins:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<style>
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-    
-            font-family: 'Anton', sans-serif;
+    <title></title>
+    <meta name="ROBOTS" content="INDEX,FOLLOW">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <style>
+        /*********Vars***************/
+        :root {
+            --brand-color: #ffffff;
+            --footer-color: #fc6117;
+            --brand-text-color: #4f4f4f;
+            --button-color: #fc6117;
+            --header-color: #fc6117;
+            --header-text-color: white;
+            --footer-text-color: #FFFFFF;
+            --button-text-color: white;
         }
 
-        #board {
+        /*********Brand Colors***************/
+        .form-button {
+            background-color: var(--button-color);
+            border: 1px solid var(--button-color);
+            color: var(--button-text-color);
+        }
+
+        button.buttonblock,
+        td.buttonblock {
+            background-color: var(--button-color);
+            color: var(--button-text-color);
+        }
+
+        .form-button:hover,
+        button.buttonblock:hover,
+        td.buttonblock:hover {
+            opacity: 0.8;
+            transition: all 0.1s ease;
+            cursor: pointer;
+        }
+
+        .header {
+            background-color: var(--header-color);
+        }
+
+        .header a {
+            color: var(--brand-color);
+            text-decoration: none;
+        }
+
+        .header>.logo {
+            max-width: 200px;
+        }
+
+        .logo img {
+            max-width: 200px;
+        }
+
+        .header>.logo {
+            max-height: 100px;
+        }
+
+        .logo img {
+            max-height: 100px;
+        }
+
+        .pref_type_icon {
+            background: var(--brand-color);
+            color: var(--brand-text-color);
+        }
+
+        footer,
+        .footer {
+            background: var(--footer-color);
+            color: var(--footer-text-color) !important;
+            line-height: 2em;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--footer-text-color) !important;
+        }
+
+        .slds-checkbox [type="checkbox"]:checked+.slds-checkbox_faux,
+        .slds-checkbox [type="checkbox"]:checked~.slds-checkbox_faux,
+        .slds-checkbox [type="checkbox"]:checked+.slds-checkbox__label .slds-checkbox_faux,
+        .slds-checkbox [type="checkbox"]:checked+.slds-checkbox_faux {
+            background: var(--button-color);
+            border-color: var(--button-color);
+        }
+
+        .slds-select-element input:checked+label,
+        .slds-select-element:hover label {
+            background: var(--button-color);
+            color: var(--button-text-color);
+            border: 1px solid var(--button-color);
+        }
+
+        .aperture-left::before {
+            background-color: var(--brand-color);
+            border: 1px solid var(--brand-color);
+            color: var(--brand-text-color);
+        }
+
+        .aperture-center::before {
+            background-color: var(--brand-color);
+            border: 1px solid var(--brand-color);
+            color: var(--brand-text-color);
+        }
+
+        .pref-header {
+            color: var(--header-text-color);
+        }
+
+        .pref-header a {
+            color: var(--header-text-color);
+        }
+
+        /*****HERO*******/
+        .heroBG {
             width: 100%;
-            height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /*********SF MC CP Styles***************/
+        .layout-canvas-X {
+            border: 0px solid transparent;
+            box-sizing: border-box;
+            padding: 0px;
+            width: 100%;
+        }
+
+        .layout-canvas-X>.header,
+        .layout-canvas-X>.section,
+        .layout-canvas-X>.section2,
+        .layout-canvas-X>.sectionBG>.section3,
+        .layout-canvas-X>.footerwrapper>.footer {
             position: relative;
             overflow: hidden;
-            background-color: rgb(245, 247, 250);
+            width: 100%;
+            word-wrap: break-word;
         }
 
-        .card {
-            width: 800px;
-            height: 800px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border-radius: 1%;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-            background-color: white;
-            transform: translateX(-50%) translateY(-50%) scale(0.95);
+        .layout-canvas-X>.sectionBG {
+            width: 100%;
         }
-        .question {
-            color: rgb(38 46 61);
-            background-color: rgb(255 255 255 / 80%);
-            font-size: 2em;
-            margin: 1em;
-            padding: 1.5em;
-            font-weight: bolder;
-            font-family: 'Poppins';
-            z-index: 100;
+
+        body {
+            color: #4F4F4F;
+            font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif !important;
+            font-size: 14px;
+            margin: 0px auto;
+            max-width: 100%;
+            line-height: 1.5;
+            padding: 20px;
+            margin: 0px auto;
+            max-width: 100%;
+            background-color: #FFF;
+            padding: 0px;
         }
-        div#titre {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        p {
+            margin: 0.5em 0px;
+        }
+
+        /*********Global Colors***************/
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #16325C !important;
+        }
+
+        p {
+            color: #4F4F4F;
+        }
+
+        .footer a {
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .SSO-header {
+            display: block;
+            width: 100%;
             text-align: center;
-            font-size: 3em;
+            border-bottom: 1px solid #A7BBD1;
+            line-height: 0.1rem;
+            margin: 40px 0px 20px;
+        }
+
+        .SSO-header span {
+            background: #FFFFFF;
+            padding: 0px 10px;
+            font-size: 1rem;
+            color: #A7BBD1;
+            text-transform: uppercase;
+            letter-spacing: 0.0625rem;
+        }
+
+        .aperture-left {
+            position: relative;
+            padding: 30px 20px;
+            min-height: 80px;
+            font-size: 2rem;
+            line-height: 1.25em;
+            margin-left: 30px;
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 36px;
+            color: #16325C;
+            font-family: "Salesforce Sans", 'Montserrat', Helvetica, Arial, sans-serif;
+            text-align: left;
+        }
+
+        .aperture-left::before {
+            border-radius: 10px;
+            content: '';
+            display: inline-block;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1px;
+            z-index: 2
+        }
+
+        .aperture-center {
+            position: relative;
+            padding: 30px 20px;
+            min-height: 80px;
+            font-size: 2rem;
+            line-height: 1.25em;
+            margin-left: 30px;
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 36px;
+            color: #16325C;
+            font-family: "Salesforce Sans", 'Montserrat', Helvetica, Arial, sans-serif;
+            text-align: center;
+        }
+
+        /*********Typography Styling***************/
+        .slds-text-heading_large,
+        .slds-text-heading--large,
+        h1 {
+            font-weight: 500;
+            font-size: 1.75rem;
+            line-height: 1.75rem;
+        }
+
+        .slds-text-heading_medium,
+        .slds-text-heading--medium,
+        h2 {
+            font-weight: 500;
+            font-size: 1.5em;
+            line-height: 1.25em;
+            color: #16325C;
+        }
+
+        .slds-text-heading_small,
+        .slds-text-heading--small,
+        h3 {
+            font-size: 1.15rem;
+            line-height: 1.25em;
+            font-weight: 300;
+            color: #16325C;
+        }
+
+        .slds-text-heading_label,
+        .slds-text-heading--label {
+            font-size: 1rem;
+            line-height: 1.25rem;
+            color: #54698D;
+        }
+
+        .slds-text-title {
+            font-size: 0.75rem;
+            line-height: 1.25rem;
+            color: #54698D;
+        }
+
+        .slds-text-title_caps,
+        .slds-text-title--caps {
+            font-size: 0.75rem;
+            line-height: 1.25rem;
+            color: #54698D;
+            text-transform: uppercase;
+            letter-spacing: 0.0625rem;
+        }
+
+        .slds-text-align_left,
+        .slds-text-align--left {
+            text-align: left;
+        }
+
+        .slds-text-align_center,
+        .slds-text-align--center {
+            text-align: center;
+        }
+
+        .slds-text-align_right,
+        .slds-text-align--right {
+            text-align: right;
+        }
+
+        /*********Margins & Padding***************/
+        .slds-p-top_x-small {
+            padding-top: 0.5rem;
+        }
+
+        .slds-p-right_x-small {
+            padding-right: 0.5rem;
+        }
+
+        .slds-p-bottom_x-small {
+            padding-bottom: 0.5rem;
+        }
+
+        .slds-p-left_x-small {
+            padding-left: 0.5rem;
+        }
+
+        .slds-p-vertical_x-small {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .slds-p-horizontal_x-small {
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .slds-p-around_x-small {
+            padding: 0.5rem;
+        }
+
+        .slds-p-top_small {
+            padding-top: 0.75rem;
+        }
+
+        .slds-p-right_small {
+            padding-right: 0.75rem;
+        }
+
+        .slds-p-bottom_small {
+            padding-bottom: 0.75rem;
+        }
+
+        .slds-p-left_small {
+            padding-left: 0.75rem;
+        }
+
+        .slds-p-vertical_small {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .slds-p-horizontal_small {
+            padding-right: 0.75rem;
+            padding-left: 0.75rem;
+        }
+
+        .slds-p-around_small {
+            padding: 0.75rem;
+        }
+
+        .slds-p-top_medium {
+            padding-top: 1rem;
+        }
+
+        .slds-p-right_medium {
+            padding-right: 1rem;
+        }
+
+        .slds-p-bottom_medium {
+            padding-bottom: 1rem;
+        }
+
+        .slds-p-left_medium {
+            padding-left: 1rem;
+        }
+
+        .slds-p-vertical_medium {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .slds-p-horizontal_medium {
+            padding-right: 1rem;
+            padding-left: 1rem;
+        }
+
+        .slds-p-around_medium {
+            padding: 1rem;
+        }
+
+        .slds-p-top_large {
+            padding-top: 1.5rem;
+        }
+
+        .slds-p-right_large {
+            padding-right: 1.5rem;
+        }
+
+        .slds-p-bottom_large {
+            padding-bottom: 1.5rem;
+        }
+
+        .slds-p-left_large {
+            padding-left: 1.5rem;
+        }
+
+        .slds-p-vertical_large {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        .slds-p-horizontal_large {
+            padding-right: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .slds-p-around_large {
+            padding: 1.5rem;
+        }
+
+        .slds-p-top_x-large {
+            padding-top: 2rem;
+        }
+
+        .slds-p-right_x-large {
+            padding-right: 2rem;
+        }
+
+        .slds-p-bottom_x-large {
+            padding-bottom: 2rem;
+        }
+
+        .slds-p-left_x-large {
+            padding-left: 2rem;
+        }
+
+        .slds-p-vertical_x-large {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .slds-p-horizontal_x-large {
+            padding-right: 2rem;
+            padding-left: 2rem;
+        }
+
+        .slds-p-around_x-large {
+            padding: 2rem;
+        }
+
+        /*********SLDS GRID***************/
+        .slds-grid {
+            display: flex;
+        }
+
+        .slds-wrap {
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        .slds-col {
+            flex: 1 1 auto;
+        }
+
+        .slds-medium-size_1-of-1 {
+            width: 100%;
+        }
+
+        .slds-medium-size_1-of-2 {
+            width: 50%;
+        }
+
+        .slds-medium-size_1-of-3,
+        .slds-size_1-of-3 {
+            width: 33.3333%;
+        }
+
+        .slds-medium-size_2-of-3,
+        .slds-size_2-of-3 {
+            width: 66.6667%;
+        }
+
+        .slds-medium-size_1-of-4 {
+            width: 25%;
+        }
+
+        .slds-medium-size_2-of-4 {
+            width: 50%;
+        }
+
+        .slds-medium-size_3-of-4 {
+            width: 75%;
+        }
+
+        .slds-medium-size_1-of-5 {
+            width: 20%;
+        }
+
+        .slds-medium-size_2-of-5 {
+            width: 40%;
+        }
+
+        .slds-medium-size_3-of-5 {
+            width: 60%;
+        }
+
+        .slds-medium-size_4-of-5 {
+            width: 80%;
+        }
+
+        .slds-container--center {
             margin-left: auto;
             margin-right: auto;
         }
-        .hidden {
-            display: none;
+
+        .slds-grid_vertical-align-center {
+            align-items: center;
+            align-content: center;
         }
-        .finish {
-            width: 800px;
-            height: 800px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border-radius: 1%;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-            background-color: #3c4754;
-            color: white;
-            transform: translateX(-50%) translateY(-50%) scale(0.95);
-            display: none;
+
+        .slds-container_small {
+            max-width: 30rem;
         }
-        .alternatives {
-            display: table-cell;
+
+        .slds-container_medium {
+            max-width: 48rem;
+        }
+
+        .slds-container_large {
+            max-width: 64rem;
+        }
+
+        .slds-container_x-large {
+            max-width: 70rem;
+        }
+
+        /*********Form Styling***************/
+        .form-container {
+            background: #F4F6F9;
+            border: 1px solid #ECEEF1;
+        }
+
+        .form-wrapper {
+            background: #FFFFFF;
+            border: 1px solid #EAEAEA;
+            margin: 30px auto;
+        }
+
+        .formfield-input {
+            margin-right: 10px;
+        }
+
+        .formfield-input input {
+            background-color: #FFFFFF;
+            border: 1px solid #DDDBDA;
+            border-radius: 0.25rem;
+            color: #4F4F4F;
+            width: 96%;
+            padding: 0px 2%;
+            transition: border 0.1s linear, background-color 0.1s linear;
+            display: inline-block;
+            line-height: 1.875rem;
+            font-size: 0.75rem;
+            min-height: calc(1.875rem + 2px);
+        }
+
+        .slds-checkbox [type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            position: relative;
             vertical-align: middle;
-        }
-        .alternative {
-            z-index: 1000;
-            color: white; 
-        }
-        .imgAlternative {
-            display: inline-flex;
-            position: absolute;
-        }
-        .imgLeft {
-            height: 800px;
-            width: 400px;
-            background-size: auto 800px; 
-        }
-        .imgRight {
-            height: 800px;
-            width: 400px;
-            background-size: auto 800px; 
-        }
-        .rendered-form {
-            position: relative;
-            top: 100px;
-        }
-        .row {
-            display: table-cell;
-            height: 800px;
-            vertical-align: bottom;
-            width: 800px;
-        }
-        .row > div {
-            display: inline-block;
-            width: calc(50% - 40px);
-            background: rgb(0 0 0 / 61%);
-            line-height: 100px;
-            text-align: center;
-            margin: 20px;
-            font-size:4vw; 
-            color: #ee9717;
-        }
-        .visible {
-            display: block;
-        }
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-        }
-        /* Tooltip text */
-        .tooltip .tooltiptext {
-        visibility: hidden;
-        width: 120px;
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        padding: 5px 0;
-        border-radius: 6px;
-        
-        /* Position the tooltip text - see examples below! */
-
-        z-index: 1;
+            border: 1px solid #DDDBDA;
+            border-radius: 0.125rem;
+            background: #FFFFFF;
+            transition: border 0.1s linear, background-color 0.1s linear;
         }
 
-        /* Show the tooltip text when you mouse over the tooltip container */
-        .tooltip:hover .tooltiptext {
-        visibility: visible;
+        .slds-select_container::before {
+            border-bottom: 5px solid #061C3F;
+            top: calc(0.875rem - 6px);
         }
-        .containerMain {
-            display: block;
-            text-align: center;
+
+        .slds-select_container::before,
+        .slds-select_container::after {
             position: absolute;
-            margin-left: 10%;
-            margin-right: 10%;
-            width: calc(100% - 20%);
+            content: "";
+            display: block;
+            right: 0.5rem;
+            width: 0px;
+            height: 0px;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
         }
-        .containerMain input {
+
+        .slds-select {
+            background-color: #FFFFFF;
+            border: 1px solid #DDDBDA;
+            border-radius: 0.25rem;
+            width: 98%;
+            padding: 0px 1.5rem 0px 0.5rem;
+            transition: border 0.1s linear, background-color 0.1s linear;
+            height: calc(1.875rem + 4px);
+        }
+
+        .slds-form-element__label {
+            padding: 2px 0px;
+            display: inline-block;
+            font-size: 0.75rem;
+            color: #54698D;
+        }
+
+        .slds-select-element {
+            height: 38px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .slds-select-element input {
+            position: fixed;
+            left: -99999px;
+        }
+
+        .slds-select-element label {
+            background: #FFFFFF;
+            color: #4F4F4F;
+            border-radius: 25px;
+            border: 1px solid #EAEAEA;
+            width: auto;
+            padding: 0.5rem 1.5rem;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .slds-picklist {
+            position: relative;
+            /** * Resets explicit width on picklist to be fluid to its parent element * * @selector .slds-picklist_fluid * @restrict .slds-picklist * @modifier */
+        }
+
+        .slds-picklist .slds-dropdown {
+            width: 15rem;
+        }
+
+        .slds-picklist li {
+            /** * Set default state of icon for when a listbox option is selected * * @selector .slds-icon_selected * @restrict .slds-picklist li svg * @required */
+            /** * Toggles state of icon for when a listbox option is selected * * @selector .slds-is-selected * @restrict .slds-picklist li * @modifier * @required */
+        }
+
+        .slds-picklist li .slds-icon_selected,
+        .slds-picklist li .slds-icon--selected {
+            opacity: 0;
+            transition: opacity 0.05s ease;
+        }
+
+        .slds-picklist li.slds-is-selected .slds-icon_selected,
+        .slds-picklist li.slds-is-selected .slds-icon--selected {
+            fill: #0070d2;
+            opacity: 1;
+        }
+
+        .slds-picklist_fluid .slds-picklist__input,
+        .slds-picklist_fluid .slds-picklist__label,
+        .slds-picklist_fluid .slds-dropdown,
+        .slds-picklist_fluid .slds-lookup,
+        .slds-picklist--fluid .slds-picklist__input,
+        .slds-picklist--fluid .slds-picklist__label,
+        .slds-picklist--fluid .slds-dropdown,
+        .slds-picklist--fluid .slds-lookup {
+            width: auto;
+            min-width: 0;
+            max-width: 15rem;
+        }
+
+        /** * Read-only input element for picklist * * @selector .slds-picklist__input * @restrict .slds-picklist .slds-form-element__control * @required */
+        .slds-picklist__input {
+            width: 15rem;
+        }
+
+        .slds-picklist__input .slds-button {
+            line-height: 0;
+        }
+
+        .slds-picklist__label {
+            padding-right: 2rem;
+            width: 15rem;
+            color: #080707;
+            text-align: left;
+        }
+
+        .slds-picklist__label .slds-icon {
+            width: 0.75rem;
+            height: 0.75rem;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            margin-top: -0.375rem;
+            fill: #706e6b;
+        }
+
+        .slds-picklist__label .slds-truncate {
+            display: block;
+        }
+
+        .form-button,
+        button.buttonblock,
+        td.buttonblock {
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            padding: 12px 60px;
+            border-radius: 30px;
+            margin: 30px auto;
+            text-transform: uppercase;
+            font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif;
+        }
+
+        .social-button {
+            color: #FFF;
+        }
+
+        .social-button a {
+            color: #FFF;
+        }
+
+        a.buttonstyles {
+            font-size: 16px;
+            color: #FFFFFF;
+            padding: 10px 40px;
+            font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif;
+        }
+
+        .pref_type_icon {
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            line-height: 41px;
+            font-size: 45px;
+        }
+
+        .pref_type_icon img {
             width: 100%;
-            height: 4em;    
-            margin-top:10px      
+            max-width: 25px;
         }
-        input#go {
-            background-color: #fc6117;
-            color: white;
-            border: none;
-            box-shadow: 1px 1px 2px #a84315;
+
+        .comm-type-cat {
+            width: 130px;
+            float: right;
+            color: #16325C;
         }
-</style>
+
+        .comm-type-cat>div {
+            text-align: center;
+            color: #16325C;
+        }
+
+        /*********Mobile Styling***************/
+        @media (max-width: 768px) {
+
+            .layout-canvas-X>.section,
+            .layout-canvas-X>.footerwrapper>.footer,
+            .layout-canvas-X>.section2,
+            .layout-canvas-X>.sectionBG>.section3 {
+                margin: 10px auto;
+                width: auto;
+            }
+
+            .layout-canvas-X>.section>.columns,
+            .layout-canvas-X>.footerwrapper>.footer>.columns,
+            .layout-canvas-X>.section2>.columns {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .mobile-hidden {
+                display: none;
+            }
+
+            .mobile-show {
+                display: block;
+            }
+
+            .comm-type-cat {
+                width: 75px;
+            }
+
+            .form-wrapper:nth-child(2n+1) {
+                background: #FFFFFF;
+                border: 0px solid #EAEAEA;
+                margin: 0px;
+            }
+
+            .form-row {
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+
+            .logo {
+                text-align: center;
+            }
+
+            .logo img {
+                margin: 0px auto;
+            }
+
+            .text-block {
+                order: 2;
+            }
+
+            .form-block {
+                padding: 0px;
+            }
+
+            .tmp-container {
+                width: 100%;
+            }
+
+            .hero {
+                width: 100%;
+            }
+
+            .tmp--full-width {
+                width: 100%;
+                float: left;
+                padding: 0px;
+            }
+
+            .tmp--full-width-center {
+                width: 100%;
+                float: left;
+                padding: 10px 0px;
+                text-align: center;
+            }
+
+            .wrapper-padding {
+                padding: 20px;
+            }
+
+            .photo {
+                width: 100%;
+                height: auto;
+            }
+
+            .row {
+                width: 100%;
+            }
+
+            .tmp--hide {
+                display: none;
+            }
+
+            .formfield-input input {
+                margin-bottom: 10px;
+            }
+
+            .formfield-input input::-webkit-input-placeholder {
+                color: transparent;
+            }
+
+            .form-wrapper>.slds-p-horizontal_x-large {
+                padding: 1rem 0.5rem;
+            }
+
+            .slds-p-right_x-large,
+            .slds-p-right--x-large {
+                padding-right: 1.5rem;
+            }
+
+            .slds-p-bottom_x-large,
+            .slds-p-bottom--x-large {
+                padding-bottom: 1.5rem;
+            }
+
+            .slds-p-left_x-large,
+            .slds-p-left--x-large {
+                padding-left: 1.5rem;
+            }
+
+            .slds-p-vertical_x-large,
+            .slds-p-vertical--x-large {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+
+            .slds-p-horizontal_x-large,
+            .slds-p-horizontal--x-large {
+                padding-right: 1.5rem;
+                padding-left: 1.5rem;
+            }
+
+            .slds-p-top_x-large,
+            .slds-p-top--x-large,
+            .slds-p-top_xx-large {
+                padding-top: 1.5rem;
+            }
+
+            .slds-p-around_x-large,
+            .slds-p-around--x-large {
+                padding: 1.5rem;
+            }
+
+            .slds-size_1-of-1,
+            .slds-size--1-of-1 {
+                width: 100%;
+            }
+
+            .slds-size_1-of-2,
+            .slds-size--1-of-2 {
+                width: 50%;
+            }
+
+            .slds-size_1-of-3,
+            .slds-size--1-of-3 {
+                width: 33.3333%;
+            }
+
+            .slds-size_2-of-3,
+            .slds-size--2-of-3 {
+                width: 66.6667%;
+            }
+
+            .slds-size_1-of-4,
+            .slds-size--1-of-4 {
+                width: 25%;
+            }
+
+            .slds-size_2-of-4,
+            .slds-size--2-of-4 {
+                width: 50%;
+            }
+
+            .slds-size_3-of-4,
+            .slds-size--3-of-4 {
+                width: 75%;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .medium-p-right_large {
+                padding-right: 1.5em;
+            }
+
+            .mobile-show {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1068px) and (min-width: 768px) and (orientation: portrait) {
+            .tmp-container {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 1068px) and (min-width: 768px) and (orientation: landscape) {
+            .tmp-container {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+
+            body,
+            .tb_properties {
+                padding: 0px;
+            }
+
+            .buttonstyles {
+                padding: 10px 40px;
+            }
+        }
+
+        h1 {
+            font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif;
+        }
+
+        h2 {
+            font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif;
+        }
+
+        h3 {
+            font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif;
+        }
+
+        a[href]:not(.buttonstyles) {
+            color: #0074A6;
+            text-decoration: none;
+        }
+
+        button.buttonblock {
+            color: #FFFFFF;
+            border-radius: 3px;
+            background-color: #5D5D5D;
+        }
+
+        td.buttonblock {
+            color: #FFFFFF;
+            border-radius: 3px;
+            background-color: #5D5D5D;
+        }
+
+        .pref-block {
+            background: #FFFFFF;
+            border: 1px solid #EAEAEA;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        .pref-block-noborder {
+            background: #FFFFFF;
+            border: 0px;
+            margin-left: 145px;
+            margin-right: 145px;
+            padding: 10px;
+        }
+
+        @media only screen and (max-width:480px) {
+
+            /* MOBILE GLOBAL STYLES - DO NOT CHANGE */
+            body,
+            .tb_properties {
+                font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif !important;
+                font-size: 14px !important;
+                color: #4F4F4F !important;
+                padding: 0px !important;
+            }
+
+            .buttonstyles {
+                font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif !important;
+                font-size: 16px !important;
+                color: #FFFFFF !important;
+                padding: 0px !important;
+            }
+
+            h1 {
+                font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif !important;
+                font-size: 22px !important;
+            }
+
+            h2 {
+                font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif !important;
+                font-size: 20px !important;
+            }
+
+            h3 {
+                font-family: "Salesforce Sans", Montserrat, Helvetica, Arial, sans-serif !important;
+                font-size: 18px !important;
+            }
+
+            a:not(.buttonstyles) {
+                line-height: 1 !important;
+            }
+
+            .mobile-hidden {
+                display: none !important;
+            }
+
+            /* END OF MOBILE GLOBAL STYLES - DO NOT CHANGE */
+        }
+    </style>
 </head>
 
 <body>
-    <div id="board">
-        <div class="containerMain container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Titre</h1>
-
-                </div>
-            </div>
-        </div>
-    <script></script>
+    <div>
+        <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; "
+            class="stylingblock-content-wrapper">
+            <tr>
+                <td class="stylingblock-content-wrapper camarker-inner">
+                    <div style="display:none;">
+                    </div>
+                    <div class="header" style="padding-top: 20px;">
+                        <div
+                            class="slds-container_large slds-container--center slds-grid slds-wrap slds-grid_vertical-align-center">
+                            <div class="slds-size_1-of-1 slds-medium-size_1-of-2">
+                                <div class="slds-p-horizontal_x-large slds-p-vertical_small logo"
+                                    style="max-width:200px;">
+                                    <img
+                                        src="https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/16c46559-97f3-45e6-b5c9-3052eb2cfe3c.png">
+                                </div>
+                            </div>
+                            <div class="slds-size_1-of-1 slds-medium-size_1-of-2 mobile-hidden">
+                                <div class="slds-p-horizontal_x-large slds-p-vertical_small">
+                                    <div class="slds-text-align_right slds-text-title pref-header"
+                                        style="color: var(--header-text-color);">
+                                    </div>
+                                    <div class="slds-text-align_right slds-text-title">
+                                        <a href="#" style="color: var(--header-text-color);">mon espace</a> <span
+                                            style="color: var(--header-text-color)">|</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; "
+            class="stylingblock-content-wrapper">
+            <tr>
+                <td class="stylingblock-content-wrapper camarker-inner">
+                    <div class="pref-block-noborder form-wrapper">
+                        <p class="slds-text-heading_small" style="font-size: 1.45rem">
+                            <b>ICI, L&Agrave;-BAS, NOS DESTINS SONT LI&Eacute;S</b><br>
+                            <span style="font-size:15px;">Premi&egrave;re ONG fran&ccedil;aise de solidarit&eacute;
+                                internationale et de d&eacute;veloppement, le CCFD-Terre Solidaire agit depuis 60 ans
+                                aux c&ocirc;t&eacute;s de celles et ceux qui luttent quotidiennement contre toutes les
+                                causes de la faim et qui font face aux injustices du mod&egrave;le de
+                                d&eacute;veloppement actuel. Pour faire face &agrave; ces fl&eacute;aux, il a
+                                &eacute;t&eacute; parmi les premiers &agrave; choisir d&rsquo;agir autrement et
+                                durablement.</span>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; "
+            class="stylingblock-content-wrapper">
+            <tr>
+                <td class="stylingblock-content-wrapper camarker-inner">
+                    <div class="heroBG"
+                        style="background-image:url('https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/3c7c309e-0bea-46ee-bea3-5acd4abd2e70.jpg');">
+                        <div  class="tmp-full-width"
+                            style="background-color: rgba(255,255,255,.4);padding: 3rem 0rem;" width="100%">
+                            <div  class="tmp-container" style="max-width: 1024px;" width="100%">
+                                <div class="aperture-left">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; "
+            class="stylingblock-content-wrapper">
+            <tr>
+                <td class="stylingblock-content-wrapper camarker-inner">
+                    <form id="mainFormBody">
+                        <div 0px="" class="form-wrapper pref-block" >
+                            <div class="slds-p-horizontal_x-large slds-p-vertical_medium">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="pref_type_icon mobile-hidden">
+                                        <img
+                                            src="https://s3.amazonaws.com/demo-builder/cloud-pages/prefpage_interests_icon-dark.png">&nbsp;
+                                    </div>
+                                    <div class="slds-col slds-p-horizontal_medium slds-p-vertical_small">
+                                        <div class="slds-text-heading_medium">
+                                            Vos Int&eacute;r&ecirc;ts</div>
+                                        <div class="slds-grid slds-wrap slds-p-vertical_small">
+                                            <div class="slds-p-top_x-small">
+                                                Vous nous avez fait savoir que vous souteniez :</div>
+                                        </div>
+                                        <div class="slds-grid slds-wrap slds-p-vertical_small">
+                                            <div class="slds-form-element">
+                                                <span class="slds-select-element"><input id="option-1" type="checkbox"
+                                                        value="on"> <label class="slds-checkbox__label"
+                                                        for="option-1"><span class="slds-select-element__label">Nos
+                                                            Formations et Insertions </span></label></span>
+                                            </div>
+                                            <div class="slds-form-element">
+                                                <span class="slds-select-element"><input id="option-2" type="checkbox"
+                                                        value="on"> <label class="slds-checkbox__label"
+                                                        for="option-2"><span class="slds-select-element__label">Nos
+                                                            Programmes pour les Familles</span></label></span>
+                                            </div>
+                                            <div class="slds-form-element">
+                                                <span class="slds-select-element"><input id="option-3" type="checkbox"
+                                                        value="on"> <label class="slds-checkbox__label"
+                                                        for="option-3"><span class="slds-select-element__label">Nos
+                                                            &eacute;v&egrave;nements</span></label></span>
+                                            </div>
+                                            <div class="slds-form-element">
+                                                <span class="slds-select-element"><input id="option-4" type="checkbox"
+                                                        value="on"> <label class="slds-checkbox__label"
+                                                        for="option-4"><span class="slds-select-element__label">Notre
+                                                            programme de m&eacute;c&eacute;nat</span></label></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-bottom: 30px;">
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; "
+            class="stylingblock-content-wrapper">
+            <tr>
+                <td style="padding: 10px; " class="stylingblock-content-wrapper camarker-inner">
+                    <table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;">
+                        <tr>
+                            <td>
+                                <table cellspacing="0" cellpadding="0" role="presentation" style="width: 100%;">
+                                    <tr>
+                                        <td valign="top" class="responsive-td" style="width: 25%; padding-right: 3px;">
+                                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                                                style="min-width: 100%; " class="stylingblock-content-wrapper">
+                                                <tr>
+                                                    <td class="stylingblock-content-wrapper camarker-inner"><button
+                                                            class="form-button" id="submitBtn"
+                                                            type="submit">90€</button></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td valign="top" class="responsive-td"
+                                            style="width: 25%; padding-left: 3px; padding-right: 3px;">
+                                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                                                style="min-width: 100%; " class="stylingblock-content-wrapper">
+                                                <tr>
+                                                    <td class="stylingblock-content-wrapper camarker-inner"><button
+                                                            class="form-button" id="submitBtn"
+                                                            type="submit">150€</button></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td valign="top" class="responsive-td"
+                                            style="width: 25%; padding-left: 3px; padding-right: 3px;">
+                                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                                                style="min-width: 100%; " class="stylingblock-content-wrapper">
+                                                <tr>
+                                                    <td class="stylingblock-content-wrapper camarker-inner"><button
+                                                            class="form-button" id="submitBtn"
+                                                            type="submit">220€</button></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td valign="top" class="responsive-td" style="width: 25%; padding-left: 3px;">
+                                            <table cellpadding="0" cellspacing="0" width="100%" role="presentation"
+                                                style="min-width: 100%; " class="stylingblock-content-wrapper">
+                                                <tr>
+                                                    <td class="stylingblock-content-wrapper camarker-inner"><button
+                                                            class="form-button" id="submitBtn"
+                                                            type="submit">350€</button></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; "
+            class="stylingblock-content-wrapper">
+            <tr>
+                <td class="stylingblock-content-wrapper camarker-inner">
+                    <div class="pref-block-noborder form-wrapper" align="center">
+                        <p class="slds-text-heading_small" style="font-size: 1.45rem">
+                            <b>Soutenez le CCFD via un don</b><br>
+                            <span style="font-size:15px;"></span>
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; "
+            class="stylingblock-content-wrapper">
+            <tr>
+                <td class="stylingblock-content-wrapper camarker-inner">
+                    <footer class="footer" style="font-weight:bold">
+                        <div class="slds-container_large slds-container--center">
+                            <div class="slds-grid slds-wrap slds-p-around_x-large">
+                                <div class="slds-size_1-of-2 slds-medium-size_1-of-4 slds-text-align_center">
+                                    <a href="#">Contactez-nous</a><br>
+                                    <a href="#">F .A. Q</a><br>
+                                    <a href="#">Mentions L&eacute;gales</a><br>
+                                    <a href="#">Cookies : Je choisis</a>
+                                </div>
+                                <div class="slds-size_1-of-2 slds-medium-size_1-of-4 slds-text-align_center">
+                                </div>
+                                <div class="slds-size_1-of-2 slds-medium-size_1-of-4 slds-text-align_center">
+                                    <a href="#">Espace Presse</a><br>
+                                    <a href="#">Espace B&eacute;n&eacute;voles</a><br>
+                                    <a href="#">Espace Donateurs</a><br>
+                                    <a href="#">Article</a>
+                                </div>
+                                <div class="slds-size_1-of-2 slds-medium-size_1-of-4 slds-text-align_center">
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        $(function () {
+            $('form#mainFormBody').on('submit', function (e) {
+                $.post('#', $(this).serialize(), function (data) {
+                    $(".form-wrapper").slideUp("slow", function () {
+                    });
+                    $("#mainFormBody").slideUp("slow", function () {
+                    });
+                    $("#thankYou").slideDown("slow", function () {
+                    });
+                }).error(function () {
+                    // This is executed when the call to mail.php failed.
+                });
+                e.preventDefault();
+            });
+        });
+    </script>
 </body>
+
 </html>
