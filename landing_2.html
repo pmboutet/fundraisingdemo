@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<meta name="ROBOTS" content="INDEX,FOLLOW">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+	<style>
+		/*********Vars***************/
+		:root {
+			--brand-color: #ffffff;
+			--footer-color: #fc6117;
+			--brand-text-color: #4f4f4f;
+			--button-color: #fc6117;
+			--button-color-hover: #b44512;
+			--header-color: #b44512;
+			--header-text-color: white;
+			--footer-text-color: #FFFFFF;
+			--button-text-color: white;
+		}
+
+
+	</style>
+	<style>
+		.img25 {
+			width: 25%;
+		}
+
+		.btn-primary{
+			background-color :var(--button-color); 
+			border-color : var(--button-color-hover); 	
+		}
+		.btn-primary:hover { 
+			background-color :var(--button-color-hover); 
+			border-color : var(--button-color); 	
+		}		
+		.vignette {
+		position: relative;
+		display: inline-block;
+		border-radius: 50%;
+		overflow: hidden;
+		height: 200px;
+		width: 200px;
+		border: solid lightgrey 10px;
+		}
+
+		.vignette::before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: -10%;
+		left: -10%;
+		width: 120%;
+		height: 120%;
+		background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.8) 100%);
+		transform: rotate(-45deg);
+		opacity: 0.9;
+		z-index: 1;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<a class="navbar-brand" href="#">
+						<img src="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/images/logo-orange.png" height="30" alt="">
+						CCFD TERRE SOLIDAIRE
+					</a>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="jumbotron">
+					<div class="container">
+						<h1 class="display-4">Merci d'avoir participé à notre démonstration</h1>
+						<p class="lead">La page que vous voyez à été généré (presque) intégralement avec chatGPT et Salesforce Marketing Cloud en fonction de vos réponses à nos questions : </p>
+						<hr/>
+						<p class="lead"><label>Vos réponses</label>
+							<span class="badge badge-secondary">Sécurité alimentaire</span> <span class="badge badge-secondary">justice économique</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-warning" role="alert">
+					<div class="d-flex align-items-start">
+						<img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg" alt="Pétition" height="auto" class="img-thumbnail mr-3 align-self-start img25">
+						<div>
+							<h4 class="alert-heading">Agissons pour la solidarité internationale !</h4>
+							<p>Signez la pétition pour exiger des États qu'ils respectent les droits des migrants et des réfugiés. En signant cette pétition, vous soutenez la solidarité internationale et vous vous engagez pour un monde plus juste et plus équitable pour tous.</p>
+							<hr>
+							<a href="https://ccfd-terresolidaire.org/combat/migrations-internationales/" target="_blank" class="btn btn-primary">Signez la pétition dès maintenant</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-success" role="alert">
+					<div class="d-flex align-items-start">
+						<img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg" alt="Pétition" height="auto" class="img-thumbnail mr-3 align-self-start img25">
+						<div>
+							<h4 class="alert-heading">Agissons pour la solidarité internationale !</h4>
+							<p>Agissez dès maintenant pour soutenir la solidarité internationale et contribuer à bâtir un monde plus juste et équitable pour tous.
+							</p>
+							<p>
+								Votre don peut faire la différence en aidant les réfugiés et les migrants dans le besoin à travers le monde. Avec votre soutien, nous pouvons fournir de la nourriture, de l'eau potable, des soins médicaux et un refuge pour les personnes les plus vulnérables. </p><p>  Faites un don dès aujourd'hui pour soutenir notre cause et aider à changer la vie de ceux qui en ont besoin.</p>
+							<hr>
+							<div class="form-group">
+								<label for="amount">Faire un don : </label>
+								<div class="text-center">
+									<div class="btn-group btn-group-toggle" data-toggle="buttons">
+										<label class="btn btn-secondary active btn-xl">
+											<input type="radio" id="option1" value="10" checked> 10€
+										</label>
+										<label class="btn btn-secondary btn-xl">
+											<input type="radio" id="option2" value="25"> 25€
+										</label>
+										<label class="btn btn-secondary btn-xl">
+											<input type="radio" id="option3" value="50"> 50€
+										</label>
+										<label class="btn btn-secondary btn-xl">
+											<input type="radio" id="option4" value="100"> 100€
+										</label>
+									</div>
+									<button type="submit" class="btn btn-primary btn-xl">Donner</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- resp regional -->	
+		<div class="row ">
+			<div class="col-md-6 card border-0">
+				<!-- Bloc devenir bénévole -->
+	  
+				  <div class="card-body">
+					<h5 class="card-title">Devenir bénévole</h5>
+					<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions pour faire connaître nos actions et récolter des fonds.</p>
+					<p class="card-text">N'hésitez pas à contacter Erica Baggi pour toutes questions ou informations concernant le CCFD-Terre Solidaire à Paris.</p>
+				  </div>
+			  
+			  </div>
+			<div class="col-md-6 card border-0 text-center">
+			  <!-- Bloc de contact avec Erica Baggi -->
+
+				<div class="card-body">
+				  <div class="vignette">
+					<img src="medias/avatar.jpg" alt="Erica Baggi" class="img-fluid mb-3">
+				  </div>
+				  <h5 class="card-title">Contacter Erica Baggi</h5>
+				  <h6 class="card-subtitle mb-2 text-muted">Responsable régionale de Paris</h6>
+				</div>
+				<a href="tel:+33123456789" class="btn btn-primary mb-3">Appeler</a>
+				<a href="#" class="btn btn-secondary mb-3">Être rappelé</a>
+			</div>
+		  </div>
+		  
+			  
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<form>
+
+				</form>
+			</div>
+		</div>
+	</div>
+			  
+	<script>
+		$(function () {
+			$('form#mainFormBody').on('submit', function (e) {
+				$.post('#', $(this).serialize(), function (data) {
+					$(".form-wrapper").slideUp("slow", function () {
+					});
+					$("#mainFormBody").slideUp("slow", function () {
+					});
+					$("#thankYou").slideDown("slow", function () {
+					});
+				}).error(function () {
+					// This is executed when the call to mail.php failed.
+				});
+				e.preventDefault();
+			});
+		});
+	</script>
+</body>
+
+</html>
