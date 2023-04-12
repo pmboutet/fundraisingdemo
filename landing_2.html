@@ -8,6 +8,7 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+	<link rel="preload" as="font" href="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/fonts/futura-bold.woff2" crossorigin="">
 	<style>
 		/*********Vars***************/
 		:root {
@@ -16,7 +17,7 @@
 			--brand-text-color: #4f4f4f;
 			--button-color: #fc6117;
 			--button-color-hover: #b44512;
-			--header-color: #b44512;
+			--header-color: #002d64;
 			--header-text-color: white;
 			--footer-text-color: #FFFFFF;
 			--button-text-color: white;
@@ -60,7 +61,60 @@
 		opacity: 0.9;
 		z-index: 1;
 		}
+		.parallax {
+			/* The image used */
+			background-image: url("https://ccfd-terresolidaire.org/wp-content/uploads/2022/05/money-g8a83e1858_1920-768x512.jpg");
 
+			/* Set a specific height */
+			min-height: 500px;
+
+			/* Create the parallax scrolling effect */
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		.navbar {
+			opacity: 0.9;
+		}
+
+		.heading-primary {
+			font-family: "Futura Condensed","Futura",serif;
+			font-size: calc(2.6rem+(5.0625 - 3.375) * ((100vw - 23.4375rem) / (90 - 23.4375)));
+			font-size: 54px;
+			font-weight: 900;
+			line-height: 115%;
+			text-align: center;
+			color: white;
+		}
+		.heading-primary span {
+			text-decoration: none;
+		}
+		.heading-primary span.orangeWhite {
+			color: #fc6117;
+			background-color: white;
+		}
+		.heading-primary span.whiteOrange {
+			background-color: #fc6117;
+			color:white;
+		}
+		.heading-primary span.whiteBlue {
+			background-color: var(--header-color);
+			color:white;
+		}
+
+		.padding50 {
+			padding-top: 50px;
+		}
+
+		.blue {
+			color: var(--header-color)
+		}
+		.orange {
+			color: var(--button-color)
+		}
+		
 	</style>
 </head>
 
@@ -68,19 +122,21 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 					<a class="navbar-brand" href="#">
 						<img src="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/images/logo-orange.png" height="30" alt="">
-						CCFD TERRE SOLIDAIRE
 					</a>
 				</nav>
 			</div>
+		</div>
+		<div class="parallax d-flex align-items-center justify-content-center">
+			<h1 class="heading-primary"><span class="orangeWhite">Ceci est un titre </span><br/><span class="whiteOrange">test</span></h1>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="jumbotron">
 					<div class="container">
-						<h1 class="display-4">Merci d'avoir participé à notre démonstration</h1>
+						<h1 class="display-4 heading-primary orange"><span class="whiteBlue">Merci !!</span> d'avoir participé à notre démonstration</h1>
 						<p class="lead">La page que vous voyez à été généré (presque) intégralement avec chatGPT et Salesforce Marketing Cloud en fonction de vos réponses à nos questions : </p>
 						<hr/>
 						<p class="lead"><label>Vos réponses</label>
@@ -96,7 +152,7 @@
 					<div class="d-flex align-items-start">
 						<img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg" alt="Pétition" height="auto" class="img-thumbnail mr-3 align-self-start img25">
 						<div>
-							<h4 class="alert-heading">Agissons pour la solidarité internationale !</h4>
+							<h4 class="alert-heading heading-primary blue"><span class="whiteOrange">Pétition</span> Agissons pour la solidarité internationale !</h4>
 							<p>Signez la pétition pour exiger des États qu'ils respectent les droits des migrants et des réfugiés. En signant cette pétition, vous soutenez la solidarité internationale et vous vous engagez pour un monde plus juste et plus équitable pour tous.</p>
 							<hr>
 							<a href="https://ccfd-terresolidaire.org/combat/migrations-internationales/" target="_blank" class="btn btn-primary">Signez la pétition dès maintenant</a>
@@ -111,7 +167,7 @@
 					<div class="d-flex align-items-start">
 						<img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg" alt="Pétition" height="auto" class="img-thumbnail mr-3 align-self-start img25">
 						<div>
-							<h4 class="alert-heading">Agissons pour la solidarité internationale !</h4>
+							<h4 class="alert-heading heading-primary blue"><span class="whiteOrange">Appel à don</span> Agissons pour la solidarité internationale !</h4>
 							<p>Agissez dès maintenant pour soutenir la solidarité internationale et contribuer à bâtir un monde plus juste et équitable pour tous.
 							</p>
 							<p>
@@ -148,7 +204,7 @@
 				<!-- Bloc devenir bénévole -->
 	  
 				  <div class="card-body">
-					<h5 class="card-title">Devenir bénévole</h5>
+					<h5 class="card-title heading-primary blue">Devenir <span class="whiteOrange">bénévole</span> </h5>
 					<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions pour faire connaître nos actions et récolter des fonds.</p>
 					<p class="card-text">N'hésitez pas à contacter Erica Baggi pour toutes questions ou informations concernant le CCFD-Terre Solidaire à Paris.</p>
 				  </div>
