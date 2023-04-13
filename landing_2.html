@@ -7,8 +7,11 @@
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
-	<link rel="preload" as="font" href="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/fonts/futura-bold.woff2" crossorigin="">
+	<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+		integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+	<link rel="preload" as="font"
+		href="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/fonts/futura-bold.woff2"
+		crossorigin="">
 	<style>
 		/*********Vars***************/
 		:root {
@@ -22,45 +25,46 @@
 			--footer-text-color: #FFFFFF;
 			--button-text-color: white;
 		}
-
-
 	</style>
 	<style>
 		.img25 {
 			width: 25%;
 		}
 
-		.btn-primary{
-			background-color :var(--button-color); 
-			border-color : var(--button-color-hover); 	
+		.btn-primary {
+			background-color: var(--button-color);
+			border-color: var(--button-color-hover);
 		}
-		.btn-primary:hover { 
-			background-color :var(--button-color-hover); 
-			border-color : var(--button-color); 	
-		}		
+
+		.btn-primary:hover {
+			background-color: var(--button-color-hover);
+			border-color: var(--button-color);
+		}
+
 		.vignette {
-		position: relative;
-		display: inline-block;
-		border-radius: 50%;
-		overflow: hidden;
-		height: 200px;
-		width: 200px;
-		border: solid lightgrey 10px;
+			position: relative;
+			display: inline-block;
+			border-radius: 50%;
+			overflow: hidden;
+			height: 200px;
+			width: 200px;
+			border: solid lightgrey 10px;
 		}
 
 		.vignette::before {
-		content: "";
-		display: block;
-		position: absolute;
-		top: -10%;
-		left: -10%;
-		width: 120%;
-		height: 120%;
-		background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.8) 100%);
-		transform: rotate(-45deg);
-		opacity: 0.9;
-		z-index: 1;
+			content: "";
+			display: block;
+			position: absolute;
+			top: -10%;
+			left: -10%;
+			width: 120%;
+			height: 120%;
+			background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.8) 100%);
+			transform: rotate(-45deg);
+			opacity: 0.9;
+			z-index: 1;
 		}
+
 		.parallax {
 			/* The image used */
 			background-image: url("https://ccfd-terresolidaire.org/wp-content/uploads/2022/05/money-g8a83e1858_1920-768x512.jpg");
@@ -80,7 +84,7 @@
 		}
 
 		.heading-primary {
-			font-family: "Futura Condensed","Futura",serif;
+			font-family: "Futura Condensed", "Futura", serif;
 			font-size: calc(2.6rem+(5.0625 - 3.375) * ((100vw - 23.4375rem) / (90 - 23.4375)));
 			font-size: 54px;
 			font-weight: 900;
@@ -88,20 +92,24 @@
 			text-align: center;
 			color: white;
 		}
+
 		.heading-primary span {
 			text-decoration: none;
 		}
+
 		.heading-primary span.orangeWhite {
 			color: #fc6117;
 			background-color: white;
 		}
+
 		.heading-primary span.whiteOrange {
 			background-color: #fc6117;
-			color:white;
+			color: white;
 		}
+
 		.heading-primary span.whiteBlue {
 			background-color: var(--header-color);
-			color:white;
+			color: white;
 		}
 
 		.padding50 {
@@ -111,24 +119,26 @@
 		.blue {
 			color: var(--header-color)
 		}
+
 		.orange {
 			color: var(--button-color)
 		}
+
 		@media (min-width: 300px) {
-		.col-md-6 {
-			-ms-flex: 0 0 50%;
-			flex: 0 0 100%;
-			max-width: 100%;
+			.col-md-6 {
+				-ms-flex: 0 0 50%;
+				flex: 0 0 100%;
+				max-width: 100%;
+			}
 		}
-		}
+
 		@media (min-width: 1000px) {
-		.col-md-6 {
-			-ms-flex: 0 0 50%;
-			flex: 0 0 50%;
-			max-width: 50%;
+			.col-md-6 {
+				-ms-flex: 0 0 50%;
+				flex: 0 0 50%;
+				max-width: 50%;
+			}
 		}
-		}
-		
 	</style>
 </head>
 
@@ -139,24 +149,29 @@
 			<div class="col-md-12">
 				<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 					<a class="navbar-brand" href="#">
-						<img src="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/images/logo-orange.png" height="30" alt="">
+						<img src="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/images/logo-orange.png"
+							height="30" alt="">
 					</a>
 				</nav>
 			</div>
 		</div>
 		<div class="parallax d-flex align-items-center justify-content-center" id="img_hero">
-			<h1 class="heading-primary"><span class="orangeWhite" id="page_titre">Ceci est un titre </span><br/><span  id="page_titre_ornage" class="whiteOrange">test</span></h1>
+			<h1 class="heading-primary"><span class="orangeWhite" id="page_titre"><!--  titre --> </span><br /><span
+					id="page_titre_ornage" class="whiteOrange"><!-- sous titre --></span></h1>
 		</div>
 		<!--jumbotron-->
 		<div class="row">
 			<div class="col-md-12">
 				<div class="jumbotron">
 					<div class="container">
-						<h1 class="display-4 heading-primary orange"><span class="whiteBlue">Merci !!</span> d'avoir participé à notre démonstration</h1>
-						<p class="lead" id="page_merci_txt">La page que vous voyez a été générée (presque) intégralement avec ChatGPT et Salesforce Marketing Cloud en fonction de vos réponses à nos questions. </p>
-						<hr/>
-						<p class="lead" id="page_merci_vars" ><label>Vos réponses :</label>
-							<span class="badge badge-secondary">Sécurité alimentaire</span> <span class="badge badge-secondary">justice économique</span>
+						<h1 class="display-4 heading-primary orange"><span class="whiteBlue">Merci !!</span> d'avoir
+							participé à notre démonstration</h1>
+						<p class="lead" id="page_merci_txt">La page que vous voyez a été générée (presque) intégralement
+							avec ChatGPT et Salesforce Marketing Cloud en fonction de vos réponses à nos questions. </p>
+						<hr />
+						<p class="lead" id="page_merci_vars"><label>Vos réponses :</label>
+							<span class="badge badge-secondary">Sécurité alimentaire</span> <span
+								class="badge badge-secondary">justice économique</span>
 						</p>
 					</div>
 				</div>
@@ -165,74 +180,93 @@
 		<!--petition-->
 		<div class="row">
 			<div class="col-6 col-md-6 alert alert-warning">
-				<img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg" alt="Pétition" height="auto" class=" img_action img-thumbnail mr-3 align-self-start">
+				<img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg"
+					alt="Pétition" height="auto" class=" img_action img-thumbnail mr-3 align-self-start">
 			</div>
 			<div class="col-6 col-md-6 alert alert-warning">
-				<h4 class="alert-heading heading-primary blue"><span class="whiteOrange">Pétition</span> <p id="page_petition_titre">Agissons pour la solidarité internationale !</p></h4>
-				<p id="page_petition_txt">Signez la pétition pour exiger des États qu'ils respectent les droits des migrants et des réfugiés. En signant cette pétition, vous soutenez la solidarité internationale et vous vous engagez pour un monde plus juste et plus équitable pour tous.</p>
+				<h4 class="alert-heading heading-primary blue"><span class="whiteOrange">Pétition</span>
+					<p id="page_petition_titre">Agissons pour la solidarité internationale !</p>
+				</h4>
+				<p id="page_petition_txt">Signez la pétition pour exiger des États qu'ils respectent les droits des
+					migrants et des réfugiés. En signant cette pétition, vous soutenez la solidarité internationale et
+					vous vous engagez pour un monde plus juste et plus équitable pour tous.</p>
 				<hr>
-				<a href="https://ccfd-terresolidaire.org/combat/migrations-internationales/" target="_blank" class="btn btn-primary">Signez la pétition dès maintenant</a>
+				<a href="https://ccfd-terresolidaire.org/combat/migrations-internationales/" target="_blank"
+					class="btn btn-primary">Signez la pétition dès maintenant</a>
 			</div>
 		</div>
 		<!--don-->
 		<div class="row">
-				<div class="col-md-6  border-0 alert alert-success">
-					<img  src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg" alt="Pétition" height="auto" class="img_action img-thumbnail mr-3 align-self-start ">
+			<div class="col-md-6  border-0 alert alert-success">
+				<img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg"
+					alt="Pétition" height="auto" class="img_action img-thumbnail mr-3 align-self-start ">
+			</div>
+			<div class="col-md-6 alert alert-success border-0">
+				<h4 class="alert-heading heading-primary blue"><span class="whiteOrange">Appel à don</span>
+					<p id="page_don_titre">Agissons pour la solidarité internationale !</p>
+				</h4>
+				<div name="page_don_txt">
+					<p>Agissez dès maintenant pour soutenir la solidarité internationale et contribuer à bâtir un monde
+						plus juste et équitable pour tous.
+					</p>
+					<p>
+						Votre don peut faire la différence en aidant les réfugiés et les migrants dans le besoin à
+						travers le monde. Avec votre soutien, nous pouvons fournir de la nourriture, de l'eau potable,
+						des soins médicaux et un refuge pour les personnes les plus vulnérables. </p>
+					<p> Faites un don dès aujourd'hui pour soutenir notre cause et aider à changer la vie de ceux qui en
+						ont besoin.</p>
 				</div>
-				<div class="col-md-6 alert alert-success border-0">
-					<h4 class="alert-heading heading-primary blue"><span class="whiteOrange">Appel à don</span> <p id="page_don_titre">Agissons pour la solidarité internationale !</p></h4>
-					<div name="page_don_txt">
-						<p>Agissez dès maintenant pour soutenir la solidarité internationale et contribuer à bâtir un monde plus juste et équitable pour tous.
-						</p>
-						<p>
-							Votre don peut faire la différence en aidant les réfugiés et les migrants dans le besoin à travers le monde. Avec votre soutien, nous pouvons fournir de la nourriture, de l'eau potable, des soins médicaux et un refuge pour les personnes les plus vulnérables. </p><p>  Faites un don dès aujourd'hui pour soutenir notre cause et aider à changer la vie de ceux qui en ont besoin.</p>	
-					</div><hr>
-					<div class="form-group">
-						<label for="amount">Faire un don : </label>
-						<div class="text-center">
-							<div class="btn-group btn-group-toggle" data-toggle="buttons">
-								<label class="btn btn-secondary active btn-xl">
-									<input type="radio" id="option1" value="10" checked> 10€
-								</label>
-								<label class="btn btn-secondary btn-xl">
-									<input type="radio" id="option2" value="25"> 25€
-								</label>
-								<label class="btn btn-secondary btn-xl">
-									<input type="radio" id="option3" value="50"> 50€
-								</label>
-								<label class="btn btn-secondary btn-xl">
-									<input type="radio" id="option4" value="100"> 100€
-								</label>
-							</div>
-							<button type="submit" class="btn btn-primary btn-xl">Donner</button>
+				<hr>
+				<div class="form-group">
+					<label for="amount">Faire un don : </label>
+					<div class="text-center">
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-secondary active btn-xl">
+								<input type="radio" id="option1" value="10" checked> 10€
+							</label>
+							<label class="btn btn-secondary btn-xl">
+								<input type="radio" id="option2" value="25"> 25€
+							</label>
+							<label class="btn btn-secondary btn-xl">
+								<input type="radio" id="option3" value="50"> 50€
+							</label>
+							<label class="btn btn-secondary btn-xl">
+								<input type="radio" id="option4" value="100"> 100€
+							</label>
 						</div>
+						<button type="submit" class="btn btn-primary btn-xl">Donner</button>
 					</div>
 				</div>
+			</div>
 		</div>
-		<!-- resp regional -->	
+		<!-- resp regional -->
 		<div class="row">
 			<div class="col-6 col-md-6 card border-0">
-				  <div class="card-body" id="page_contact_bloc">
+				<div class="card-body" id="page_contact_bloc">
 					<h5 class="card-title heading-primary blue">Devenir <span class="whiteOrange">bénévole</span> </h5>
-					<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions pour faire connaître nos actions et récolter des fonds.</p>
-					<p class="card-text">N'hésitez pas à contacter Erica Baggi pour toutes questions ou informations concernant le CCFD-Terre Solidaire à Paris.</p>
-				  </div>
-			  
-			  </div>
+					<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le
+						CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions
+						pour faire connaître nos actions et récolter des fonds.</p>
+					<p class="card-text">N'hésitez pas à contacter Erica Baggi pour toutes questions ou informations
+						concernant le CCFD-Terre Solidaire à Paris.</p>
+				</div>
+
+			</div>
 			<div class="col-6 col-md-6 card border-0 text-center">
 				<div class="card-body">
-				  <div class="vignette">
-					<img src="https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/a7655af7-bf2d-4887-877f-ee3d649f7d6f.jpg" alt="Erica Baggi" class="img-fluid mb-3">
-				  </div>
-				  <h5 class="card-title" id="page_contact_contact">Contacter Erica Baggi</h5>
-				  <h6 class="card-subtitle mb-2 text-muted">Responsable régionale de Paris</h6>
+					<div class="vignette">
+						<img src="https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/a7655af7-bf2d-4887-877f-ee3d649f7d6f.jpg"
+							alt="Erica Baggi" class="img-fluid mb-3">
+					</div>
+					<h5 class="card-title" id="page_contact_contact">Contacter Erica Baggi</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Responsable régionale de Paris</h6>
 				</div>
 				<a href="tel:+33123456789" class="btn btn-primary mb-3">Appeler</a>
 				<a href="#" class="btn btn-secondary mb-3">Être appelé</a>
 			</div>
-		  </div>
-		  
-			  
+		</div>
+
+
 		<div class="row justify-content-center">
 			<div class="col-md-6">
 				<form>
@@ -241,122 +275,234 @@
 			</div>
 		</div>
 	</div>
-			  
+
 	<script>
 		class UpdateText {
-				constructor(profil) {
-					switch (profil.combat) {
-						case "justice_eco":
-							this.data = data_combat_justice;
-							break;
-						default:
-							this.data = data_combat_justice;
-					}
-					if(profil.style == "tu") this.style = 'tu'; else this.style = 'vous'
-					if(profil.calendrier == "calendrier_catho") this.calendrier = 'calendrier_catho'; else this.calendrier = 'calendrier_non_def'
-					if(profil.temps == "unemn") this.temps = 'unemn'; else this.temps = 'quinzemn'
-					
-					this.run()
-				}
+			constructor(profil) {
 
-				// Method to update text
-				updateText(id) {
-					const element = document.getElementById(id);
-					const text = this.data[id][this.style];
-					if (element && text) {
+				this.profile = this.createProfileObject()
+				window.console.log(this.profile)
+				//'justice_eco', 'paix_ensemble', 'migrations_int', 'alimentaire'
+				switch (this.profile.combat) {
+					case "justice_eco":
+						this.data = data_combat_justice;
+						break;
+					case "paix_ensemble":
+						this.data = data_combat_paix;
+						break;
+					default:
+						this.data = data_combat_justice;
+				}
+		
+				if (this.profile.tuvous == "tu") this.style = 'tu'; else this.style = 'vous'
+				if (this.profile.profil == "militant") this.prof = 'militant'; else this.style = 'donateur'
+				if (this.profile.calendrier == "calendrier_religieux") this.calendrier = 'calendrier_religieux'; else this.calendrier = 'calendrier_non_def'
+				if (this.profile.temps == "unemn") this.temps = 'unemn'; else this.temps = 'quinzemn'
+
+				this.run()
+			}
+
+			// Method to update text
+			updateText(id) {
+				const element = document.getElementById(id);
+				const text = this.data[id][this.style];
+				if (element && text) {
 					element.innerHTML = text;
-					}
 				}
-				run() {
-					this.updateText("page_titre");
-					this.updateText("page_titre_ornage");
-					this.updateText("page_merci_txt");
-					this.updateText("page_merci_vars");
-					this.updateText("page_petition_titre");
-					this.updateText("page_petition_txt");
-					this.updateText("page_don_titre");
-					this.updateText("page_don_txt");
-					this.updateText("page_contact_bloc");
-					//update hero 
-					const hero = document.getElementById('img_hero');
-					hero.style.backgroundImage = "url('"+this.data.img_hero+"')";
-					const imgActions = document.querySelectorAll('.img_action');
-					imgActions.forEach((img) => {
-						img.src = this.data.img_action; 
-					});
-					//update action 
+			}
+
+			createProfileObject() {
+				const queryString = window.location.search;
+				const urlParams = new URLSearchParams(queryString);
+
+				const combatKeys = ['justice_eco', 'paix_ensemble', 'migrations_int', 'alimentaire'];
+				const combatValues = combatKeys.map(key => parseInt(urlParams.get(key)) || 0);
+				const highestCombatValue = Math.max(...combatValues);
+				const combatIndex = combatValues.indexOf(highestCombatValue);
+				const combat = combatKeys[combatIndex];
+
+				const profilKeys = ['militant', 'donateur'];
+				const profilValues = profilKeys.map(key => parseInt(urlParams.get(key)) || 0);
+				const highestProfilValue = Math.max(...profilValues);
+				const profilIndex = profilValues.indexOf(highestProfilValue);
+				const profil = profilKeys[profilIndex];
+
+				const tuvousKeys = ['tu', 'vous'];
+				const tuvousValues = tuvousKeys.map(key => parseInt(urlParams.get(key)) || 0);
+				const highestTuvousValue = Math.max(...tuvousValues);
+				const tuvousIndex = tuvousValues.indexOf(highestTuvousValue);
+				const tuvous = tuvousKeys[tuvousIndex];
+
+				const civiliteKeys = ['madame', 'monsieur'];
+				const civiliteValues = civiliteKeys.map(key => parseInt(urlParams.get(key)) || 0);
+				const highestCiviliteValue = Math.max(...civiliteValues);
+				const civiliteIndex = civiliteValues.indexOf(highestCiviliteValue);
+				const civilite = civiliteKeys[civiliteIndex];
+
+				const calendrierKeys = ['calendrier_religieux', 'calendrier_non_def'];
+				const calendrierValues = calendrierKeys.map(key => parseInt(urlParams.get(key)) || 0);
+				const highestCalendrierValue = Math.max(...calendrierValues);
+				const calendrierIndex = calendrierValues.indexOf(highestCalendrierValue);
+				const calendrier = calendrierKeys[calendrierIndex];
+
+				const uneminuteKeys = ['une_mn', 'quinze_mn'];
+				const uneminuteValues = uneminuteKeys.map(key => parseInt(urlParams.get(key)) || 0);
+				const highestUneminuteValue = Math.max(...uneminuteValues);
+				const uneminuteIndex = uneminuteValues.indexOf(highestUneminuteValue);
+				const temps = uneminuteKeys[uneminuteIndex];
+
+				const profile = {
+					combat,
+					profil,
+					tuvous,
+					civilite,
+					calendrier,
+					temps
+				};
+
+			return profile;
+		}
+
+		run() {
+			this.updateText("page_titre");
+			this.updateText("page_titre_ornage");
+			this.updateText("page_merci_txt");
+			this.updateText("page_merci_vars");
+			this.updateText("page_petition_titre");
+			this.updateText("page_petition_txt");
+			this.updateText("page_don_titre");
+			this.updateText("page_don_txt");
+			this.updateText("page_contact_bloc");
+			//update hero 
+			const hero = document.getElementById('img_hero');
+			hero.style.backgroundImage = "url('" + this.data.img_hero + "')";
+			const imgActions = document.querySelectorAll('.img_action');
+			imgActions.forEach((img) => {
+				img.src = this.data.img_action;
+			});
+			//update action 
 
 
-					//if militant 
-						//if 15mn >> contact
-						//if 1mn >> petition  
-					//if don 
-						//display
-						//if carême
-					
-				}
+			//if militant 
+			//if 15mn >> contact
+			//if 1mn >> petition  
+			//if don 
+			//display
+			//if carême
+
+		}
 		}
 
 
-		const profil = {
+		let profil = {
 			'combat': 'justice_eco', //justice_eco, migrations_inter, ...
 			'profil': 'militant',  // donateur, militant 
 			'calendrier': 'calendrier_catho', //
 			'temps': 'unemn', //
-			'style': 'vous', 
-			'prenom' : 'Pierre-Marie',
-			'nom' : 'Boutet', 
-			'email': 'xxx@salesforce.com', 
-			'tel': '00XXX0X0S0S0', 
+			'style': 'vous',
+			'prenom': 'Pierre-Marie',
+			'nom': 'Boutet',
+			'email': 'xxx@salesforce.com',
+			'tel': '00XXX0X0S0S0',
 			'civilite': 'monsieur'
 		}
 
 		var data_combat_justice = {
-			img_hero : "https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/Reportage-PELERIN_CCFD-Inde-2016-023-1536x1025.jpg",
-			img_action : "https://ccfd-terresolidaire.org/wp-content/uploads/2022/01/Sans-titre-1-1536x864.png",
+			img_hero: "https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/Reportage-PELERIN_CCFD-Inde-2016-023-1536x1025.jpg",
+			img_action: "https://ccfd-terresolidaire.org/wp-content/uploads/2022/01/Sans-titre-1-1536x864.png",
 			page_titre: {
-				"tu": "Salut "+profil.prenom, 
-				"vous":"Chère Madame, Cher Monsieur"
+				"tu": "Salut " + profil.prenom,
+				"vous": "Chère Madame, Cher Monsieur"
 			},
-			page_titre_ornage : {
-				"tu": "Merci de ton engagemnet à nos côtés", 
-				"vous":"Nous sommes très heureux de vous compter parmis nous"
+			page_titre_ornage: {
+				"tu": "Merci de ton engagemnet à nos côtés",
+				"vous": "Nous sommes très heureux de vous compter parmis nous"
 			},
-			page_merci_txt : {
-				"tu": "La page que tu vois a été générée (presque) intégralement avec ChatGPT et Salesforce Marketing Cloud en fonction de tes réponses à nos questions. Si t'as des questions ou des remarques, n'hésite pas à nous les faire savoir !", 
-				"vous":"La page que vous voyez a été générée (presque) intégralement avec ChatGPT et Salesforce Marketing Cloud en fonction de vos réponses à nos questions."
+			page_merci_txt: {
+				"tu": "La page que tu vois a été générée (presque) intégralement avec ChatGPT et Salesforce Marketing Cloud en fonction de tes réponses à nos questions. Si t'as des questions ou des remarques, n'hésite pas à nous les faire savoir !",
+				"vous": "La page que vous voyez a été générée (presque) intégralement avec ChatGPT et Salesforce Marketing Cloud en fonction de vos réponses à nos questions."
 			},
-			page_merci_vars : {
-				"tu": "Tes réponses : ", 
-				"vous":"Vos réponses :"
+			page_merci_vars: {
+				"tu": "Tes réponses : ",
+				"vous": "Vos réponses :"
 			},
-			page_petition_titre:  {
-				"tu": "Pour une économie plus juste et plus solidaire !", 
-				"vous":"Pour une économie plus juste et plus solidaire !"
+			page_petition_titre: {
+				"tu": "Pour une économie plus juste et plus solidaire !",
+				"vous": "Pour une économie plus juste et plus solidaire !"
 			},
-			page_petition_txt:  {
-				"tu": "Ensemble, demandons la mise en place de politiques économiques justes, d'un système fiscal équitable, et d'une réglementation stricte des entreprises transnationales pour construire un monde plus durable et plus équitable pour tous ! Rejoins-nous en signant cette pétition. Ensemble, nous pouvons faire pression sur les décideurs politiques et économiques pour qu'ils prennent des mesures concrètes en faveur de la justice économique. Signe maintenant pour rejoindre notre mouvement !", 
-				"vous":"Nous demandons la mise en place de politiques économiques justes, d'un système fiscal équitable, et d'une réglementation stricte des entreprises transnationales. Rejoignez-nous en signant cette pétition pour construire un monde plus durable et plus équitable pour tous ! Ensemble, nous pouvons faire pression sur les décideurs politiques et économiques pour qu'ils prennent des mesures concrètes en faveur de la justice économique. Signez maintenant pour rejoindre notre mouvement !."
+			page_petition_txt: {
+				"tu": "Ensemble, demandons la mise en place de politiques économiques justes, d'un système fiscal équitable, et d'une réglementation stricte des entreprises transnationales pour construire un monde plus durable et plus équitable pour tous ! Rejoins-nous en signant cette pétition. Ensemble, nous pouvons faire pression sur les décideurs politiques et économiques pour qu'ils prennent des mesures concrètes en faveur de la justice économique. Signe maintenant pour rejoindre notre mouvement !",
+				"vous": "Nous demandons la mise en place de politiques économiques justes, d'un système fiscal équitable, et d'une réglementation stricte des entreprises transnationales. Rejoignez-nous en signant cette pétition pour construire un monde plus durable et plus équitable pour tous ! Ensemble, nous pouvons faire pression sur les décideurs politiques et économiques pour qu'ils prennent des mesures concrètes en faveur de la justice économique. Signez maintenant pour rejoindre notre mouvement !."
 			},
-			page_don_titre:{
-				"tu": "Soutiens la justice économique en faisant un don !", 
-				"vous":"Soutenez la justice économique en faisant un don !"
+			page_don_titre: {
+				"tu": "Soutiens la justice économique en faisant un don !",
+				"vous": "Soutenez la justice économique en faisant un don !"
 			},
 			page_don_txt: {
-				"tu": "Tu peux contribuer à la construction d'un monde plus juste et plus solidaire en faisant un don à CCFD-Terre Solidaire. Nous agissons pour la mise en place de politiques économiques justes, d'un système fiscal équitable, et d'une réglementation stricte des entreprises transnationales pour lutter contre les inégalités et la pauvreté dans le monde. Avec ton don, nous pourrons financer des projets de développement durable et soutenir des actions de plaidoyer pour la justice économique. Soutiens-nous dans notre combat pour un monde plus équitable pour tous en faisant un don dès maintenant !", 
-				"vous":"Vous pouvez contribuer à la construction d'un monde plus juste et plus solidaire en faisant un don à CCFD-Terre Solidaire. Nous agissons pour la mise en place de politiques économiques justes, d'un système fiscal équitable, et d'une réglementation stricte des entreprises transnationales pour lutter contre les inégalités et la pauvreté dans le monde. Avec votre don, nous pourrons financer des projets de développement durable et soutenir des actions de plaidoyer pour la justice économique. Soutenez-nous dans notre combat pour un monde plus équitable pour tous en faisant un don dès maintenant !"
+				"tu": "Tu peux contribuer à la construction d'un monde plus juste et plus solidaire en faisant un don à CCFD-Terre Solidaire. Nous agissons pour la mise en place de politiques économiques justes, d'un système fiscal équitable, et d'une réglementation stricte des entreprises transnationales pour lutter contre les inégalités et la pauvreté dans le monde. Avec ton don, nous pourrons financer des projets de développement durable et soutenir des actions de plaidoyer pour la justice économique. Soutiens-nous dans notre combat pour un monde plus équitable pour tous en faisant un don dès maintenant !",
+				"vous": "Vous pouvez contribuer à la construction d'un monde plus juste et plus solidaire en faisant un don à CCFD-Terre Solidaire. Nous agissons pour la mise en place de politiques économiques justes, d'un système fiscal équitable, et d'une réglementation stricte des entreprises transnationales pour lutter contre les inégalités et la pauvreté dans le monde. Avec votre don, nous pourrons financer des projets de développement durable et soutenir des actions de plaidoyer pour la justice économique. Soutenez-nous dans notre combat pour un monde plus équitable pour tous en faisant un don dès maintenant !"
 			},
-			page_contact_bloc : {
+			page_contact_bloc: {
 				"vous": '<h5 class="card-title heading-primary blue">Devenir <span class="whiteOrange">bénévole</span></h5>' +
-						'<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions pour faire connaître nos actions et récolter des fonds.</p>' +
-						'<p class="card-text">N\'hésitez pas à contacter Erica Baggi pour toutes questions ou informations concernant le CCFD-Terre Solidaire à Paris.</p>',
-				"tu":  '<h5 class="card-title heading-primary blue">Devenir <span class="whiteOrange">bénévole</span></h5>' +
-						'<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions pour faire connaître nos actions et récolter des fonds.</p>' +
-						'<p class="card-text">N\'hésitez pas à contacter Erica Baggi pour toutes questions ou informations concernant le CCFD-Terre Solidaire à Paris.</p>'
+					'<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions pour faire connaître nos actions et récolter des fonds.</p>' +
+					'<p class="card-text">N\'hésitez pas à contacter Erica Baggi pour toutes questions ou informations concernant le CCFD-Terre Solidaire à Paris.</p>',
+				"tu": '<h5 class="card-title heading-primary blue">Devenir <span class="whiteOrange">bénévole</span></h5>' +
+					'<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions pour faire connaître nos actions et récolter des fonds.</p>' +
+					'<p class="card-text">N\'hésitez pas à contacter Erica Baggi pour toutes questions ou informations concernant le CCFD-Terre Solidaire à Paris.</p>'
 			},
-			page_contact_contact: {	
-				"tu": "", 
-				"vous":""
+			page_contact_contact: {
+				"tu": "",
+				"vous": ""
+			},
+		};
+
+		var data_combat_paix = {
+			img_hero: "https://ccfd-terresolidaire.org/wp-content/uploads/2022/03/Voyage-dimmersion-du-RT-Israel-Palestine-2014-025-768x432.jpg",
+			img_action: "https://ccfd-terresolidaire.org/wp-content/uploads/2016/10/bts_-_hebron_1_web.jpg",
+			page_titre: {
+				"tu": "Salut " + profil.prenom,
+				"vous": "Chère Madame, Cher Monsieur"
+			},
+			page_titre_ornage: {
+				"tu": "Merci de ton engagemnet à nos côtés",
+				"vous": "Nous sommes très heureux de vous compter parmis nous"
+			},
+			page_merci_txt: {
+				"tu": "La page que tu vois a été générée (presque) intégralement avec ChatGPT et Salesforce Marketing Cloud en fonction de tes réponses à nos questions. Si t'as des questions ou des remarques, n'hésite pas à nous les faire savoir !",
+				"vous": "La page que vous voyez a été générée (presque) intégralement avec ChatGPT et Salesforce Marketing Cloud en fonction de vos réponses à nos questions."
+			},
+			page_merci_vars: {
+				"tu": "Tes réponses : ",
+				"vous": "Vos réponses :"
+			},
+			page_petition_titre: {
+				"tu": "Interdisez le commerce des produits des colonies israéliennes",
+				"vous": "Interdisez le commerce des produits des colonies israéliennes"
+			},
+			page_petition_txt: {
+				"tu" : "<p>On demande l'interdiction immédiate du commerce des produits issus des colonies israéliennes illégales en Cisjordanie occupée. Ce commerce soutient l'expansion illégale des colonies et va à l'encontre des valeurs de justice et de solidarité. On appelle le gouvernement français et l'Union européenne à prendre des mesures concrètes pour mettre fin à ce commerce illégal et pour promouvoir la paix au Moyen-Orient.</p><p>En signant cette pétition, tu montres ton soutien à cette cause importante. Tu peux faire la différence en demandant à nos dirigeants de prendre des mesures concrètes pour mettre fin à cette injustice. Signe maintenant pour exiger l'interdiction du commerce des produits des colonies israéliennes et pour soutenir la paix et la justice pour tous.</p>",
+				"vous": "<p>Nous demandons l'interdiction immédiate du commerce des produits issus des colonies israéliennes illégales en Cisjordanie occupée. Ce commerce soutient l'expansion illégale des colonies et va à l'encontre des valeurs de justice et de solidarité. Nous appelons le gouvernement français et l'Union européenne à prendre des mesures concrètes pour mettre fin à ce commerce illégal et pour promouvoir la paix au Moyen-Orient.</p><p>En signant cette pétition, vous montrez votre soutien à cette cause importante. Vous pouvez faire la différence en demandant à nos dirigeants de prendre des mesures concrètes pour mettre fin à cette injustice. Signez maintenant pour exiger l'interdiction du commerce des produits des colonies israéliennes et pour soutenir la paix et la justice pour tous.</p>",
+
+			},
+			page_don_titre: {
+				"tu": "Soutiens la justice économique en faisant un don !",
+				"vous": "Soutenez la justice économique en faisant un don !"
+			},
+			page_don_txt: {
+				"tu": "<p>Ton don peut faire la différence !</p><p>En donnant, tu soutiens notre lutte pour l'interdiction du commerce des produits issus des colonies israéliennes illégales en Cisjordanie occupée. Ce commerce soutient l'expansion illégale des colonies et va à l'encontre des valeurs de justice et de solidarité. Nous appelons le gouvernement français et l'Union européenne à prendre des mesures concrètes pour mettre fin à ce commerce illégal et pour promouvoir la paix au Moyen-Orient.</p><p>En faisant un don, tu peux aider à financer nos actions pour mettre fin à cette injustice. Donne maintenant pour exiger l'interdiction du commerce des produits des colonies israéliennes et pour soutenir la paix et la justice pour tous.</p>",
+  				"vous": "<p>Votre don peut faire la différence !</p><p>En donnant, vous soutenez notre lutte pour l'interdiction du commerce des produits issus des colonies israéliennes illégales en Cisjordanie occupée. Ce commerce soutient l'expansion illégale des colonies et va à l'encontre des valeurs de justice et de solidarité. Nous appelons le gouvernement français et l'Union européenne à prendre des mesures concrètes pour mettre fin à ce commerce illégal et pour promouvoir la paix au Moyen-Orient.</p><p>En faisant un don, vous pouvez aider à financer nos actions pour mettre fin à cette injustice. Donnez maintenant pour exiger l'interdiction du commerce des produits des colonies israéliennes et pour soutenir la paix et la justice pour tous.</p>"
+		},
+			page_contact_bloc: {
+				"vous": '<h5 class="card-title heading-primary blue">Devenir <span class="whiteOrange">bénévole</span></h5>' +
+					'<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions pour faire connaître nos actions et récolter des fonds.</p>' +
+					'<p class="card-text">N\'hésitez pas à contacter Erica Baggi pour toutes questions ou informations concernant le CCFD-Terre Solidaire à Paris.</p>',
+				"tu": '<h5 class="card-title heading-primary blue">Devenir <span class="whiteOrange">bénévole</span></h5>' +
+					'<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions pour faire connaître nos actions et récolter des fonds.</p>' +
+					'<p class="card-text">N\'hésitez pas à contacter Erica Baggi pour toutes questions ou informations concernant le CCFD-Terre Solidaire à Paris.</p>'
+			},
+			page_contact_contact: {
+				"tu": "",
+				"vous": ""
 			},
 		};
 
