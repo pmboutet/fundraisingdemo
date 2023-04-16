@@ -269,9 +269,46 @@
 
 		<div class="row justify-content-center">
 			<div class="col-md-6">
-				<form>
-
-				</form>
+				<form id="persoForm">
+					<div class="form-group">
+					  <label for="combatDropdown">Sélectionnez un combat :</label>
+					  <select id="combatDropdown" name="combat" class="form-control">
+						<option value="justice_eco">Justice économique</option>
+						<option value="paix_ensemble">Paix ensemble</option>
+						<option value="migrations_int">Migrations internationales</option>
+						<option value="alimentaire">Alimentaire</option>
+					  </select>
+					</div>
+					<div class="form-group">
+					  <label for="profilDropdown">Sélectionnez un profil :</label>
+					  <select id="profilDropdown" name="profil" class="form-control">
+						<option value="militant">Militant</option>
+						<option value="donateur">Donateur</option>
+					  </select>
+					</div>
+					<div class="form-group">
+					  <label for="tuvousDropdown">Sélectionnez une option :</label>
+					  <select id="tuvousDropdown" name="tuvous" class="form-control">
+						<option value="tu">Tu</option>
+						<option value="vous">Vous</option>
+					  </select>
+					</div>
+					<div class="form-group">
+					  <label for="calendrierDropdown">Sélectionnez un calendrier :</label>
+					  <select id="calendrierDropdown" name="calendrier" class="form-control">
+						<option value="calendrier_religieux">Calendrier religieux</option>
+						<option value="calendrier_non_def">Calendrier non-défini</option>
+					  </select>
+					</div>
+					<div class="form-group">
+					  <label for="uneminuteDropdown">Sélectionnez une durée :</label>
+					  <select id="uneminuteDropdown" name="uneminute" class="form-control">
+						<option value="une_mn">Une minute</option>
+						<option value="quinze_mn">Quinze minutes</option>
+					  </select>
+					</div>
+					<button type="submit" class="btn btn-primary">Valider</button>
+				  </form>
 			</div>
 		</div>
 	</div>
@@ -279,10 +316,12 @@
 	<script>
 		class UpdateText {
 			constructor(profil) {
-
 				this.profile = this.createProfileObject()
-				window.console.log(this.profile)
-				//'justice_eco', 'paix_ensemble', 'migrations_int', 'alimentaire'
+				this.prepare()
+				this.run()
+			}
+			// prepare for run update text action
+			prepare () {
 				switch (this.profile.combat) {
 					case "justice_eco":
 						this.data = data_combat_justice;
@@ -293,24 +332,23 @@
 					default:
 						this.data = data_combat_justice;
 				}
-		
+				window.console.log(this.data)
 				if (this.profile.tuvous == "tu") this.style = 'tu'; else this.style = 'vous'
 				if (this.profile.profil == "militant") this.prof = 'militant'; else this.style = 'donateur'
 				if (this.profile.calendrier == "calendrier_religieux") this.calendrier = 'calendrier_religieux'; else this.calendrier = 'calendrier_non_def'
 				if (this.profile.temps == "unemn") this.temps = 'unemn'; else this.temps = 'quinzemn'
-
-				this.run()
 			}
 
 			// Method to update text
 			updateText(id) {
+				window.console.log('jupdate '+id+' avec le porofil '+this.style)
 				const element = document.getElementById(id);
 				const text = this.data[id][this.style];
 				if (element && text) {
 					element.innerHTML = text;
 				}
 			}
-
+			//Create profil based on vars scores
 			createProfileObject() {
 				const queryString = window.location.search;
 				const urlParams = new URLSearchParams(queryString);
@@ -360,8 +398,8 @@
 					temps
 				};
 
-			return profile;
-		}
+				return profile;
+			}
 
 		run() {
 			this.updateText("page_titre");
@@ -380,15 +418,6 @@
 			imgActions.forEach((img) => {
 				img.src = this.data.img_action;
 			});
-			//update action 
-
-
-			//if militant 
-			//if 15mn >> contact
-			//if 1mn >> petition  
-			//if don 
-			//display
-			//if carême
 
 		}
 		}
@@ -507,27 +536,65 @@
 		};
 
 
-
+		// run personalisation
 		const updater = new UpdateText(profil);
 
-		//updater.displayBlock("");
+		
+		// récupération du formulaire
+		const form = document.getElementById("persoForm");
 
+		// ajout d'un événement de soumission
+		form.addEventListener("submit", (event) => {
+		// empêcher le comportement par défaut de la soumission du formulaire
+		event.preventDefault();
 
-		$(function () {
-			$('form#mainFormBody').on('submit', function (e) {
-				$.post('#', $(this).serialize(), function (data) {
-					$(".form-wrapper").slideUp("slow", function () {
-					});
-					$("#mainFormBody").slideUp("slow", function () {
-					});
-					$("#thankYou").slideDown("slow", function () {
-					});
-				}).error(function () {
-					// This is executed when the call to mail.php failed.
-				});
-				e.preventDefault();
-			});
+		const valSelected = getSelectedValues()
+
+		// affichage des valeurs sélectionnées dans la console
+		console.log(`Combat sélectionné : ${updater.profile.combat}`);
+		console.log(`Profil sélectionné : ${updater.profile.profil}`);
+		console.log(`Tu ou vous : ${updater.profile.tuvous}`);
+		console.log(`Calendrier sélectionné : ${updater.profile.calendrier}`);
+		console.log(`Durée sélectionnée : ${updater.profile.uneminute}`);
+		updater.prepare()
+		updater.run()
+		this.scrollToTop()
+		// envoi des valeurs à la même page
+		//form.action = window.location.href;
+		//form.method = "POST";
+		//form.submit();
 		});
+
+		// fonction de récupération des valeurs sélectionnées
+		function getSelectedValues() {
+			updater.profile.combat = document.getElementById("combatDropdown").value;
+			updater.profile.profil = document.getElementById("profilDropdown").value;
+			updater.profile.tuvous = document.getElementById("tuvousDropdown").value;
+			updater.profile.calendrier = document.getElementById("calendrierDropdown").value;
+			updater.profile.uneminute = document.getElementById("uneminuteDropdown").value;
+		}
+
+		function scrollToTop() {
+			// Obtenir la position actuelle de la fenêtre
+			const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+
+			// Si la position est supérieure à 0, continuer à faire défiler vers le haut
+			if (currentScroll > 0) {
+				// Calculer la distance à parcourir et la durée de l'animation
+				const distance = currentScroll / 4;
+				const duration = 500;
+
+				// Utiliser l'API de l'interface de temps de JavaScript pour animer la fenêtre qui fait défiler la position vers le haut
+				window.requestAnimationFrame(() => {
+				window.scrollTo({top  : 0, behavior: "smooth"});
+				setTimeout(scrollToTop, duration);
+				});
+			}
+		}
+	
+
+
+
 	</script>
 </body>
 
