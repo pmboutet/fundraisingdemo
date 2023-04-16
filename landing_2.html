@@ -265,10 +265,19 @@
 				<a href="#" class="btn btn-secondary mb-3">Être appelé</a>
 			</div>
 		</div>
-
-
-		<div class="row justify-content-center">
-			<div class="col-md-6">
+		<!-- update perso -->
+		<div class="row">
+			<div class="col-md-12" style="background-color: #fc6117;">
+				<div class="jumbotron" style="background-color: #fc6117;">
+					<div class="container" >
+						<h5 class="card-title heading-primary blue">Modifier <span class="orangeWhite">la perso</span> </h5>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center " >
+			<div class="col-md-12 alert alert-info" >
+				<p class="card-text">Vous pouvez forcer la personalisation pour voir ce que d'autres profils voient au moyen du formulaire ci-dessous</p>
 				<form id="persoForm">
 					<div class="form-group">
 					  <label for="combatDropdown">Sélectionnez un combat :</label>
@@ -332,7 +341,7 @@
 					default:
 						this.data = data_combat_justice;
 				}
-				window.console.log(this.data)
+				
 				if (this.profile.tuvous == "tu") this.style = 'tu'; else this.style = 'vous'
 				if (this.profile.profil == "militant") this.prof = 'militant'; else this.style = 'donateur'
 				if (this.profile.calendrier == "calendrier_religieux") this.calendrier = 'calendrier_religieux'; else this.calendrier = 'calendrier_non_def'
@@ -341,7 +350,6 @@
 
 			// Method to update text
 			updateText(id) {
-				window.console.log('jupdate '+id+' avec le porofil '+this.style)
 				const element = document.getElementById(id);
 				const text = this.data[id][this.style];
 				if (element && text) {
@@ -559,10 +567,6 @@
 		updater.prepare()
 		updater.run()
 		this.scrollToTop()
-		// envoi des valeurs à la même page
-		//form.action = window.location.href;
-		//form.method = "POST";
-		//form.submit();
 		});
 
 		// fonction de récupération des valeurs sélectionnées
