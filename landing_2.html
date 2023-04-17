@@ -143,6 +143,29 @@
 				max-width: 50%;
 			}
 		}
+		@media (max-width: 1000px) {
+			.heading-primary {
+				font-size: 81px;
+				margin-top: 72px;
+				margin-bottom: 72px;
+			}
+
+			body {
+				font-size: 2.8rem;
+			}
+
+			.form-control {
+				font-size: 1.5em;
+				color: #17a2b8;
+			}
+			.lead {
+				font-size: 2.25rem;
+				font-weight: 300;
+			}
+			.btn {
+				font-size: 5rem;
+			}
+		}
 	</style>
 </head>
 
@@ -327,7 +350,8 @@
 			</div>
 		</div>
 	</div>
-	<script src="./perso.js"></script>
+	<script src="https://mc0bq2fh12vvr0lz6k14m-hh53d1.pub.sfmc-content.com/yoasfn2fmag"></script>
+	<script src="perso.js"></script>
 	<script>
 		class UpdateText {
 			constructor(profil) {
@@ -337,11 +361,26 @@
 			}
 			// get url or post 
 			getter () {
-				
+				const urlParams = new URLSearchParams(location.search); // Récupération des données en GET
+				const formData = new FormData(document.querySelector('form')); // Récupération des données en POST
+				const requestData = {};
+
+				// Conversion des données en GET en un objet JavaScript
+				for (let [key, value] of urlParams.entries()) {
+					requestData[key] = value;
+				}
+
+				// Conversion des données en POST en un objet JavaScript
+				for (let [key, value] of formData.entries()) {
+					requestData[key] = value;
+				}
+
+				return requestData;				
 			}
 			// prepare for run update text action
 			prepare () {
 				window.console.log(this.profile.profil+this.profile.temps)
+				window.console.log(this.profile.combat)
 				switch (this.profile.combat) {
 					case "justice_eco":
 						this.data = data_combat_justice;
@@ -349,9 +388,16 @@
 					case "paix_ensemble":
 						this.data = data_combat_paix;
 						break;
+					case "migrations_int": 
+						this.data = data_combat_migrations
+						break; 
+					case "alimentaire": 
+						this.data = data_combat_alimentaire
+						break; 
 					default:
 						this.data = data_combat_justice;
 				}
+				window.console.log(this.data)
 				this.profile.divs = ['rowJumb','rowPerso','rowPersoNext', 'headerMessage','img_hero', 'articlesMEA']
 
 				if (this.profile.profil == "militant") {
