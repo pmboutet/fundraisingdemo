@@ -124,6 +124,10 @@
 			color: var(--button-color)
 		}
 
+		.img-fluid-custom {
+			height: 200px;
+		}
+
 		@media (min-width: 300px) {
 			.col-md-6 {
 				-ms-flex: 0 0 50%;
@@ -223,7 +227,7 @@
 		</div>
 		<!-- resp regional -->
 		<div class="row" id="rowContact">
-			<div class="col-6 col-md-6 card border-0">
+			<div class="col-6 col-md-6 card border-0 ">
 				<div class="card-body" id="page_contact_bloc">
 					<h5 class="card-title heading-primary blue">Devenir <span class="whiteOrange">bénévole</span> </h5>
 					<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le
@@ -247,6 +251,7 @@
 				<a href="#" class="btn btn-secondary mb-3">Être appelé</a>
 			</div>
 		</div>
+		
 		<!--jumbotron-->
 		<div class="row" id="rowJumb">
 			<div class="col-md-12">
@@ -318,10 +323,11 @@
 					</div>
 					<button type="submit" class="btn btn-primary">Changer de profil et modifier la personalisation de la page </button>
 				  </form>
+				</div>
 			</div>
 		</div>
 	</div>
-
+	<script src="./perso.js"></script>
 	<script>
 		class UpdateText {
 			constructor(profil) {
@@ -346,7 +352,7 @@
 					default:
 						this.data = data_combat_justice;
 				}
-				this.profile.divs = ['rowJumb','rowPerso','rowPersoNext', 'headerMessage','img_hero']
+				this.profile.divs = ['rowJumb','rowPerso','rowPersoNext', 'headerMessage','img_hero', 'articlesMEA']
 
 				if (this.profile.profil == "militant") {
 					this.prof = 'militant';
