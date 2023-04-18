@@ -61,7 +61,7 @@ var data_combat_justice = {
 };
 
 var data_combat_paix = {
-    img_hero: "https://ccfd-terresolidaire.org/wp-content/uploads/2022/03/Voyage-dimmersion-du-RT-Israel-Palestine-2014-025-768x432.jpg",
+    img_hero: "https://ccfd-terresolidaire.org/wp-content/uploads/2022/02/copie-une-femmes-1024x457.jpg",
     img_action: "https://ccfd-terresolidaire.org/wp-content/uploads/2016/10/bts_-_hebron_1_web.jpg",
     page_titre: {
         "tu": "Salut " + profil.prenom,
@@ -113,7 +113,7 @@ var data_combat_paix = {
 
 var data_combat_migrations = {
     img_hero: "https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-768x574.jpg",
-    img_action: "https://ccfd-terresolidaire.org/wp-content/uploads/2021/12/Capture-d%C3%A9cran-2021-12-15-%C3%A0-16.35.04-e1639583893196.png",
+    img_action: "https://ccfd-terresolidaire.org/wp-content/uploads/2022/03/056-768x512.jpg",
     page_titre: {
         "tu": "Salut " + profil.prenom,
         "vous": "Chère Madame, Cher Monsieur"
