@@ -62,7 +62,7 @@ var data_combat_justice = {
 
 var data_combat_paix = {
     img_hero: "https://ccfd-terresolidaire.org/wp-content/uploads/2022/02/copie-une-femmes-1024x457.jpg",
-    img_action: "https://ccfd-terresolidaire.org/wp-content/uploads/2016/10/bts_-_hebron_1_web.jpg",
+    img_action: "https://ccfd-terresolidaire.org/wp-content/uploads/2022/02/39740-Reportage-PELERIN-CCFD-Inde-2016-002-Michael-ZUMSTEIN-CCFD-Terre-Solidaire-Agence-VU-1536x1024.jpg",
     page_titre: {
         "tu": "Salut " + profil.prenom,
         "vous": "Chère Madame, Cher Monsieur"
@@ -113,7 +113,7 @@ var data_combat_paix = {
 
 var data_combat_migrations = {
     img_hero: "https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-768x574.jpg",
-    img_action: "https://ccfd-terresolidaire.org/wp-content/uploads/2022/03/056-768x512.jpg",
+    img_action: "https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/Reportage-sur-lAquarius-de-Patrick-Bar-2016-014-scaled.jpg",
     page_titre: {
         "tu": "Salut " + profil.prenom,
         "vous": "Chère Madame, Cher Monsieur"
