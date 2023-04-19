@@ -181,8 +181,6 @@ set @calendrier_religieux  = RequestParameter("calendrier_religieux")
 set @calendrier_non_def  = RequestParameter("calendrier_non_def")
 set @tu  = RequestParameter("tu")
 set @vous  = RequestParameter("vous")
-set @madame  = RequestParameter("madame")
-set @monsieur  = RequestParameter("monsieur")
 set @une_mn  = RequestParameter("une_mn")
 set @quinze_mn   = RequestParameter("quinze_mn") 
 
@@ -201,13 +199,11 @@ IF (@calendrier_religieux == "1") THEN set @SC_careme=TRUE ENDIF
 IF (@calendrier_non_def == "1") THEN set @SC_careme=FALSE  ENDIF
 IF (@tu == "1")  THEN  set @SC_vouvoiement=FALSE ENDIF
 IF (@vous == "1") THEN set @SC_vouvoiement=TRUE ENDIF
-IF (@madame == "1") THEN set @SC_monsieur=FALSE  ENDIF
-IF (@monsieur == "1") THEN set @SC_monsieur=TRUE  ENDIF
 IF (@une_mn == "1") THEN   set @SC_Temps="1 minute" ENDIF
 IF (@quinze_mn == "1") THEN   set @SC_Temps="15 minutes" ENDIF
 
 
-Set @createPU = CreateSalesforceObject("Profil_Utilisateur__c", 11,
+Set @createPU = CreateSalesforceObject("Profil_Utilisateur__c", 10,
 "Contact__c", @contactId,
 "Alimentaire__c",@SC_alimentaire,
 "careme__c", @SC_careme,
@@ -215,7 +211,6 @@ Set @createPU = CreateSalesforceObject("Profil_Utilisateur__c", 11,
 "Justice_economique__c", @SC_justice_eco,
 "Migration_Internationale__c",@SC_migrations_int,
 "Militant__c",@SC_militant,
-"Monsieur__c", @SC_monsieur,
 "Paix_Ensemble__c", @SC_paix_ensemble,
 "Vouvoiement__c",@SC_vouvoiement,
 "Temps__c",@SC_Temps)
