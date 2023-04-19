@@ -160,7 +160,40 @@
         }
 </style>
 </head>
-
+   %%[
+   
+   var @email, @retrieveContact, @rowCount, @createContact,@prenom,@nom,@phone,@contactId
+   
+   set @email = RequestParameter("email")
+   set @prenom = Lookup("SMS_FoF", "Prenom", "Email",  @email)
+   set @nom =  Lookup("SMS_FoF", "Nom", "Email",  @email)
+   set @phone = Lookup("SMS_FoF", "Telephone", "Email",  @email)
+   
+   set @retrieveContact = RetrieveSalesforceObjects("Contact","Id","Email","=",@email)
+   
+   set @rowCount = RowCount(@retrieveContact) 
+  
+   IF (@rowCount==0)THEN 
+   set @createContact = CreateSalesforceObject("Contact", 4,
+        "Email", @email,
+        "MobilePhone", @phone,
+        "FirstName", @prenom,
+        "LastName", @nom)
+     set @contactId = @createContact
+     
+     ELSEIF (@rowCount == 1) THEN
+     
+     SET @RecordRow = ROW(@retrieveContact,1) 
+     SET @contactId = field(@RecordRow,"Id") 
+     
+     ELSEIF (@rowCount > 1) THEN
+     
+     SET @RecordRow = ROW(@retrieveContact,1) 
+     SET @contactId = field(@RecordRow,"Id") 
+     
+ ENDIF
+  
+   ]%%
 <body>
     <div id="board"><div id="titre">Titre</div>
     <img id="navImg" src="https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/b64de37c-1b81-447d-8cd9-03eab89973f6.png" alt="">
@@ -198,7 +231,6 @@
             <div class="formbuilder-button form-group field-submit">
                 <button type="submit" class="btn-primary btn" name="submit" access="false" id="submit">Envoyer</button>
             </div>
-
         </div>   
         -->
     </div>
@@ -513,8 +545,8 @@
                 if((this.sys.counter - 2 ) === this.sys.max) {
                     var finish = document.getElementById('finish')
                     finish.classList.add('visible')
-                    alert(JSON.stringify(this.sys.responses.questions))
-                    this.post('https://mc0bq2fh12vvr0lz6k14m-hh53d1.pub.sfmc-content.com/5t2xn4vrhyx', this.sys.responses.questions)
+                   /* alert(JSON.stringify(this.sys.responses.questions))*/
+                    this.post('https://mc0bq2fh12vvr0lz6k14m-hh53d1.pub.sfmc-content.com/k4omnkmmn4s?id=%%=v(@contactId)=%%', this.sys.responses.questions)
                 } 
     
                 
@@ -604,7 +636,7 @@
                 'up' : []
             },
             4 : {
-                'question' : 'Vous vous définissez d\'avantage comme ...', 
+                'question' : 'Vous vous définissez d\'avantage comme', 
                 'image': '',
                 'optionLeft': 'Militant',
                 'optionRight':'Donateur / philantrope', 
