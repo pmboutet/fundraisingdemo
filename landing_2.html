@@ -2,586 +2,639 @@
 <html>
 
 <head>
-	<title></title>
-	<meta name="ROBOTS" content="INDEX,FOLLOW">
-	<meta name="keywords" content="">
-	<meta name="description" content="">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
-		integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
-	<link rel="preload" as="font"
-		href="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/fonts/futura-bold.woff2"
-		crossorigin="">
-	<style>
-		/*********Vars***************/
-		:root {
-			--brand-color: #ffffff;
-			--footer-color: #fc6117;
-			--brand-text-color: #4f4f4f;
-			--button-color: #fc6117;
-			--button-color-hover: #b44512;
-			--header-color: #002d64;
-			--header-text-color: white;
-			--footer-text-color: #FFFFFF;
-			--button-text-color: white;
-		}
-	</style>
-	<style>
-		.img25 {
-			width: 25%;
-		}
+ <title></title>
+ <meta name="ROBOTS" content="INDEX,FOLLOW">
+ <meta name="keywords" content="">
+ <meta name="description" content="">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+  integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+ <link rel="preload" as="font"
+  href="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/fonts/futura-bold.woff2"
+  crossorigin="">
+ <style>
+  /*********Vars***************/
+  :root {
+   --brand-color: #ffffff;
+   --footer-color: #fc6117;
+   --brand-text-color: #4f4f4f;
+   --button-color: #fc6117;
+   --button-color-hover: #b44512;
+   --header-color: #002d64;
+   --header-text-color: white;
+   --footer-text-color: #FFFFFF;
+   --button-text-color: white;
+  }
+ </style>
+ <style>
+  .img25 {
+   width: 25%;
+  }
 
-		.btn-primary {
-			background-color: var(--button-color);
-			border-color: var(--button-color-hover);
-		}
+  .btn-primary {
+   background-color: var(--button-color);
+   border-color: var(--button-color-hover);
+  }
 
-		.btn-primary:hover {
-			background-color: var(--button-color-hover);
-			border-color: var(--button-color);
-		}
+  .btn-primary:hover {
+   background-color: var(--button-color-hover);
+   border-color: var(--button-color);
+  }
 
-		.vignette {
-			position: relative;
-			display: inline-block;
-			border-radius: 50%;
-			overflow: hidden;
-			height: 200px;
-			width: 200px;
-			border: solid lightgrey 10px;
-		}
+  .vignette {
+   position: relative;
+   display: inline-block;
+   border-radius: 50%;
+   overflow: hidden;
+   height: 200px;
+   width: 200px;
+   border: solid lightgrey 10px;
+  }
 
-		.vignette::before {
-			content: "";
-			display: block;
-			position: absolute;
-			top: -10%;
-			left: -10%;
-			width: 120%;
-			height: 120%;
-			background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.8) 100%);
-			transform: rotate(-45deg);
-			opacity: 0.9;
-			z-index: 1;
-		}
+  .vignette::before {
+   content: "";
+   display: block;
+   position: absolute;
+   top: -10%;
+   left: -10%;
+   width: 120%;
+   height: 120%;
+   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.8) 100%);
+   transform: rotate(-45deg);
+   opacity: 0.9;
+   z-index: 1;
+  }
 
-		.parallax {
-			/* The image used */
-			background-image: url("https://ccfd-terresolidaire.org/wp-content/uploads/2022/05/money-g8a83e1858_1920-768x512.jpg");
+  .parallax {
+   /* The image used */
+   background-image: url("https://ccfd-terresolidaire.org/wp-content/uploads/2022/05/money-g8a83e1858_1920-768x512.jpg");
 
-			/* Set a specific height */
-			min-height: 500px;
+   /* Set a specific height */
+   min-height: 500px;
 
-			/* Create the parallax scrolling effect */
-			background-attachment: fixed;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
+   /* Create the parallax scrolling effect */
+   background-attachment: fixed;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+  }
 
-		.navbar {
-			opacity: 0.9;
-		}
+  .navbar {
+   opacity: 0.9;
+  }
 
-		.heading-primary {
-			font-family: "Futura Condensed", "Futura", serif;
-			font-size: calc(2.6rem+(5.0625 - 3.375) * ((100vw - 23.4375rem) / (90 - 23.4375)));
-			font-size: 54px;
-			font-weight: 900;
-			line-height: 115%;
-			text-align: center;
-			color: white;
-		}
+  .heading-primary {
+   font-family: "Futura Condensed", "Futura", serif;
+   font-size: calc(2.6rem+(5.0625 - 3.375) * ((100vw - 23.4375rem) / (90 - 23.4375)));
+   font-size: 54px;
+   font-weight: 900;
+   line-height: 115%;
+   text-align: center;
+   color: white;
+  }
 
-		.heading-primary span {
-			text-decoration: none;
-		}
+  .heading-primary span {
+   text-decoration: none;
+  }
 
-		.heading-primary span.orangeWhite {
-			color: #fc6117;
-			background-color: white;
-		}
+  .heading-primary span.orangeWhite {
+   color: #fc6117;
+   background-color: white;
+  }
 
-		.heading-primary span.whiteOrange {
-			background-color: #fc6117;
-			color: white;
-		}
+  .heading-primary span.whiteOrange {
+   background-color: #fc6117;
+   color: white;
+  }
 
-		.heading-primary span.whiteBlue {
-			background-color: var(--header-color);
-			color: white;
-		}
+  .heading-primary span.whiteBlue {
+   background-color: var(--header-color);
+   color: white;
+  }
 
-		.padding50 {
-			padding-top: 50px;
-		}
+  .padding50 {
+   padding-top: 50px;
+  }
 
-		.blue {
-			color: var(--header-color)
-		}
+  .blue {
+   color: var(--header-color)
+  }
 
-		.orange {
-			color: var(--button-color)
-		}
+  .orange {
+   color: var(--button-color)
+  }
 
-		.img-fluid-custom {
-			height: 200px;
-		}
+  .img-fluid-custom {
+   height: 200px;
+  }
 
-		@media (min-width: 300px) {
-			.col-md-6 {
-				-ms-flex: 0 0 50%;
-				flex: 0 0 100%;
-				max-width: 100%;
-			}
-		}
+  @media (min-width: 300px) {
+   .col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 100%;
+    max-width: 100%;
+   }
+  }
 
-		@media (min-width: 1000px) {
-			.col-md-6 {
-				-ms-flex: 0 0 50%;
-				flex: 0 0 50%;
-				max-width: 50%;
-			}
-		}
-		@media (max-width: 1000px) {
-			.heading-primary {
-				font-size: 81px;
-				margin-top: 72px;
-				margin-bottom: 72px;
-			}
+  @media (min-width: 1000px) {
+   .col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+   }
+  }
+  @media (max-width: 1000px) {
+   .heading-primary {
+    font-size: 81px;
+    margin-top: 72px;
+    margin-bottom: 72px;
+   }
 
-			body {
-				font-size: 2.8rem;
-			}
+   body {
+    font-size: 2.8rem;
+   }
 
-			.form-control {
-				font-size: 1.5em;
-				color: #17a2b8;
-			}
-			.lead {
-				font-size: 2.25rem;
-				font-weight: 300;
-			}
-			.btn {
-				font-size: 5rem;
-			}
-		}
-	</style>
+   .form-control {
+    font-size: 1.5em;
+    color: #17a2b8;
+   }
+   .lead {
+    font-size: 2.25rem;
+    font-weight: 300;
+   }
+   .btn {
+    font-size: 5rem;
+   }
+  }
+ </style>
 </head>
+%%[
+/* récupération des paramètres envoyés */
+set @contactId = QueryParameter("id")
+set @paix_ensemble  = RequestParameter("paix_ensemble")
+set @justice_eco  = RequestParameter("justice_eco")
+set @migrations_int  = RequestParameter("migrations_int")
+set @alimentaire  = RequestParameter("alimentaire")
+set @militant  = RequestParameter("militant")
+set @donateur  = RequestParameter("donateur")
+set @calendrier_religieux  = RequestParameter("calendrier_religieux")
+set @calendrier_non_def  = RequestParameter("calendrier_non_def")
+set @tu  = RequestParameter("tu")
+set @vous  = RequestParameter("vous")
+set @madame  = RequestParameter("madame")
+set @monsieur  = RequestParameter("monsieur")
+set @une_mn  = RequestParameter("une_mn")
+set @quinze_mn   = RequestParameter("quinze_mn") 
 
+
+IF (empty(@paix_ensemble) OR  @paix_ensemble == "0") THEN set @SC_paix_ensemble=FALSE  ELSE  set @SC_paix_ensemble=TRUE ENDIF
+IF (empty(@justice_eco) OR  @justice_eco == "0") THEN set @SC_justice_eco=FALSE  ELSE  set @SC_justice_eco=TRUE ENDIF
+IF (empty(@migrations_int) OR  @migrations_int == "0") THEN set @SC_migrations_int=FALSE  ELSE  set @SC_migrations_int=TRUE ENDIF
+
+IF (empty(@alimentaire) OR  @alimentaire == "0") THEN set @SC_alimentaire=FALSE  ELSE  set @SC_alimentaire=TRUE ENDIF
+
+IF (empty(@militant) OR  @militant == "0") THEN set @SC_militant=FALSE  ELSE  set @SC_militant=TRUE ENDIF
+
+IF (empty(@donateur) OR  @donateur == "0") THEN set @SC_donateur=FALSE  ELSE  set @SC_donateur=TRUE ENDIF
+
+IF (@calendrier_religieux == "1") THEN set @SC_careme=TRUE ENDIF
+IF (@calendrier_non_def == "1") THEN set @SC_careme=FALSE  ENDIF
+IF (@tu == "1")  THEN  set @SC_vouvoiement=FALSE ENDIF
+IF (@vous == "1") THEN set @SC_vouvoiement=TRUE ENDIF
+IF (@madame == "1") THEN set @SC_monsieur=FALSE  ENDIF
+IF (@monsieur == "1") THEN set @SC_monsieur=TRUE  ENDIF
+IF (@une_mn == "1") THEN   set @SC_Temps="1 minute" ENDIF
+IF (@quinze_mn == "1") THEN   set @SC_Temps="15 minutes" ENDIF
+
+
+Set @createPU = CreateSalesforceObject("Profil_Utilisateur__c", 11,
+"Contact__c", @contactId,
+"Alimentaire__c",@SC_alimentaire,
+"careme__c", @SC_careme,
+"Donateur__c",@SC_donateur,
+"Justice_economique__c", @SC_justice_eco,
+"Migration_Internationale__c",@SC_migrations_int,
+"Militant__c",@SC_militant,
+"Monsieur__c", @SC_monsieur,
+"Paix_Ensemble__c", @SC_paix_ensemble,
+"Vouvoiement__c",@SC_vouvoiement,
+"Temps__c",@SC_Temps)
+
+
+]%%
 <body>
-	<div class="container-fluid">
-		<!-- header -->
-		<div class="row" id="headerMessage">
-			<div class="col-md-12">
-				<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-					<a class="navbar-brand" href="#">
-						<img src="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/images/logo-orange.png"
-							height="30" alt="">
-					</a>
-				</nav>
-			</div>
-		</div>
-		<div class="parallax d-flex align-items-center justify-content-center row" id="img_hero">
-			<h1 class="heading-primary"><span class="orangeWhite" id="page_titre"><!--  titre --> </span><br /><span
-					id="page_titre_ornage" class="whiteOrange"><!-- sous titre --></span></h1>
-		</div>
-		<!--petition-->
-		<div class="row" id="rowPetition">
-			<div class="col-6 col-md-6 alert alert-warning">
-				<img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg"
-					alt="Pétition" height="auto" class=" img_action img-thumbnail mr-3 align-self-start">
-			</div>
-			<div class="col-6 col-md-6 alert alert-warning">
-				<h4 class="alert-heading heading-primary blue"><span class="whiteOrange">Pétition</span>
-					<p id="page_petition_titre">Agissons pour la solidarité internationale !</p>
-				</h4>
-				<p id="page_petition_txt">Signez la pétition pour exiger des États qu'ils respectent les droits des
-					migrants et des réfugiés. En signant cette pétition, vous soutenez la solidarité internationale et
-					vous vous engagez pour un monde plus juste et plus équitable pour tous.</p>
-				<hr>
-				<a href="https://ccfd-terresolidaire.org/combat/migrations-internationales/" target="_blank"
-					class="btn btn-primary">Signez la pétition dès maintenant</a>
-			</div>
-		</div>
-		<!--don-->
-		<div class="row" id="rowDon">
-			<div class="col-md-6  border-0 alert alert-success">
-				<img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg"
-					alt="Pétition" height="auto" class="img_action img-thumbnail mr-3 align-self-start ">
-			</div>
-			<div class="col-md-6 alert alert-success border-0">
-				<h4 class="alert-heading heading-primary blue"><span class="whiteOrange">Appel à don</span>
-					<p id="page_don_titre">Agissons pour la solidarité internationale !</p>
-				</h4>
-				<div name="page_don_txt">
-					<p>Agissez dès maintenant pour soutenir la solidarité internationale et contribuer à bâtir un monde
-						plus juste et équitable pour tous.
-					</p>
-					<p>
-						Votre don peut faire la différence en aidant les réfugiés et les migrants dans le besoin à
-						travers le monde. Avec votre soutien, nous pouvons fournir de la nourriture, de l'eau potable,
-						des soins médicaux et un refuge pour les personnes les plus vulnérables. </p>
-					<p> Faites un don dès aujourd'hui pour soutenir notre cause et aider à changer la vie de ceux qui en
-						ont besoin.</p>
-				</div>
-				<hr>
-				<div class="form-group">
-					<label for="amount">Faire un don : </label>
-					<div class="text-center">
-						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-secondary active btn-xl">
-								<input type="radio" id="option1" value="10" checked> 10€
-							</label>
-							<label class="btn btn-secondary btn-xl">
-								<input type="radio" id="option2" value="25"> 25€
-							</label>
-							<label class="btn btn-secondary btn-xl">
-								<input type="radio" id="option3" value="50"> 50€
-							</label>
-							<label class="btn btn-secondary btn-xl">
-								<input type="radio" id="option4" value="100"> 100€
-							</label>
-						</div>
-						<button type="submit" class="btn btn-primary btn-xl">Donner</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- resp regional -->
-		<div class="row" id="rowContact">
-			<div class="col-6 col-md-6 card border-0 ">
-				<div class="card-body" id="page_contact_bloc">
-					<h5 class="card-title heading-primary blue">Devenir <span class="whiteOrange">bénévole</span> </h5>
-					<p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le
-						CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions
-						pour faire connaître nos actions et récolter des fonds.</p>
-					<p class="card-text">N'hésitez pas à contacter Erica Baggi pour toutes questions ou informations
-						concernant le CCFD-Terre Solidaire à Paris.</p>
-				</div>
+ <div class="container-fluid">
+  <!-- header -->
+  <div class="row" id="headerMessage">
+   <div class="col-md-12">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+     <a class="navbar-brand" href="#">
+      <img src="https://ccfd-terresolidaire.org/wp-content/themes/terre-solidaire/assets/images/logo-orange.png"
+       height="30" alt="">
+     </a>
+    </nav>
+   </div>
+  </div>
+  <div class="parallax d-flex align-items-center justify-content-center row" id="img_hero">
+   <h1 class="heading-primary"><span class="orangeWhite" id="page_titre"><!--  titre --> </span><br /><span
+     id="page_titre_ornage" class="whiteOrange"><!-- sous titre --></span></h1>
+  </div>
+  <!--petition-->
+  <div class="row" id="rowPetition">
+   <div class="col-6 col-md-6 alert alert-warning">
+    <img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg"
+     alt="Pétition" height="auto" class=" img_action img-thumbnail mr-3 align-self-start">
+   </div>
+   <div class="col-6 col-md-6 alert alert-warning">
+    <h4 class="alert-heading heading-primary blue"><span class="whiteOrange">Pétition</span>
+     <p id="page_petition_titre">Agissons pour la solidarité internationale !</p>
+    </h4>
+    <p id="page_petition_txt">Signez la pétition pour exiger des États qu'ils respectent les droits des
+     migrants et des réfugiés. En signant cette pétition, vous soutenez la solidarité internationale et
+     vous vous engagez pour un monde plus juste et plus équitable pour tous.</p>
+    <hr>
+    <a href="https://ccfd-terresolidaire.org/combat/migrations-internationales/" target="_blank"
+     class="btn btn-primary">Signez la pétition dès maintenant</a>
+   </div>
+  </div>
+  <!--don-->
+  <div class="row" id="rowDon">
+   <div class="col-md-6  border-0 alert alert-success">
+    <img src="https://ccfd-terresolidaire.org/wp-content/uploads/2021/11/095_VAR2021011G0603-6534-scaled-e1641488363935-1536x1149.jpg"
+     alt="Pétition" height="auto" class="img_action img-thumbnail mr-3 align-self-start ">
+   </div>
+   <div class="col-md-6 alert alert-success border-0">
+    <h4 class="alert-heading heading-primary blue"><span class="whiteOrange">Appel à don</span>
+     <p id="page_don_titre">Agissons pour la solidarité internationale !</p>
+    </h4>
+    <div name="page_don_txt">
+     <p>Agissez dès maintenant pour soutenir la solidarité internationale et contribuer à bâtir un monde
+      plus juste et équitable pour tous.
+     </p>
+     <p>
+      Votre don peut faire la différence en aidant les réfugiés et les migrants dans le besoin à
+      travers le monde. Avec votre soutien, nous pouvons fournir de la nourriture, de l'eau potable,
+      des soins médicaux et un refuge pour les personnes les plus vulnérables. </p>
+     <p> Faites un don dès aujourd'hui pour soutenir notre cause et aider à changer la vie de ceux qui en
+      ont besoin.</p>
+    </div>
+    <hr>
+    <div class="form-group">
+     <label for="amount">Faire un don : </label>
+     <div class="text-center">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+       <label class="btn btn-secondary active btn-xl">
+        <input type="radio" id="option1" value="10" checked> 10€
+       </label>
+       <label class="btn btn-secondary btn-xl">
+        <input type="radio" id="option2" value="25"> 25€
+       </label>
+       <label class="btn btn-secondary btn-xl">
+        <input type="radio" id="option3" value="50"> 50€
+       </label>
+       <label class="btn btn-secondary btn-xl">
+        <input type="radio" id="option4" value="100"> 100€
+       </label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-xl">Donner</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- resp regional -->
+  <div class="row" id="rowContact">
+   <div class="col-6 col-md-6 card border-0 ">
+    <div class="card-body" id="page_contact_bloc">
+     <h5 class="card-title heading-primary blue">Devenir <span class="whiteOrange">bénévole</span> </h5>
+     <p class="card-text">Vous souhaitez vous engager pour la solidarité internationale ? Rejoignez le
+      CCFD-Terre Solidaire en devenant bénévole ! Vous pourrez participer à des événements et actions
+      pour faire connaître nos actions et récolter des fonds.</p>
+     <p class="card-text">N'hésitez pas à contacter Erica Baggi pour toutes questions ou informations
+      concernant le CCFD-Terre Solidaire à Paris.</p>
+    </div>
 
-			</div>
-			<div class="col-6 col-md-6 card border-0 text-center">
-				<div class="card-body">
-					<div class="vignette">
-						<img src="https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/a7655af7-bf2d-4887-877f-ee3d649f7d6f.jpg"
-							alt="Erica Baggi" class="img-fluid mb-3">
-					</div>
-					<h5 class="card-title" id="page_contact_contact">Contacter Erica Baggi</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Responsable régionale de Paris</h6>
-				</div>
-				<a href="tel:+33123456789" class="btn btn-primary mb-3">Appeler</a>
-				<a href="#" class="btn btn-secondary mb-3">Être appelé</a>
-			</div>
-		</div>
-		
-		<!--jumbotron-->
-		<div class="row" id="rowJumb">
-			<div class="col-md-12">
-				<div class="jumbotron">
-					<div class="container">
-						<h1 class="display-4 heading-primary orange"><span class="whiteBlue">Merci !!</span> d'avoir
-							participé à notre démonstration</h1>
-						<p class="lead" id="page_merci_txt">La page que vous voyez a été générée (presque) intégralement
-							avec ChatGPT et Salesforce Marketing Cloud en fonction de vos réponses à nos questions. </p>
-						<hr />
-						<p class="lead" id="page_merci_vars"><label>Vos réponses :</label>
-							<span class="badge badge-secondary">Sécurité alimentaire</span> <span
-								class="badge badge-secondary">justice économique</span>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- update perso -->
-		<div class="row" id="rowPerso">
-			<div class="col-md-12" style="background-color: #fc6117;">
-				<div class="jumbotron" style="background-color: #fc6117;">
-					<div class="container" >
-						<h5 class="card-title heading-primary blue">Modifier <span class="orangeWhite">la perso</span> </h5>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row justify-content-center " id="rowPersoNext">
-			<div class="col-md-12 alert alert-info" >
-				<p class="card-text">Vous pouvez forcer la personalisation pour voir ce que d'autres profils voient au moyen du formulaire ci-dessous</p>
-				<form id="persoForm">
-					<div class="form-group">
-					  <label for="combatDropdown">Sélectionnez un combat :</label>
-					  <select id="combatDropdown" name="combat" class="form-control">
-						<option value="justice_eco">Justice économique</option>
-						<option value="paix_ensemble">Paix ensemble</option>
-						<option value="migrations_int">Migrations internationales</option>
-						<option value="alimentaire">Alimentaire</option>
-					  </select>
-					</div>
-					<div class="form-group">
-					  <label for="profilDropdown">Sélectionnez un profil :</label>
-					  <select id="profilDropdown" name="profil" class="form-control">
-						<option value="militant">Militant</option>
-						<option value="donateur">Donateur</option>
-					  </select>
-					</div>
-					<div class="form-group">
-					  <label for="tuvousDropdown">Sélectionnez une option :</label>
-					  <select id="tuvousDropdown" name="tuvous" class="form-control">
-						<option value="tu">Tu</option>
-						<option value="vous">Vous</option>
-					  </select>
-					</div>
-					<div class="form-group">
-					  <label for="calendrierDropdown">Sélectionnez un calendrier :</label>
-					  <select id="calendrierDropdown" name="calendrier" class="form-control">
-						<option value="calendrier_religieux">Calendrier religieux</option>
-						<option value="calendrier_non_def">Calendrier non-défini</option>
-					  </select>
-					</div>
-					<div class="form-group">
-					  <label for="uneminuteDropdown">Sélectionnez une durée :</label>
-					  <select id="uneminuteDropdown" name="uneminute" class="form-control">
-						<option value="une_mn">Une minute</option>
-						<option value="quinze_mn">Quinze minutes</option>
-					  </select>
-					</div>
-					<button type="submit" class="btn btn-primary">Changer de profil et modifier la personalisation de la page </button>
-				  </form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="https://mc0bq2fh12vvr0lz6k14m-hh53d1.pub.sfmc-content.com/yoasfn2fmag"></script>
-	<script src="perso.js"></script>
-	<script>
-		class UpdateText {
-			constructor(profil) {
-				this.profile = this.createProfileObject()
-				this.prepare()
-				this.run()
-			}
-			// get url or post 
-			getter () {
-				const urlParams = new URLSearchParams(location.search); // Récupération des données en GET
-				const formData = new FormData(document.querySelector('form')); // Récupération des données en POST
-				const requestData = {};
+   </div>
+   <div class="col-6 col-md-6 card border-0 text-center">
+    <div class="card-body">
+     <div class="vignette">
+      <img src="https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/a7655af7-bf2d-4887-877f-ee3d649f7d6f.jpg"
+       alt="Erica Baggi" class="img-fluid mb-3">
+     </div>
+     <h5 class="card-title" id="page_contact_contact">Contacter Erica Baggi</h5>
+     <h6 class="card-subtitle mb-2 text-muted">Responsable régionale de Paris</h6>
+    </div>
+    <a href="tel:+33123456789" class="btn btn-primary mb-3">Appeler</a>
+    <a href="#" class="btn btn-secondary mb-3">Être appelé</a>
+   </div>
+  </div>
+  
+  <!--jumbotron-->
+  <div class="row" id="rowJumb">
+   <div class="col-md-12">
+    <div class="jumbotron">
+     <div class="container">
+      <h1 class="display-4 heading-primary orange"><span class="whiteBlue">Merci !!</span> d'avoir
+       participé à notre démonstration</h1>
+      <p class="lead" id="page_merci_txt">La page que vous voyez a été générée (presque) intégralement
+       avec ChatGPT et Salesforce Marketing Cloud en fonction de vos réponses à nos questions. </p>
+      <hr />
+      <p class="lead" id="page_merci_vars"><label>Vos réponses :</label>
+       <span class="badge badge-secondary">Sécurité alimentaire</span> <span
+        class="badge badge-secondary">justice économique</span>
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- update perso -->
+  <div class="row" id="rowPerso">
+   <div class="col-md-12" style="background-color: #fc6117;">
+    <div class="jumbotron" style="background-color: #fc6117;">
+     <div class="container" >
+      <h5 class="card-title heading-primary blue">Modifier <span class="orangeWhite">la perso</span> </h5>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="row justify-content-center " id="rowPersoNext">
+   <div class="col-md-12 alert alert-info" >
+    <p class="card-text">Vous pouvez forcer la personalisation pour voir ce que d'autres profils voient au moyen du formulaire ci-dessous</p>
+    <form id="persoForm">
+     <div class="form-group">
+       <label for="combatDropdown">Sélectionnez un combat :</label>
+       <select id="combatDropdown" name="combat" class="form-control">
+      <option value="justice_eco">Justice économique</option>
+      <option value="paix_ensemble">Paix ensemble</option>
+      <option value="migrations_int">Migrations internationales</option>
+      <option value="alimentaire">Alimentaire</option>
+       </select>
+     </div>
+     <div class="form-group">
+       <label for="profilDropdown">Sélectionnez un profil :</label>
+       <select id="profilDropdown" name="profil" class="form-control">
+      <option value="militant">Militant</option>
+      <option value="donateur">Donateur</option>
+       </select>
+     </div>
+     <div class="form-group">
+       <label for="tuvousDropdown">Sélectionnez une option :</label>
+       <select id="tuvousDropdown" name="tuvous" class="form-control">
+      <option value="tu">Tu</option>
+      <option value="vous">Vous</option>
+       </select>
+     </div>
+     <div class="form-group">
+       <label for="calendrierDropdown">Sélectionnez un calendrier :</label>
+       <select id="calendrierDropdown" name="calendrier" class="form-control">
+      <option value="calendrier_religieux">Calendrier religieux</option>
+      <option value="calendrier_non_def">Calendrier non-défini</option>
+       </select>
+     </div>
+     <div class="form-group">
+       <label for="uneminuteDropdown">Sélectionnez une durée :</label>
+       <select id="uneminuteDropdown" name="uneminute" class="form-control">
+      <option value="une_mn">Une minute</option>
+      <option value="quinze_mn">Quinze minutes</option>
+       </select>
+     </div>
+     <button type="submit" class="btn btn-primary">Changer de profil et modifier la personalisation de la page </button>
+      </form>
+    </div>
+   </div>
+  </div>
+ </div>
+ <script src="https://mc0bq2fh12vvr0lz6k14m-hh53d1.pub.sfmc-content.com/yoasfn2fmag"></script>
+ <script src="perso.js"></script>
+ <script>
+  class UpdateText {
+   constructor(profil) {
+    this.profile = this.createProfileObject()
+    this.prepare()
+    this.run()
+   }
+   // get url or post 
+   getter () {
+    const urlParams = new URLSearchParams(location.search); // Récupération des données en GET
+    const formData = new FormData(document.querySelector('form')); // Récupération des données en POST
+    const requestData = {};
 
-				// Conversion des données en GET en un objet JavaScript
-				for (let [key, value] of urlParams.entries()) {
-					requestData[key] = value;
-				}
+    // Conversion des données en GET en un objet JavaScript
+    for (let [key, value] of urlParams.entries()) {
+     requestData[key] = value;
+    }
 
-				// Conversion des données en POST en un objet JavaScript
-				for (let [key, value] of formData.entries()) {
-					requestData[key] = value;
-				}
+    // Conversion des données en POST en un objet JavaScript
+    for (let [key, value] of formData.entries()) {
+     requestData[key] = value;
+    }
 
-				return requestData;				
-			}
-			// prepare for run update text action
-			prepare () {
-				window.console.log(this.profile.profil+this.profile.temps)
-				window.console.log(this.profile.combat)
-				switch (this.profile.combat) {
-					case "justice_eco":
-						this.data = data_combat_justice;
-						break;
-					case "paix_ensemble":
-						this.data = data_combat_paix;
-						break;
-					case "migrations_int": 
-						this.data = data_combat_migrations
-						break; 
-					case "alimentaire": 
-						this.data = data_combat_alimentaire
-						break; 
-					default:
-						this.data = data_combat_justice;
-				}
-				window.console.log(this.data)
-				this.profile.divs = ['rowJumb','rowPerso','rowPersoNext', 'headerMessage','img_hero', 'articlesMEA']
+    return requestData;    
+   }
+   // prepare for run update text action
+   prepare () {
+    window.console.log(this.profile.profil+this.profile.temps)
+    window.console.log(this.profile.combat)
+    switch (this.profile.combat) {
+     case "justice_eco":
+      this.data = data_combat_justice;
+      break;
+     case "paix_ensemble":
+      this.data = data_combat_paix;
+      break;
+     case "migrations_int": 
+      this.data = data_combat_migrations
+      break; 
+     case "alimentaire": 
+      this.data = data_combat_alimentaire
+      break; 
+     default:
+      this.data = data_combat_justice;
+    }
+    window.console.log(this.data)
+    this.profile.divs = ['rowJumb','rowPerso','rowPersoNext', 'headerMessage','img_hero', 'articlesMEA']
 
-				if (this.profile.profil == "militant") {
-					this.prof = 'militant';
-				} else {
-					this.prof = 'donateur';
-					this.profile.divs.push('rowDon')
-				}
-				if (this.profile.style == "tu") {
-					this.style = 'tu';
-				} else {
-					this.style = 'vous';
-				}
+    if (this.profile.profil == "militant") {
+     this.prof = 'militant';
+    } else {
+     this.prof = 'donateur';
+     this.profile.divs.push('rowDon')
+    }
+    if (this.profile.style == "tu") {
+     this.style = 'tu';
+    } else {
+     this.style = 'vous';
+    }
 
-				if (this.profile.calendrier == "calendrier_religieux") {
-					this.calendrier = 'calendrier_religieux';
-					this.profile.divs.push('careme')
-				} else {
-					this.calendrier = 'calendrier_non_def';
-				}
+    if (this.profile.calendrier == "calendrier_religieux") {
+     this.calendrier = 'calendrier_religieux';
+     this.profile.divs.push('careme')
+    } else {
+     this.calendrier = 'calendrier_non_def';
+    }
 
-				if (this.profile.temps == "une_mn" && this.profile.profil == "militant") {
-					this.temps = 'unemn';
-					this.profile.divs.push('rowPetition')
-				} else if(this.profile.temps == "quinze_mn" && this.profile.profil == "militant") {
-					this.temps = 'quinzemn';
-					this.profile.divs.push('rowContact')
-				}
-
-
-
-				
-				
-			}
-
-			// Method to update text
-			updateText(id) {
-				window.console.log(id+this.style)
-				const element = document.getElementById(id);
-				const text = this.data[id][this.style];
-				if (element && text) {
-					element.innerHTML = text;
-				}
-			}
-
-			// Method to display add a bloc
-
-			//Create profil based on vars scores
-			createProfileObject() {
-				const queryString = window.location.search;
-				const urlParams = new URLSearchParams(queryString);
-
-				const combatKeys = ['justice_eco', 'paix_ensemble', 'migrations_int', 'alimentaire'];
-				const combatValues = combatKeys.map(key => parseInt(urlParams.get(key)) || 0);
-				const highestCombatValue = Math.max(...combatValues);
-				const combatIndex = combatValues.indexOf(highestCombatValue);
-				const combat = combatKeys[combatIndex];
-
-				const profilKeys = ['militant', 'donateur'];
-				const profilValues = profilKeys.map(key => parseInt(urlParams.get(key)) || 0);
-				const highestProfilValue = Math.max(...profilValues);
-				const profilIndex = profilValues.indexOf(highestProfilValue);
-				const profil = profilKeys[profilIndex];
-
-				const tuvousKeys = ['tu', 'vous'];
-				const tuvousValues = tuvousKeys.map(key => parseInt(urlParams.get(key)) || 0);
-				const highestTuvousValue = Math.max(...tuvousValues);
-				const tuvousIndex = tuvousValues.indexOf(highestTuvousValue);
-				const tuvous = tuvousKeys[tuvousIndex];
-
-				const civiliteKeys = ['madame', 'monsieur'];
-				const civiliteValues = civiliteKeys.map(key => parseInt(urlParams.get(key)) || 0);
-				const highestCiviliteValue = Math.max(...civiliteValues);
-				const civiliteIndex = civiliteValues.indexOf(highestCiviliteValue);
-				const civilite = civiliteKeys[civiliteIndex];
-
-				const calendrierKeys = ['calendrier_religieux', 'calendrier_non_def'];
-				const calendrierValues = calendrierKeys.map(key => parseInt(urlParams.get(key)) || 0);
-				const highestCalendrierValue = Math.max(...calendrierValues);
-				const calendrierIndex = calendrierValues.indexOf(highestCalendrierValue);
-				const calendrier = calendrierKeys[calendrierIndex];
-
-				const uneminuteKeys = ['une_mn', 'quinze_mn'];
-				const uneminuteValues = uneminuteKeys.map(key => parseInt(urlParams.get(key)) || 0);
-				const highestUneminuteValue = Math.max(...uneminuteValues);
-				const uneminuteIndex = uneminuteValues.indexOf(highestUneminuteValue);
-				const temps = uneminuteKeys[uneminuteIndex];
-
-				const profile = {
-					combat,
-					profil,
-					tuvous,
-					civilite,
-					calendrier,
-					temps
-				};
-
-				return profile;
-			}
-
-		run() {
-			this.updateText("page_titre");
-			this.updateText("page_titre_ornage");
-			this.updateText("page_merci_txt");
-			this.updateText("page_merci_vars");
-			this.updateText("page_petition_titre");
-			this.updateText("page_petition_txt");
-			this.updateText("page_don_titre");
-			this.updateText("page_don_txt");
-			this.updateText("page_contact_bloc");
-			//update hero 
-			const hero = document.getElementById('img_hero');
-			hero.style.backgroundImage = "url('" + this.data.img_hero + "')";
-			const imgActions = document.querySelectorAll('.img_action');
-			imgActions.forEach((img) => {
-				img.src = this.data.img_action;
-			});
-
-			//update divs 
-			// Select all div elements with class 'row'
-			const allRows = document.querySelectorAll('div.row');
-
-			// Loop through all the rows
-			allRows.forEach(row => {
-			row.style.display = '';
-			// Check if the row's ID is in the 'this.profile.divs' array
-			if (!this.profile.divs.includes(row.id)) {
-				// If not, hide the row
-				row.style.display = 'none';
-			}
-			});		
-
-
-		}
-		}
+    if (this.profile.temps == "une_mn" && this.profile.profil == "militant") {
+     this.temps = 'unemn';
+     this.profile.divs.push('rowPetition')
+    } else if(this.profile.temps == "quinze_mn" && this.profile.profil == "militant") {
+     this.temps = 'quinzemn';
+     this.profile.divs.push('rowContact')
+    }
 
 
 
-		// run personalisation
-		const updater = new UpdateText(profil);
+    
+    
+   }
 
-		
-		// récupération du formulaire
-		const form = document.getElementById("persoForm");
+   // Method to update text
+   updateText(id) {
+    window.console.log(id+this.style)
+    const element = document.getElementById(id);
+    const text = this.data[id][this.style];
+    if (element && text) {
+     element.innerHTML = text;
+    }
+   }
 
-		// ajout d'un événement de soumission du formulaire de perso
-		form.addEventListener("submit", (event) => {
-			// empêcher le comportement par défaut de la soumission du formulaire
-			event.preventDefault();
-			const valSelected = getSelectedValues()
-			// affichage des valeurs sélectionnées dans la console
-			updater.prepare()
-			updater.run()
-			this.scrollToTop()
-		});
+   // Method to display add a bloc
 
-		// fonction de récupération des valeurs sélectionnées
-		function getSelectedValues() {
-			updater.profile.combat = document.getElementById("combatDropdown").value;
-			updater.profile.profil = document.getElementById("profilDropdown").value;
-			updater.profile.style = document.getElementById("tuvousDropdown").value;
-			updater.profile.calendrier = document.getElementById("calendrierDropdown").value;
-			updater.profile.temps = document.getElementById("uneminuteDropdown").value;
-		}
+   //Create profil based on vars scores
+   createProfileObject() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
 
-		function scrollToTop() {
-			// Obtenir la position actuelle de la fenêtre
-			const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    const combatKeys = ['justice_eco', 'paix_ensemble', 'migrations_int', 'alimentaire'];
+    const combatValues = combatKeys.map(key => parseInt(urlParams.get(key)) || 0);
+    const highestCombatValue = Math.max(...combatValues);
+    const combatIndex = combatValues.indexOf(highestCombatValue);
+    const combat = combatKeys[combatIndex];
 
-			// Si la position est supérieure à 0, continuer à faire défiler vers le haut
-			if (currentScroll > 0) {
-				// Calculer la distance à parcourir et la durée de l'animation
-				const distance = currentScroll / 4;
-				const duration = 500;
+    const profilKeys = ['militant', 'donateur'];
+    const profilValues = profilKeys.map(key => parseInt(urlParams.get(key)) || 0);
+    const highestProfilValue = Math.max(...profilValues);
+    const profilIndex = profilValues.indexOf(highestProfilValue);
+    const profil = profilKeys[profilIndex];
 
-				// Utiliser l'API de l'interface de temps de JavaScript pour animer la fenêtre qui fait défiler la position vers le haut
-				window.requestAnimationFrame(() => {
-				window.scrollTo({top  : 0, behavior: "smooth"});
-				setTimeout(scrollToTop, duration);
-				});
-			}
-		}
+    const tuvousKeys = ['tu', 'vous'];
+    const tuvousValues = tuvousKeys.map(key => parseInt(urlParams.get(key)) || 0);
+    const highestTuvousValue = Math.max(...tuvousValues);
+    const tuvousIndex = tuvousValues.indexOf(highestTuvousValue);
+    const tuvous = tuvousKeys[tuvousIndex];
 
-	</script>
+    const civiliteKeys = ['madame', 'monsieur'];
+    const civiliteValues = civiliteKeys.map(key => parseInt(urlParams.get(key)) || 0);
+    const highestCiviliteValue = Math.max(...civiliteValues);
+    const civiliteIndex = civiliteValues.indexOf(highestCiviliteValue);
+    const civilite = civiliteKeys[civiliteIndex];
+
+    const calendrierKeys = ['calendrier_religieux', 'calendrier_non_def'];
+    const calendrierValues = calendrierKeys.map(key => parseInt(urlParams.get(key)) || 0);
+    const highestCalendrierValue = Math.max(...calendrierValues);
+    const calendrierIndex = calendrierValues.indexOf(highestCalendrierValue);
+    const calendrier = calendrierKeys[calendrierIndex];
+
+    const uneminuteKeys = ['une_mn', 'quinze_mn'];
+    const uneminuteValues = uneminuteKeys.map(key => parseInt(urlParams.get(key)) || 0);
+    const highestUneminuteValue = Math.max(...uneminuteValues);
+    const uneminuteIndex = uneminuteValues.indexOf(highestUneminuteValue);
+    const temps = uneminuteKeys[uneminuteIndex];
+
+    const profile = {
+     combat,
+     profil,
+     tuvous,
+     civilite,
+     calendrier,
+     temps
+    };
+
+    return profile;
+   }
+
+  run() {
+   this.updateText("page_titre");
+   this.updateText("page_titre_ornage");
+   this.updateText("page_merci_txt");
+   this.updateText("page_merci_vars");
+   this.updateText("page_petition_titre");
+   this.updateText("page_petition_txt");
+   this.updateText("page_don_titre");
+   this.updateText("page_don_txt");
+   this.updateText("page_contact_bloc");
+   //update hero 
+   const hero = document.getElementById('img_hero');
+   hero.style.backgroundImage = "url('" + this.data.img_hero + "')";
+   const imgActions = document.querySelectorAll('.img_action');
+   imgActions.forEach((img) => {
+    img.src = this.data.img_action;
+   });
+
+   //update divs 
+   // Select all div elements with class 'row'
+   const allRows = document.querySelectorAll('div.row');
+
+   // Loop through all the rows
+   allRows.forEach(row => {
+   row.style.display = '';
+   // Check if the row's ID is in the 'this.profile.divs' array
+   if (!this.profile.divs.includes(row.id)) {
+    // If not, hide the row
+    row.style.display = 'none';
+   }
+   });  
+
+
+  }
+  }
+
+
+
+  // run personalisation
+  const updater = new UpdateText(profil);
+
+  
+  // récupération du formulaire
+  const form = document.getElementById("persoForm");
+
+  // ajout d'un événement de soumission du formulaire de perso
+  form.addEventListener("submit", (event) => {
+   // empêcher le comportement par défaut de la soumission du formulaire
+   event.preventDefault();
+   const valSelected = getSelectedValues()
+   // affichage des valeurs sélectionnées dans la console
+   updater.prepare()
+   updater.run()
+   this.scrollToTop()
+  });
+
+  // fonction de récupération des valeurs sélectionnées
+  function getSelectedValues() {
+   updater.profile.combat = document.getElementById("combatDropdown").value;
+   updater.profile.profil = document.getElementById("profilDropdown").value;
+   updater.profile.style = document.getElementById("tuvousDropdown").value;
+   updater.profile.calendrier = document.getElementById("calendrierDropdown").value;
+   updater.profile.temps = document.getElementById("uneminuteDropdown").value;
+  }
+
+  function scrollToTop() {
+   // Obtenir la position actuelle de la fenêtre
+   const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+
+   // Si la position est supérieure à 0, continuer à faire défiler vers le haut
+   if (currentScroll > 0) {
+    // Calculer la distance à parcourir et la durée de l'animation
+    const distance = currentScroll / 4;
+    const duration = 500;
+
+    // Utiliser l'API de l'interface de temps de JavaScript pour animer la fenêtre qui fait défiler la position vers le haut
+    window.requestAnimationFrame(() => {
+    window.scrollTo({top  : 0, behavior: "smooth"});
+    setTimeout(scrollToTop, duration);
+    });
+   }
+  }
+
+ </script>
 </body>
 
 </html>
