@@ -7,9 +7,9 @@
     <!-- utf-8 ééù-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Anton&family=Poppins:wght@100&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
         html,
@@ -160,7 +160,40 @@
         }
 </style>
 </head>
-
+   %%[
+   
+   var @email, @retrieveContact, @rowCount, @createContact,@prenom,@nom,@phone,@contactId
+   
+   set @email = RequestParameter("email")
+   set @prenom = Lookup("SMS_FoF", "Prenom", "Email",  @email)
+   set @nom =  Lookup("SMS_FoF", "Nom", "Email",  @email)
+   set @phone = Lookup("SMS_FoF", "Telephone", "Email",  @email)
+   
+   set @retrieveContact = RetrieveSalesforceObjects("Contact","Id","Email","=",@email)
+   
+   set @rowCount = RowCount(@retrieveContact) 
+  
+   IF (@rowCount==0)THEN 
+   set @createContact = CreateSalesforceObject("Contact", 4,
+        "Email", @email,
+        "MobilePhone", @phone,
+        "FirstName", @prenom,
+        "LastName", @nom)
+     set @contactId = @createContact
+     
+     ELSEIF (@rowCount == 1) THEN
+     
+     SET @RecordRow = ROW(@retrieveContact,1) 
+     SET @contactId = field(@RecordRow,"Id") 
+     
+     ELSEIF (@rowCount > 1) THEN
+     
+     SET @RecordRow = ROW(@retrieveContact,1) 
+     SET @contactId = field(@RecordRow,"Id") 
+     
+ ENDIF
+  
+   ]%%
 <body>
     <div id="board"><div id="titre">Titre</div>
     <img id="navImg" src="https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/b64de37c-1b81-447d-8cd9-03eab89973f6.png" alt="">
@@ -198,7 +231,6 @@
             <div class="formbuilder-button form-group field-submit">
                 <button type="submit" class="btn-primary btn" name="submit" access="false" id="submit">Envoyer</button>
             </div>
-
         </div>   
         -->
     </div>
@@ -214,7 +246,7 @@
                 this.sys = {}
                 this.sys.counter = 0
                 //max num of cards
-                this.sys.max = 8
+                this.sys.max = 7
                 //store answer 
                 this.sys.responses= {}
                 this.sys.responses.questions = {
@@ -513,8 +545,8 @@
                 if((this.sys.counter - 2 ) === this.sys.max) {
                     var finish = document.getElementById('finish')
                     finish.classList.add('visible')
-                    alert(JSON.stringify(this.sys.responses.questions))
-                    this.post('https://mc0bq2fh12vvr0lz6k14m-hh53d1.pub.sfmc-content.com/5t2xn4vrhyx', this.sys.responses.questions)
+                   /* alert(JSON.stringify(this.sys.responses.questions))*/
+                    this.post('https://mc0bq2fh12vvr0lz6k14m-hh53d1.pub.sfmc-content.com/k4omnkmmn4s?id=%%=v(@contactId)=%%', this.sys.responses.questions)
                 } 
     
                 
@@ -604,7 +636,7 @@
                 'up' : []
             },
             4 : {
-                'question' : 'Vous vous définissez d\'avantage comme ...', 
+                'question' : 'Vous vous définissez d\'avantage comme', 
                 'image': '',
                 'optionLeft': 'Militant',
                 'optionRight':'Donateur / philantrope', 
@@ -633,15 +665,6 @@
                 'up' : []
             },
             7 : {
-                'question' : 'Votre civilité:', 
-                'image': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/225fbec2-2d3b-4cb0-ac34-ce3f2e3c6cef.png',
-                'optionLeft': 'Madame',
-                'optionRight':'Monsieur',                 
-                'left'   : {'madame': 1},
-                'right'   : {'monsieur': 1}, 
-                'up' : []
-            },
-            8 : {
                 'question' : 'Combien de temps pouvez-vous nous consacrer :', 
                 'image': 'https://image.s4.sfmc-content.com/lib/fe2d11727664057e761c79/m/1/fe137033-0f6e-4076-a675-91930d1ffc17.png',
                 'optionLeft': '1 minute',
