@@ -153,7 +153,8 @@
         .containerMain input {
             width: 100%;
             height: 4em;    
-            margin-top:10px      
+            margin-top:10px;
+            text-align:center
         }
         input#go {
             background-color: #fc6117;
@@ -163,17 +164,28 @@
         }
 </style>
 </head>
+%%[
 
+var @email, @mobile
+set @mobile = QueryParameter('mobile') 
+set @email = Lookup("SMS_FoF", "Email", "Telephone",  @mobile)
+
+]%%
+  
 <body>
     <div id="board">
         <div class="containerMain">
+          <form action="%%=CloudPagesURL(60466)=%%"  method="post">
+            
+          
             <div id="titre">Saisissez votre email:</div>
             <label for="email">Entrez l'e-mail que vous avez utilisé pour votre inscription à l'évènement:</label>
-            <input type="email" id="email"
+            <input type="email" id="email" name="email" value="%%=v(@email)=%%"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" size="30" required
                 placeholder="monmail@gmail.com"
                 >   
-            <input type="submit" id="go" value="Valider et recevoir mon SMS"/>
+            <input type="submit" id="go" value="Valider votre email"/>
+          </form>
             </div>
         </div>
     <script></script>
