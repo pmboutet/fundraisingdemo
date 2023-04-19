@@ -419,12 +419,12 @@ Set @createPU = CreateSalesforceObject("Profil_Utilisateur__c", 11,
     const requestData = {};
 
     // Conversion des données en GET en un objet JavaScript
-    for (let [key, value] of urlParams.entries()) {
+    for (var [key, value] of urlParams.entries()) {
      requestData[key] = value;
     }
 
     // Conversion des données en POST en un objet JavaScript
-    for (let [key, value] of formData.entries()) {
+    for (var [key, value] of formData.entries()) {
      requestData[key] = value;
     }
 
@@ -432,8 +432,6 @@ Set @createPU = CreateSalesforceObject("Profil_Utilisateur__c", 11,
    }
    // prepare for run update text action
    prepare () {
-    window.console.log(this.profile.profil+this.profile.temps)
-    window.console.log(this.profile.combat)
     switch (this.profile.combat) {
      case "justice_eco":
       this.data = data_combat_justice;
@@ -521,12 +519,6 @@ Set @createPU = CreateSalesforceObject("Profil_Utilisateur__c", 11,
     const tuvousIndex = tuvousValues.indexOf(highestTuvousValue);
     const tuvous = tuvousKeys[tuvousIndex];
 
-    const civiliteKeys = ['madame', 'monsieur'];
-    const civiliteValues = civiliteKeys.map(key => parseInt(urlParams.get(key)) || 0);
-    const highestCiviliteValue = Math.max(...civiliteValues);
-    const civiliteIndex = civiliteValues.indexOf(highestCiviliteValue);
-    const civilite = civiliteKeys[civiliteIndex];
-
     const calendrierKeys = ['calendrier_religieux', 'calendrier_non_def'];
     const calendrierValues = calendrierKeys.map(key => parseInt(urlParams.get(key)) || 0);
     const highestCalendrierValue = Math.max(...calendrierValues);
@@ -543,7 +535,6 @@ Set @createPU = CreateSalesforceObject("Profil_Utilisateur__c", 11,
      combat,
      profil,
      tuvous,
-     civilite,
      calendrier,
      temps
     };
